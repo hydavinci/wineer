@@ -59,6 +59,11 @@ body{
 .result-head .lead{color:var(--sub);font-size:13px;margin-bottom:8px}
 .bottle{font-size:48px;margin-bottom:8px}
 .r-name{font-size:23px;font-weight:700;color:var(--gold2)}
+.top3-list{display:flex;flex-direction:column;gap:18px}
+.top-card{background:rgba(46,33,29,.65);border:1px solid var(--line);border-radius:16px;padding:16px 14px}
+.top-card-main{border-color:rgba(224,190,106,.55);box-shadow:0 0 0 1px rgba(201,162,75,.12) inset}
+.top-rank{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.08em;margin-bottom:6px}
+.top-name{font-size:19px;font-weight:800;color:var(--gold2);line-height:1.35;text-align:center;margin-bottom:8px}
 .r-tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:14px 0}
 .tag{background:rgba(201,162,75,.12);color:var(--gold2);border:1px solid var(--line);
   padding:4px 11px;border-radius:20px;font-size:12px}

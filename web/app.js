@@ -184,54 +184,53 @@ const Wineer = (() => {
       return;
     }
     const ranked = DB.map(scoreItem).sort((a,b)=>b.score-a.score);
-    const top = ranked[0];
-    const runners = ranked.slice(1,4);
-    renderResult(top, runners);
+    renderResult(ranked.slice(0, 3));
     switchScreen("result");
   }
 
-  function renderResult(top, runners) {
-    const it = top.item;
+  function renderResult(top3) {
     const maxScore = 96;
-    const pct = Math.max(40, Math.min(99, Math.round(top.score / maxScore * 100)));
-    const buyUrl = "https://search.jd.com/Search?keyword=" + encodeURIComponent(it.name);
-    const whyText = top.why.length ? [...new Set(top.why)].join(" · ") : "综合条件最优";
     const html = `
       <div class="result-head">
         <div class="lead">为你推荐</div>
         <div class="bottle">🍶</div>
-        <div class="r-name">${it.name}</div>
+        <div class="r-name">Top 3 白酒选择</div>
       </div>
-      <div class="match-score">匹配度 ${pct}% · ${whyText}</div>
-      <div class="r-tags">
-        <span class="tag">${it.aroma}型</span>
-        <span class="tag">${it.abv}度</span>
-        <span class="tag">约 ¥${it.price}</span>
-        <span class="tag">${it.priceTier}</span>
-        <span class="tag">${it.region}</span>
+      <div class="top3-list">
+        ${top3.map((r, index) => {
+          const it = r.item;
+          const pct = Math.max(40, Math.min(99, Math.round(r.score / maxScore * 100)));
+          const buyUrl = "https://search.jd.com/Search?keyword=" + encodeURIComponent(it.name);
+          const whyText = r.why.length ? [...new Set(r.why)].join(" · ") : "综合条件最优";
+          return `
+            <div class="top-card ${index === 0 ? "top-card-main" : ""}">
+              <div class="top-rank">TOP ${index + 1}</div>
+              <div class="top-name">${it.name}</div>
+              <div class="match-score">匹配度 ${pct}% · ${whyText}</div>
+              <div class="r-tags">
+                <span class="tag">${it.aroma}型</span>
+                <span class="tag">${it.abv}度</span>
+                <span class="tag">约 ¥${it.price}</span>
+                <span class="tag">${it.priceTier}</span>
+                <span class="tag">${it.region}</span>
+              </div>
+              <div class="r-block">
+                <h4>💡 推荐理由</h4>
+                <p>${it.highlight}</p>
+              </div>
+              <div class="r-block">
+                <h4>👅 口感特点</h4>
+                <p>${it.taste.join("、")}</p>
+              </div>
+              <div class="r-block r-caution">
+                <h4>⚠️ 选购提示</h4>
+                <p>${it.caution}</p>
+              </div>
+              <a class="btn-buy" href="${buyUrl}" target="_blank" rel="noopener">去看看 / 比价 →</a>
+            </div>
+          `;
+        }).join("")}
       </div>
-      <div class="r-block">
-        <h4>💡 为什么推荐它</h4>
-        <p>${it.highlight}</p>
-      </div>
-      <div class="r-block">
-        <h4>👅 口感特点</h4>
-        <p>${it.taste.join("、")}</p>
-      </div>
-      <div class="r-block r-caution">
-        <h4>⚠️ 选购提示</h4>
-        <p>${it.caution}</p>
-      </div>
-      <a class="btn-buy" href="${buyUrl}" target="_blank" rel="noopener">去看看 / 比价 →</a>
-      ${runners.length ? `
-      <div class="runner-up">
-        <div class="ru-title">你也可以考虑</div>
-        ${runners.map(r=>`
-          <div class="ru-item">
-            <span>${r.item.name} · ${r.item.aroma}型</span>
-            <span class="ru-price">¥${r.item.price}</span>
-          </div>`).join("")}
-      </div>` : ""}
     `;
     document.getElementById("resultArea").innerHTML = html;
   }
