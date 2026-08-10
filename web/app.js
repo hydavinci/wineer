@@ -3,7 +3,7 @@ const Wineer = (() => {
   let DB = [];
   let answers = defaultAnswers();
 
-  const FAMOUS_BRANDS = new Set(["茅台", "五粮液", "泸州老窖", "汾酒", "剑南春", "郎酒", "习酒", "洋河", "舍得", "水井坊"]);
+  const FAMOUS_BRANDS = new Set(["茅台", "五粮液", "泸州老窖", "汾酒", "剑南春", "郎酒", "习酒", "洋河", "舍得", "水井坊", "古井贡", "今世缘", "口子窖", "西凤", "董酒", "金沙", "国台", "珍酒", "全兴", "双沟", "宝丰", "酒鬼酒"]);
   const STEADY_AROMAS = new Set(["浓香", "清香", "米香", "兼香"]);
   const CHARACTER_AROMAS = new Set(["酱香", "凤香", "其他"]);
 
