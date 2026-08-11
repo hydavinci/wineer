@@ -2,6 +2,8 @@
 const Wineer = (() => {
   let DB = [];
   let answers = defaultAnswers();
+  let sharedAnswers = readAnswersFromUrl();
+  let lastTop3 = [];
 
   const FAMOUS_BRANDS = new Set(["茅台", "五粮液", "泸州老窖", "汾酒", "剑南春", "郎酒", "习酒", "洋河", "舍得", "水井坊", "古井贡", "今世缘", "口子窖", "西凤", "董酒", "金沙", "国台", "珍酒", "全兴", "双沟", "宝丰", "酒鬼酒"]);
   const STEADY_AROMAS = new Set(["浓香", "清香", "米香", "兼香"]);
@@ -96,6 +98,60 @@ const Wineer = (() => {
     };
   }
 
+  function readAnswersFromUrl() {
+    const params = new URLSearchParams(location.search);
+    if (params.get("w") !== "1") return null;
+    const next = defaultAnswers();
+    let hasAny = false;
+    for (const key of Object.keys(next)) {
+      const raw = params.get(key);
+      if (raw === null) continue;
+      const value = Number(raw);
+      if (Number.isInteger(value) && value >= 0 && value <= 10) {
+        next[key] = value;
+        hasAny = true;
+      }
+    }
+    return hasAny ? next : null;
+  }
+
+  function buildShareUrl() {
+    const url = new URL(location.href);
+    url.search = "";
+    url.hash = "";
+    const params = new URLSearchParams({ w: "1" });
+    Object.entries(answers).forEach(([key, value]) => params.set(key, String(value)));
+    url.search = params.toString();
+    return url.toString();
+  }
+
+  function track(event, payload = {}) {
+    const data = {
+      event,
+      payload,
+      ts: new Date().toISOString(),
+      path: location.pathname
+    };
+
+    try {
+      const key = "wineer_events";
+      const events = JSON.parse(localStorage.getItem(key) || "[]");
+      events.push(data);
+      localStorage.setItem(key, JSON.stringify(events.slice(-200)));
+    } catch (_) {}
+
+    const endpoint = window.WINEER_ANALYTICS_ENDPOINT;
+    if (!endpoint) return;
+    try {
+      const body = JSON.stringify(data);
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(endpoint, new Blob([body], { type: "application/json" }));
+      } else {
+        fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true });
+      }
+    } catch (_) {}
+  }
+
   async function load() {
     try {
       const res = await fetch("data/baijiu.json?v=" + Date.now());
@@ -111,8 +167,10 @@ const Wineer = (() => {
 
   function startQuiz() {
     switchScreen("quiz");
-    answers = defaultAnswers();
+    answers = sharedAnswers || defaultAnswers();
+    sharedAnswers = null;
     renderTuner();
+    track("start_quiz", { fromShare: Boolean(new URLSearchParams(location.search).get("w")) });
     if (DB.length === 0) load();
   }
 
@@ -173,6 +231,24 @@ const Wineer = (() => {
     return ["酱香", "其他", "凤香"];
   }
 
+  function budgetCeiling(v) {
+    if (v <= 1) return 100;
+    if (v <= 3) return 200;
+    if (v <= 5) return 500;
+    if (v <= 7) return 900;
+    if (v <= 9) return 1500;
+    return Infinity;
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
+
   function brandScore(item) {
     let s = 0;
     if (FAMOUS_BRANDS.has(item.brand)) s += 12;
@@ -187,13 +263,26 @@ const Wineer = (() => {
   function scoreItem(item) {
     let s = 0; const why = [];
 
-    // 预算
+    // 预算：先按价位档加分，再对明显超预算做强惩罚，避免低预算推荐高端酒
     const tiers = ["口粮", "中端", "高端", "超高端"];
     const targetTier = budgetTier(answers.budget);
+    const ceiling = budgetCeiling(answers.budget);
     const di = Math.abs(tiers.indexOf(item.priceTier) - tiers.indexOf(targetTier));
     if (di === 0) { s += 30; why.push("预算匹配"); }
     else if (di === 1) { s += 12; }
     else { s -= 14; }
+
+    if (Number.isFinite(ceiling) && item.price > ceiling) {
+      const overRatio = item.price / ceiling;
+      if (overRatio <= 1.15) {
+        s -= 8;
+        why.push("略超预算");
+      } else if (overRatio <= 1.5) {
+        s -= 22;
+      } else {
+        s -= 45;
+      }
+    }
 
     // 场面/用途
     const scenes = sceneTargets(answers.occasion);
@@ -264,50 +353,65 @@ const Wineer = (() => {
       load().then(recommend);
       return;
     }
+    const ceiling = budgetCeiling(answers.budget);
     const ranked = DB.map(scoreItem).sort((a,b)=>b.score-a.score);
-    renderResult(ranked.slice(0, 3));
+    const withinBudget = Number.isFinite(ceiling)
+      ? ranked.filter(r => r.item.price <= ceiling * 1.15)
+      : ranked;
+    // 优先保证推荐不明显超预算；若可选项不足，再回退到全库排序。
+    const top3 = (withinBudget.length >= 3 ? withinBudget : ranked).slice(0, 3);
+    lastTop3 = top3;
+    track("recommend", {
+      answers: { ...answers },
+      top3: top3.map(r => ({ id: r.item.id, name: r.item.name, score: r.score, price: r.item.price }))
+    });
+    renderResult(top3);
     switchScreen("result");
   }
 
   function renderResult(top3) {
-    const maxScore = 125;
+    const bestScore = Math.max(...top3.map(r => r.score), 1);
     const html = `
       <div class="result-head">
         <div class="lead">为你推荐</div>
         <div class="bottle">🍶</div>
         <div class="r-name">Top 3 白酒选择</div>
       </div>
+      <div class="share-box">
+        <button class="btn secondary" onclick="Wineer.shareResult()">分享结果链接</button>
+        <button class="btn secondary" onclick="Wineer.downloadPoster()">生成分享海报</button>
+      </div>
       <div class="top3-list">
         ${top3.map((r, index) => {
           const it = r.item;
-          const pct = Math.max(40, Math.min(99, Math.round(r.score / maxScore * 100)));
+          const pct = Math.max(60, Math.min(99, Math.round(r.score / bestScore * 96)));
           const buyUrl = "https://search.jd.com/Search?keyword=" + encodeURIComponent(it.name);
-          const whyText = r.why.length ? [...new Set(r.why)].slice(0, 4).join(" · ") : "综合条件最优";
+          const whyText = r.why.length ? [...new Set(r.why)].slice(0, 4).map(escapeHtml).join(" · ") : "综合条件最优";
           return `
             <div class="top-card ${index === 0 ? "top-card-main" : ""}">
               <div class="top-rank">TOP ${index + 1}</div>
-              <div class="top-name">${it.name}</div>
-              <div class="match-score">匹配度 ${pct}% · ${whyText}</div>
+              <div class="top-name">${escapeHtml(it.name)}</div>
+              <div class="match-score">推荐指数 ${pct}% · ${whyText}</div>
               <div class="r-tags">
-                <span class="tag">${it.aroma}型</span>
-                <span class="tag">${it.abv}度</span>
-                <span class="tag">约 ¥${it.price}</span>
-                <span class="tag">${it.priceTier}</span>
-                <span class="tag">${it.region}</span>
+                <span class="tag">${escapeHtml(it.aroma)}型</span>
+                <span class="tag">${escapeHtml(it.abv)}度</span>
+                <span class="tag">约 ¥${escapeHtml(it.price)}</span>
+                <span class="tag">${escapeHtml(it.priceTier)}</span>
+                <span class="tag">${escapeHtml(it.region)}</span>
               </div>
               <div class="r-block">
                 <h4>💡 推荐理由</h4>
-                <p>${it.highlight}</p>
+                <p>${escapeHtml(it.highlight)}</p>
               </div>
               <div class="r-block">
                 <h4>👅 口感特点</h4>
-                <p>${it.taste.join("、")}</p>
+                <p>${it.taste.map(escapeHtml).join("、")}</p>
               </div>
               <div class="r-block r-caution">
                 <h4>⚠️ 选购提示</h4>
-                <p>${it.caution}</p>
+                <p>${escapeHtml(it.caution)}</p>
               </div>
-              <a class="btn-buy" href="${buyUrl}" target="_blank" rel="noopener">去看看 / 比价 →</a>
+              <a class="btn-buy" href="${buyUrl}" target="_blank" rel="noopener" onclick="Wineer.trackBuy('${escapeHtml(it.id)}')">去看看 / 比价 →</a>
             </div>
           `;
         }).join("")}
@@ -316,15 +420,131 @@ const Wineer = (() => {
     document.getElementById("resultArea").innerHTML = html;
   }
 
+  async function shareResult() {
+    const url = buildShareUrl();
+    track("share_click", { mode: navigator.share ? "native" : "copy", url });
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "Wineer 白酒推荐", text: "这是我的 Wineer 白酒推荐结果", url });
+        return;
+      } catch (_) {}
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      alert("分享链接已复制");
+    } catch (_) {
+      prompt("复制这个分享链接", url);
+    }
+  }
+
+  function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 3) {
+    const chars = String(text).split("");
+    let line = "";
+    let lines = [];
+    for (const ch of chars) {
+      const test = line + ch;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = ch;
+        if (lines.length >= maxLines) break;
+      } else {
+        line = test;
+      }
+    }
+    if (line && lines.length < maxLines) lines.push(line);
+    lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineHeight));
+    return y + lines.length * lineHeight;
+  }
+
+  function downloadPoster() {
+    if (!lastTop3.length) return;
+    track("share_poster", { top3: lastTop3.map(r => r.item.id) });
+    const canvas = document.createElement("canvas");
+    canvas.width = 900;
+    canvas.height = 1400;
+    const ctx = canvas.getContext("2d");
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, "#2e211d");
+    gradient.addColorStop(1, "#1a1210");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#e0be6a";
+    ctx.font = "700 54px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("🍶 Wineer 白酒推荐", canvas.width / 2, 110);
+    ctx.fillStyle = "#a99a8c";
+    ctx.font = "28px sans-serif";
+    ctx.fillText("按真实需求生成的 Top 3 选择", canvas.width / 2, 160);
+
+    let y = 240;
+    lastTop3.forEach((r, index) => {
+      const it = r.item;
+      ctx.fillStyle = index === 0 ? "rgba(224,190,106,.16)" : "rgba(255,255,255,.05)";
+      roundRect(ctx, 70, y, 760, 255, 28);
+      ctx.fill();
+      ctx.strokeStyle = index === 0 ? "rgba(224,190,106,.55)" : "rgba(255,255,255,.12)";
+      ctx.stroke();
+
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#c9a24b";
+      ctx.font = "700 26px sans-serif";
+      ctx.fillText(`TOP ${index + 1}`, 110, y + 52);
+      ctx.fillStyle = "#f2e9df";
+      ctx.font = "700 36px sans-serif";
+      drawWrappedText(ctx, it.name, 110, y + 105, 680, 44, 2);
+      ctx.fillStyle = "#e0be6a";
+      ctx.font = "26px sans-serif";
+      ctx.fillText(`${it.aroma}型 · ${it.abv}度 · 约 ¥${it.price} · ${it.priceTier}`, 110, y + 178);
+      ctx.fillStyle = "#a99a8c";
+      ctx.font = "24px sans-serif";
+      drawWrappedText(ctx, it.highlight, 110, y + 220, 680, 32, 1);
+      y += 295;
+    });
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#a99a8c";
+    ctx.font = "24px sans-serif";
+    ctx.fillText("价格为市场参考，非实时报价。请理性饮酒。", canvas.width / 2, 1195);
+    ctx.fillStyle = "#e0be6a";
+    ctx.font = "28px sans-serif";
+    ctx.fillText(new URL(location.href).host || "Wineer", canvas.width / 2, 1245);
+
+    const a = document.createElement("a");
+    a.download = "wineer-recommendation.png";
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+  }
+
+  function roundRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + width, y, x + width, y + height, radius);
+    ctx.arcTo(x + width, y + height, x, y + height, radius);
+    ctx.arcTo(x, y + height, x, y, radius);
+    ctx.arcTo(x, y, x + width, y, radius);
+    ctx.closePath();
+  }
+
+  function trackBuy(id) {
+    const item = lastTop3.find(r => r.item.id === id)?.item;
+    track("buy_click", { id, name: item?.name, answers: { ...answers } });
+    return true;
+  }
+
   function switchScreen(id) {
     document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
     window.scrollTo(0,0);
   }
 
-  function restart() { switchScreen("ageGate"); }
+  function restart() {
+    track("restart", { from: "result" });
+    switchScreen("ageGate");
+  }
 
   load();
 
-  return { startQuiz, setDim, recommend, restart };
+  return { startQuiz, setDim, recommend, restart, shareResult, downloadPoster, trackBuy };
 })();
