@@ -89,3 +89,56 @@ The Node VM tests passed for the age-gate transition, six sliders, all four gold
 - The Task 4 deferred exact-copy/class-name assertions were not added: copy and CSS class names are not stable interfaces, while route behavior, page registration, syntax, and the pending visual acceptance are covered.
 - Local verification used Node.js `v26.7.0`; Node.js 22 was not installed locally. CI remains pinned to Node.js 22 and will execute the same build/check commands.
 - Actual WeChat Developer Tools/device and GUI browser acceptance remain the only open checks.
+
+## Round 1 Fix Evidence — CI generated-asset drift gate
+
+### Finding addressed
+
+CI built generated assets and then ran checks, but it never failed on committed drift for the four generated files. This round adds an explicit post-build drift gate before the main checks.
+
+### Changes
+
+- Added `.github/workflows/ci.yml` step: `bash scripts/check-generated-drift.sh` immediately after `bash scripts/build.sh`.
+- Added `scripts/check-generated-drift.sh` to fail on drift in:
+  - `web/data/baijiu.json`
+  - `web/shared/recommender.js`
+  - `wechat/miniprogram/data/baijiu.js`
+  - `wechat/miniprogram/shared/recommender.js`
+- Added `tests/ci-workflow.test.js` using only Node built-ins:
+  - verifies workflow run-step order is build → drift gate → checks
+  - verifies the drift gate fails when a committed generated asset is modified in an isolated scratch Git repo
+
+### Root cause note
+
+The first version of the new test mutated `web/shared/recommender.js` in-place and raced with the parallel Node test runner. The fix moved drift-gate mutation coverage into an isolated scratch Git repo under the worktree so the test no longer pollutes concurrent test files.
+
+### Command evidence
+
+```text
+$ node --test tests/ci-workflow.test.js
+✔ CI runs the generated-asset drift gate after build and before checks
+✔ generated-asset drift gate fails when a committed build output changes
+ℹ tests 2
+ℹ pass 2
+ℹ fail 0
+```
+
+```text
+$ bash scripts/build.sh
+generated wechat/miniprogram/data/baijiu.js
+✅ generated Web and WeChat runtime assets
+```
+
+```text
+$ bash scripts/check-generated-drift.sh
+✅ generated assets are in sync
+```
+
+```text
+$ bash scripts/check.sh
+✅ 校验通过：100 款，全部字段合法，无重复 id
+ℹ tests 59
+ℹ pass 59
+ℹ fail 0
+✅ check passed
+```

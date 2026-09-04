@@ -16,4 +16,5 @@ jobs:
         with:
           python-version: '3.x'
       - run: bash scripts/build.sh
+      - run: bash scripts/check-generated-drift.sh
       - run: bash scripts/check.sh
