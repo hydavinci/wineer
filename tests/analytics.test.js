@@ -15,6 +15,21 @@ test("appends an event and keeps the newest 200", () => {
   assert.equal(stored.at(-1).payload.count, 3);
 });
 
+test("records the active page path without requiring it on the injected wx API", () => {
+  let stored = [];
+  const wxApi = {
+    getStorageSync: () => stored,
+    setStorageSync: (_key, value) => { stored = value; }
+  };
+  const getPages = () => [
+    { route: "pages/home/home" },
+    { route: "pages/quiz/quiz" }
+  ];
+
+  assert.equal(track("recommend", {}, wxApi, console, getPages), true);
+  assert.equal(stored.at(-1).path, "/pages/quiz/quiz");
+});
+
 test("reports Storage failures without throwing into the user flow", () => {
   const errors = [];
   const wxApi = {

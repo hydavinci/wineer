@@ -9,8 +9,10 @@ generated_files=(
   wechat/miniprogram/shared/recommender.js
 )
 
-if ! git diff --name-only --exit-code -- "${generated_files[@]}"; then
+drift="$(git status --porcelain=v1 --untracked-files=all -- "${generated_files[@]}")"
+if [[ -n "$drift" ]]; then
   echo "❌ generated assets drifted after build; run bash scripts/build.sh and commit the updated files." >&2
+  printf '%s\n' "$drift" >&2
   exit 1
 fi
 

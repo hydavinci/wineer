@@ -20,7 +20,8 @@ function toViewDimensions(answers) {
 Page({
   data: {
     answers: defaultAnswers(),
-    dimensions: []
+    dimensions: [],
+    resultBusy: false
   },
 
   onLoad() {
@@ -45,9 +46,21 @@ Page({
   },
 
   showResults() {
+    if (this.data.resultBusy) {
+      return;
+    }
+
     const answers = normalizeAnswers(this.data.answers);
     const query = encodeAnswers(answers);
+    this.setData({ resultBusy: true });
     track("recommend", { answers: { ...answers } });
-    wx.navigateTo({ url: `/pages/result/result?${query}` });
+    wx.redirectTo({
+      url: `/pages/result/result?${query}`,
+      fail: error => {
+        console.error("result navigation failed", error);
+        this.setData({ resultBusy: false });
+        wx.showToast({ title: "跳转失败，请重试", icon: "none" });
+      }
+    });
   }
 });

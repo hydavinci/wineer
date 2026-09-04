@@ -15,11 +15,11 @@ Wineer/
 ├── web/                 # 前端（纯静态，部署根目录）
 │   ├── index.html       # 引导式问答 + 结果页
 │   ├── style.css
-│   ├── app.js           # 推荐引擎（前端打分匹配）
+│   ├── app.js           # Web 交互、分享与埋点（调用共享推荐核心）
 │   └── data/baijiu.json # 部署用数据副本，由 scripts/build.sh 生成
 ├── scripts/
 │   ├── collect.py       # 数据校验 / 统计 / 维护脚本
-│   ├── build.sh         # 复制 data/baijiu.json 到 web/data/
+│   ├── build.sh         # 校验并生成 Web/小程序运行时数据与共享核心副本
 │   └── check.sh         # 本地校验脚本
 ├── docs/
 │   └── core-database-expansion.md # 300 款核心酒库扩容方案
@@ -28,7 +28,7 @@ Wineer/
 
 ## 推荐逻辑
 
-推荐打分模型（当前 Web 实现在 `app.js` 的 `scoreItem`，共享核心在 `shared/recommender.js`）：
+推荐打分模型统一实现在 `shared/recommender.js`，Web 与微信小程序共同使用：
 - **预算档位** 同档 +30 / 相邻 +12 / 差远扣分，并对明显超预算款做强惩罚
 - **场景匹配** +24
 - **香型偏好** 对味 +22
@@ -44,7 +44,7 @@ Wineer/
 python3 scripts/collect.py validate   # 校验字段合法性、查重
 python3 scripts/collect.py stats      # 各维度分布统计
 python3 scripts/collect.py template   # 打印新增酒款模板
-bash scripts/build.sh                 # 生成 web/data/baijiu.json 部署副本
+bash scripts/build.sh                 # 生成 Web 与微信小程序全部运行时副本
 bash scripts/check.sh                 # 完整本地校验
 ```
 

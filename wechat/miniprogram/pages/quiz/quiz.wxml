@@ -23,6 +23,7 @@
         backgroundColor="rgba(201, 162, 75, 0.16)"
         block-color="#e0be6a"
         data-key="{{item.key}}"
+        bindchanging="onSliderChange"
         bindchange="onSliderChange"
       />
 
@@ -33,5 +34,10 @@
     </view>
   </view>
 
-  <button class="button-primary quiz-submit" bindtap="showResults">生成 Top 3 推荐</button>
+  <button
+    class="button-primary quiz-submit"
+    loading="{{resultBusy}}"
+    disabled="{{resultBusy}}"
+    bindtap="showResults"
+  >生成 Top 3 推荐</button>
 </view>

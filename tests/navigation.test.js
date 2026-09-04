@@ -1,6 +1,10 @@
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
 const test = require("node:test");
 const { DIMENSIONS, defaultAnswers } = require("../shared/recommender");
+
+const root = path.resolve(__dirname, "..");
 
 function loadPageDefinition(relativePath) {
   const modulePath = require.resolve(relativePath);
@@ -110,7 +114,7 @@ test("quiz page updates a slider with normalized values and refreshed hints", ()
   assert.equal(page.data.answers.budget, defaultAnswers().budget);
 });
 
-test("quiz page encodes answers into the future result route", () => {
+test("quiz redirects to the encoded result route so restart keeps the page stack bounded", () => {
   const quizPage = loadPageDefinition("../wechat/miniprogram/pages/quiz/quiz");
   const page = createPageContext(quizPage, {
     answers: {
@@ -122,7 +126,7 @@ test("quiz page encodes answers into the future result route", () => {
       adventure: 6
     }
   });
-  const urls = [];
+  const navigations = [];
   let stored = [];
 
   global.wx = {
@@ -133,19 +137,27 @@ test("quiz page encodes answers into the future result route", () => {
       stored = value;
     },
     navigateTo({ url }) {
-      urls.push(url);
+      navigations.push(["navigateTo", url]);
+    },
+    redirectTo({ url }) {
+      navigations.push(["redirectTo", url]);
     }
   };
+  global.getCurrentPages = () => [{ route: "pages/quiz/quiz" }];
 
   try {
     quizPage.showResults.call(page);
   } finally {
     delete global.wx;
+    delete global.getCurrentPages;
   }
 
-  assert.deepEqual(urls, [
+  assert.deepEqual(navigations, [[
+    "redirectTo",
     "/pages/result/result?budget=1&occasion=2&softness=3&flavorWeight=4&brandFace=5&adventure=6"
-  ]);
+  ]]);
+  // Quiz -> result and result -> fresh quiz both replace the current layer,
+  // keeping the native stack at [home, current page] while Back still returns home.
   assert.deepEqual(stored.at(-1), {
     event: "recommend",
     payload: {
@@ -158,8 +170,98 @@ test("quiz page encodes answers into the future result route", () => {
         adventure: 6
       }
     },
+    path: "/pages/quiz/quiz",
     ts: stored.at(-1).ts
   });
+});
+
+test("quiz ignores duplicate result taps while redirect navigation is in flight", () => {
+  const quizPage = loadPageDefinition("../wechat/miniprogram/pages/quiz/quiz");
+  const page = createPageContext(quizPage, {
+    answers: defaultAnswers(),
+    resultBusy: false
+  });
+  let navigationCalls = 0;
+  let stored = [];
+
+  global.wx = {
+    getStorageSync() {
+      return stored;
+    },
+    setStorageSync(_key, value) {
+      stored = value;
+    },
+    navigateTo() {
+      navigationCalls += 1;
+    },
+    redirectTo() {
+      navigationCalls += 1;
+    }
+  };
+
+  try {
+    quizPage.showResults.call(page);
+    quizPage.showResults.call(page);
+  } finally {
+    delete global.wx;
+  }
+
+  assert.equal(navigationCalls, 1);
+  assert.equal(page.data.resultBusy, true);
+  assert.equal(stored.filter(({ event }) => event === "recommend").length, 1);
+});
+
+test("quiz resets the result busy state and reports redirect failures", () => {
+  const quizPage = loadPageDefinition("../wechat/miniprogram/pages/quiz/quiz");
+  const page = createPageContext(quizPage, {
+    answers: defaultAnswers(),
+    resultBusy: false
+  });
+  const toasts = [];
+  const originalConsoleError = console.error;
+  let stored = [];
+
+  global.wx = {
+    getStorageSync() {
+      return stored;
+    },
+    setStorageSync(_key, value) {
+      stored = value;
+    },
+    navigateTo(options) {
+      options.fail?.(new Error("navigation failed"));
+    },
+    redirectTo(options) {
+      options.fail?.(new Error("navigation failed"));
+    },
+    showToast(payload) {
+      toasts.push(payload);
+    }
+  };
+  console.error = () => {};
+
+  try {
+    quizPage.showResults.call(page);
+  } finally {
+    console.error = originalConsoleError;
+    delete global.wx;
+  }
+
+  assert.equal(page.data.resultBusy, false);
+  assert.deepEqual(toasts, [{ title: "跳转失败，请重试", icon: "none" }]);
+});
+
+test("quiz WXML wires continuous slider updates and disables a busy submit", () => {
+  const source = fs.readFileSync(
+    path.join(root, "wechat/miniprogram/pages/quiz/quiz.wxml"),
+    "utf8"
+  );
+  const slider = source.match(/<slider[\s\S]*?\/>/)?.[0] || "";
+  const submit = source.match(/<button[\s\S]*?>生成 Top 3 推荐<\/button>/)?.[0] || "";
+
+  assert.match(slider, /\bbindchanging="onSliderChange"/);
+  assert.match(submit, /\bloading="{{resultBusy}}"/);
+  assert.match(submit, /\bdisabled="{{resultBusy}}"/);
 });
 
 test("home page starts the quiz route", () => {

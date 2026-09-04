@@ -52,13 +52,23 @@ test("Web quiz renders six sliders and refreshes value and hint text", async () 
   assert.equal(quiz.classList.contains("active"), true);
   assert.equal([...questionHtml.matchAll(/type="range"/g)].length, 6);
 
-  context.Wineer.setDim("softness", 9);
-
-  assert.equal(context.document.getElementById("softnessValue").textContent, 9);
-  assert.equal(
-    context.document.getElementById("softnessHint").textContent,
-    DIMENSIONS.find(({ key }) => key === "softness").hint(9)
-  );
+  const values = {
+    budget: 0,
+    occasion: 2,
+    softness: 4,
+    flavorWeight: 6,
+    brandFace: 8,
+    adventure: 10
+  };
+  for (const [key, value] of Object.entries(values)) {
+    assert.match(questionHtml, new RegExp(`Wineer\\.setDim\\('${key}', this\\.value\\)`));
+    context.Wineer.setDim(key, value);
+    assert.equal(context.document.getElementById(`${key}Value`).textContent, value);
+    assert.equal(
+      context.document.getElementById(`${key}Hint`).textContent,
+      DIMENSIONS.find(dimension => dimension.key === key).hint(value)
+    );
+  }
 });
 
 for (const profile of [

@@ -265,7 +265,7 @@ test("result page shares the top wine and the normalized answer query", () => {
   assert.deepEqual(wxStorage.events().at(-1).payload, { mode: "mini_program" });
 });
 
-test("result page restarts the quiz flow", () => {
+test("result page redirects to a fresh quiz, completing the bounded restart pair", () => {
   const resultPage = loadPageDefinition("../wechat/miniprogram/pages/result/result");
   const redirects = [];
   const wxStorage = createStoredWx({
@@ -283,6 +283,8 @@ test("result page restarts the quiz flow", () => {
   }
 
   assert.deepEqual(redirects, [{ url: "/pages/quiz/quiz" }]);
+  // redirectTo replaces the result layer; paired with quiz -> result redirect,
+  // repeated restarts cannot retain stale quiz or result pages.
   assert.equal(wxStorage.events().at(-1).event, "restart");
   assert.deepEqual(wxStorage.events().at(-1).payload, { from: "result" });
 });

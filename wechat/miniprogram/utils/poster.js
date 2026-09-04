@@ -9,6 +9,7 @@ function buildPosterModel(ranked) {
       details: `${item.aroma}型 · ${item.abv}度 · 约 ¥${item.price}`,
       matchPercent
     })),
+    sharePrompt: "打开 Wineer 小程序，分享给朋友一起选酒",
     disclaimer: "价格为市场参考，非实时报价。请理性饮酒。"
   };
 }
@@ -104,6 +105,10 @@ function drawPoster(canvas, width, height, model) {
     context.font = `bold ${Math.round(width * 0.045)}px sans-serif`;
     context.fillText(`${wine.matchPercent}%`, horizontalPadding + cardWidth * 0.76, cardY + cardHeight * 0.52);
   });
+
+  context.fillStyle = "#cbbcaf";
+  context.font = `bold ${Math.round(width * 0.029)}px sans-serif`;
+  context.fillText(model.sharePrompt, horizontalPadding, height * 0.89);
 
   context.fillStyle = "#8f8176";
   context.font = `${Math.round(width * 0.026)}px sans-serif`;

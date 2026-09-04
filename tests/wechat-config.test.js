@@ -1,4 +1,5 @@
 const assert = require("node:assert/strict");
+const { spawnSync } = require("node:child_process");
 const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
@@ -17,6 +18,16 @@ test("project config points to the native Mini Program root", () => {
 test("private project config example stays minimal", () => {
   const config = readJson("wechat/project.private.config.json.example");
   assert.deepEqual(config, { setting: {} });
+});
+
+test("private WeChat Developer Tools config is ignored", () => {
+  const result = spawnSync(
+    "git",
+    ["check-ignore", "--quiet", "wechat/project.private.config.json"],
+    { cwd: root, encoding: "utf8" }
+  );
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
 });
 
 test("app config starts with the home page and shell styling", () => {

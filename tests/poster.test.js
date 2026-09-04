@@ -9,12 +9,13 @@ const {
 
 const ranked = recommend(data.items, defaultAnswers());
 
-test("poster model contains Top 3 and disclaimer", () => {
+test("poster model contains Top 3, a Mini Program sharing prompt, and disclaimer", () => {
   const model = buildPosterModel(ranked);
 
   assert.deepEqual(model.wines.map(({ id }) => id), [
     "kouzijiao", "qinghua20", "shuanggou-shengfang"
   ]);
+  assert.match(model.sharePrompt, /小程序.*分享/);
   assert.match(model.disclaimer, /非实时报价/);
 });
 
@@ -33,8 +34,10 @@ test("drawPoster uses the supplied canvas context", () => {
   };
   const canvas = { getContext: () => context };
 
-  drawPoster(canvas, 750, 1200, buildPosterModel(ranked));
+  const model = buildPosterModel(ranked);
+  drawPoster(canvas, 750, 1200, model);
 
   assert.ok(calls.some(([name]) => name === "fillRect"));
   assert.ok(calls.some(([name]) => name === "fillText"));
+  assert.ok(calls.some(([name, text]) => name === "fillText" && text === model.sharePrompt));
 });

@@ -40,6 +40,47 @@ test("generated-asset drift gate fails when a committed build output changes", (
   }
 });
 
+test("generated-asset drift gate fails when a committed build output is deleted", () => {
+  const scratch = createScratchRepo();
+  try {
+    fs.rmSync(path.join(scratch, "web/shared/recommender.js"));
+
+    const result = spawnSync("bash", ["scripts/check-generated-drift.sh"], {
+      cwd: scratch,
+      encoding: "utf8"
+    });
+
+    assert.notEqual(result.status, 0);
+    assert.match(`${result.stdout}${result.stderr}`, /web\/shared\/recommender\.js/);
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+});
+
+test("generated-asset drift gate fails when build recreates an output omitted from HEAD", () => {
+  const scratch = createScratchRepo();
+  try {
+    const relativePath = "web/shared/recommender.js";
+    const targetPath = path.join(scratch, relativePath);
+    const generatedContent = fs.readFileSync(targetPath, "utf8");
+
+    runGit(["rm", relativePath], scratch);
+    runGit(["commit", "-m", "omit generated output"], scratch);
+    fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+    fs.writeFileSync(targetPath, generatedContent);
+
+    const result = spawnSync("bash", ["scripts/check-generated-drift.sh"], {
+      cwd: scratch,
+      encoding: "utf8"
+    });
+
+    assert.notEqual(result.status, 0);
+    assert.match(`${result.stdout}${result.stderr}`, /web\/shared\/recommender\.js/);
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+});
+
 function createScratchRepo() {
   const scratchRoot = path.join(
     root,
