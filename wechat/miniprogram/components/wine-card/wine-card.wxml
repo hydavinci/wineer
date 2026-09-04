@@ -1,0 +1,40 @@
+<view class="wine-card {{wine.rank === 1 ? 'wine-card-main' : ''}}">
+  <view class="wine-card-head">
+    <view class="wine-card-copy">
+      <text class="wine-rank">TOP {{wine.rank}}</text>
+      <text class="wine-name">{{wine.name}}</text>
+      <text class="wine-brand">{{wine.brand}}</text>
+    </view>
+    <view class="wine-score-wrap">
+      <text class="wine-score-label">推荐指数</text>
+      <text class="wine-score">{{wine.matchPercent}}%</text>
+    </view>
+  </view>
+
+  <text class="wine-why">{{wine.whyText}}</text>
+
+  <view class="wine-tags">
+    <text class="wine-tag">{{wine.aroma}}型</text>
+    <text class="wine-tag">{{wine.abv}}度</text>
+    <text class="wine-tag">参考价约 ¥{{wine.price}}</text>
+    <text class="wine-tag">{{wine.priceTier}}</text>
+    <text class="wine-tag">{{wine.region}}</text>
+  </view>
+
+  <view class="wine-block">
+    <text class="wine-block-title">💡 推荐理由</text>
+    <text class="wine-block-text">{{wine.highlight}}</text>
+  </view>
+
+  <view class="wine-block">
+    <text class="wine-block-title">👅 口感特点</text>
+    <text class="wine-block-text">{{wine.tasteText}}</text>
+  </view>
+
+  <view class="wine-block wine-block-caution">
+    <text class="wine-block-title">⚠️ 选购提示</text>
+    <text class="wine-block-text">{{wine.caution}}</text>
+  </view>
+
+  <button class="wine-buy" bindtap="copyPurchaseKeyword">复制购买搜索词</button>
+</view>

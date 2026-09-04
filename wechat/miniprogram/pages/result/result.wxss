@@ -1,0 +1,77 @@
+.result-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.result-state-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  text-align: center;
+}
+
+.result-state-title {
+  display: block;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #f2e9df;
+}
+
+.result-state-copy {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.8;
+}
+
+.result-state-action {
+  margin-top: 12rpx;
+}
+
+.result-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.result-eyebrow {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(201, 162, 75, 0.14);
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #e0be6a;
+}
+
+.result-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #f2e9df;
+}
+
+.result-description {
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.8;
+}
+
+.result-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.result-buy-hint {
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}

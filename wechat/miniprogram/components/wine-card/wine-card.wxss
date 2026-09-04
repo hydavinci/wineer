@@ -1,0 +1,135 @@
+.wine-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  border: 1rpx solid #3a2b25;
+  border-radius: 32rpx;
+  padding: 40rpx 36rpx;
+  background: linear-gradient(180deg, #2e211d 0%, #241a17 100%);
+  box-shadow: 0 24rpx 80rpx rgba(0, 0, 0, 0.28);
+}
+
+.wine-card-main {
+  border-color: rgba(224, 190, 106, 0.45);
+  box-shadow: 0 28rpx 88rpx rgba(0, 0, 0, 0.34);
+}
+
+.wine-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.wine-card-copy {
+  flex: 1;
+}
+
+.wine-rank {
+  display: inline-block;
+  margin-bottom: 14rpx;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(201, 162, 75, 0.14);
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #e0be6a;
+}
+
+.wine-name {
+  display: block;
+  margin-bottom: 10rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #f2e9df;
+}
+
+.wine-brand {
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #a99a8c;
+}
+
+.wine-score-wrap {
+  min-width: 136rpx;
+  padding: 14rpx 18rpx;
+  border-radius: 24rpx;
+  background: rgba(224, 190, 106, 0.1);
+  text-align: center;
+}
+
+.wine-score-label {
+  display: block;
+  margin-bottom: 6rpx;
+  font-size: 20rpx;
+  color: #a99a8c;
+}
+
+.wine-score {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #e0be6a;
+}
+
+.wine-why {
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #f2e9df;
+}
+
+.wine-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.wine-tag {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 22rpx;
+  line-height: 1.3;
+  color: #d2c1b2;
+}
+
+.wine-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.wine-block-title {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #e0be6a;
+}
+
+.wine-block-text {
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #f2e9df;
+}
+
+.wine-block-caution .wine-block-text {
+  color: #d7c4b8;
+}
+
+.wine-buy {
+  width: 100%;
+  border: 1rpx solid rgba(201, 162, 75, 0.28);
+  border-radius: 28rpx;
+  padding: 24rpx 32rpx;
+  background: rgba(201, 162, 75, 0.1);
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #e0be6a;
+}
+
+.wine-buy::after {
+  border: none;
+}

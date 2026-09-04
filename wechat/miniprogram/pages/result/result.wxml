@@ -1,0 +1,36 @@
+<view class="page result-page">
+  <view wx:if="{{isLoading}}" class="card result-state-card">
+    <text class="result-state-title">正在生成推荐…</text>
+    <text class="result-state-copy muted">会根据你的六维偏好和本地酒款库，计算最适合的 Top 3。</text>
+  </view>
+
+  <view wx:elif="{{errorMessage}}" class="card result-state-card">
+    <text class="result-state-title">暂时没法给出推荐</text>
+    <text class="result-state-copy muted">{{errorMessage}}</text>
+    <button class="button-secondary result-state-action" bindtap="restart">重新选择</button>
+  </view>
+
+  <block wx:else>
+    <view class="card result-head">
+      <text class="result-eyebrow">Wineer 为你推荐</text>
+      <text class="result-title">Top 3 白酒选择</text>
+      <text class="result-description muted">结果会随当前内置酒款数据实时重算，价格仅供分档参考，请理性饮酒。</text>
+    </view>
+
+    <view class="result-actions">
+      <button class="button-primary" open-type="share">转发给朋友</button>
+      <button class="button-secondary" bindtap="restart">重新选择</button>
+    </view>
+
+    <text class="result-buy-hint muted">想购买时可先复制搜索词，再到京东手动搜索比价。</text>
+
+    <view class="result-list">
+      <wine-card
+        wx:for="{{wines}}"
+        wx:key="id"
+        wine="{{item}}"
+        bind:buy="copyPurchaseKeyword"
+      />
+    </view>
+  </block>
+</view>
