@@ -8,6 +8,10 @@
 Wineer/
 ├── data/
 │   └── baijiu.json      # 白酒数据库（种子库，100 款，覆盖主流香型、价位与区域名酒）
+├── shared/
+│   └── recommender.js   # 环境无关的推荐核心（CommonJS/浏览器全局）
+├── tests/
+│   └── recommender.test.js # 推荐核心黄金向量与校验测试
 ├── web/                 # 前端（纯静态，部署根目录）
 │   ├── index.html       # 引导式问答 + 结果页
 │   ├── style.css
@@ -24,7 +28,7 @@ Wineer/
 
 ## 推荐逻辑
 
-前端打分模型（`app.js` 的 `scoreItem`）：
+推荐打分模型（当前 Web 实现在 `app.js` 的 `scoreItem`，共享核心在 `shared/recommender.js`）：
 - **预算档位** 同档 +30 / 相邻 +12 / 差远扣分，并对明显超预算款做强惩罚
 - **场景匹配** +24
 - **香型偏好** 对味 +22
