@@ -1,102 +1,16 @@
 /* Wineer 白酒推荐引擎 v0.4 - 具体化 0~10 条目选择 */
 const Wineer = (() => {
+  const {
+    DIMENSIONS,
+    defaultAnswers,
+    normalizeAnswers,
+    recommend: rankWines
+  } = WineerRecommender;
+
   let DB = [];
   let answers = defaultAnswers();
   let sharedAnswers = readAnswersFromUrl();
   let lastTop3 = [];
-
-  const FAMOUS_BRANDS = new Set(["茅台", "五粮液", "泸州老窖", "汾酒", "剑南春", "郎酒", "习酒", "洋河", "舍得", "水井坊", "古井贡", "今世缘", "口子窖", "西凤", "董酒", "金沙", "国台", "珍酒", "全兴", "双沟", "宝丰", "酒鬼酒"]);
-  const STEADY_AROMAS = new Set(["浓香", "清香", "米香", "兼香"]);
-  const CHARACTER_AROMAS = new Set(["酱香", "凤香", "其他"]);
-
-  const DIMENSIONS = [
-    {
-      key: "budget",
-      title: "这瓶酒准备花多少钱？",
-      left: "百元内",
-      right: "1500+",
-      hint: v => {
-        if (v <= 1) return "100 元以内：日常口粮";
-        if (v <= 3) return "100–200 元：朋友小聚/家宴口粮";
-        if (v <= 5) return "200–500 元：中端宴请主力";
-        if (v <= 7) return "500–900 元：商务/送礼比较体面";
-        if (v <= 9) return "900–1500 元：高端名酒";
-        return "1500 元以上：超高端/硬通货";
-      }
-    },
-    {
-      key: "occasion",
-      title: "这瓶酒要多有“场面”？",
-      left: "自己喝",
-      right: "送礼商务",
-      hint: v => {
-        if (v <= 2) return "自己喝：酒质/性价比优先，包装不重要";
-        if (v <= 4) return "熟人聚餐：好喝、别踩雷就行";
-        if (v <= 6) return "家庭聚餐/朋友局：要兼顾口碑和价格";
-        if (v <= 8) return "商务宴请：品牌认知和档次要够";
-        return "送礼/收藏：名气、包装、流通性优先";
-      }
-    },
-    {
-      key: "softness",
-      title: "能接受多冲、多烈？",
-      left: "越柔越好",
-      right: "高度够劲",
-      hint: v => {
-        if (v <= 2) return "要柔和低刺激，尽量别辣喉";
-        if (v <= 5) return "能接受 50 度左右，入口别太冲";
-        if (v <= 7) return "可以接受 53 度和更明显酒劲";
-        return "喜欢高度、劲道、风味冲击";
-      }
-    },
-    {
-      key: "flavorWeight",
-      title: "想要多重的香味？",
-      left: "清爽干净",
-      right: "厚重回味",
-      hint: v => {
-        if (v <= 2) return "清香/米香：干净、轻盈、好入口";
-        if (v <= 5) return "浓香/兼香：香气明显但大众接受度高";
-        if (v <= 7) return "更浓郁、有层次，能接受一点酱味";
-        return "酱香/陈香/药香：风味厚、回味长";
-      }
-    },
-    {
-      key: "brandFace",
-      title: "品牌名气/包装重要吗？",
-      left: "只看酒质",
-      right: "必须有面子",
-      hint: v => {
-        if (v <= 2) return "只看酒质和性价比，包装名气无所谓";
-        if (v <= 5) return "希望品牌靠谱，但不用太贵太高调";
-        if (v <= 8) return "需要大多数人认识，摆上桌有分量";
-        return "送礼/商务优先：名酒、硬通货、包装体面";
-      }
-    },
-    {
-      key: "adventure",
-      title: "愿不愿意尝试小众/个性款？",
-      left: "稳妥不踩雷",
-      right: "越特别越好",
-      hint: v => {
-        if (v <= 2) return "稳妥大众款，最好大家都容易接受";
-        if (v <= 5) return "可以有一点特色，但不要太怪";
-        if (v <= 7) return "愿意尝试酱香/凤香等更有辨识度的风格";
-        return "小众香型、老酒客取向、个性风味都可以";
-      }
-    }
-  ];
-
-  function defaultAnswers() {
-    return {
-      budget: 4,
-      occasion: 4,
-      softness: 3,
-      flavorWeight: 4,
-      brandFace: 4,
-      adventure: 3
-    };
-  }
 
   function readAnswersFromUrl() {
     const params = new URLSearchParams(location.search);
@@ -153,16 +67,34 @@ const Wineer = (() => {
   }
 
   async function load() {
-    try {
-      const res = await fetch("data/baijiu.json?v=" + Date.now());
-      const json = await res.json();
-      DB = json.items;
-    } catch (e) {
+    const cacheBuster = Date.now();
+    const urls = [
+      `data/baijiu.json?v=${cacheBuster}`,
+      `baijiu.json?v=${cacheBuster}`
+    ];
+    const errors = [];
+
+    for (const url of urls) {
       try {
-        const res2 = await fetch("baijiu.json?v=" + Date.now());
-        DB = (await res2.json()).items;
-      } catch (e2) { alert("数据加载失败，请稍后再试"); }
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error(`Failed to load ${url}: HTTP ${res.status || "unknown"}`);
+        }
+        const json = await res.json();
+        if (!Array.isArray(json.items)) {
+          throw new Error(`Failed to load ${url}: invalid items payload`);
+        }
+        DB = json.items;
+        return true;
+      } catch (error) {
+        errors.push(error);
+      }
     }
+
+    DB = [];
+    errors.forEach(error => console.error("data load failed", error));
+    alert("数据加载失败，请稍后再试");
+    return false;
   }
 
   function startQuiz() {
@@ -209,37 +141,6 @@ const Wineer = (() => {
     document.getElementById(`${key}Hint`).textContent = dim.hint(v);
   }
 
-  function sceneTargets(v) {
-    if (v <= 2) return ["自饮"];
-    if (v <= 4) return ["朋友小聚", "自饮"];
-    if (v <= 6) return ["家庭聚餐", "朋友小聚"];
-    if (v <= 8) return ["商务宴请", "家庭聚餐"];
-    return ["送礼", "收藏", "商务宴请"];
-  }
-
-  function budgetTier(v) {
-    if (v <= 2) return "口粮";
-    if (v <= 5) return "中端";
-    if (v <= 8) return "高端";
-    return "超高端";
-  }
-
-  function aromaTargets(v) {
-    if (v <= 2) return ["清香", "米香"];
-    if (v <= 5) return ["浓香", "兼香", "清香"];
-    if (v <= 7) return ["浓香", "酱香", "兼香", "凤香"];
-    return ["酱香", "其他", "凤香"];
-  }
-
-  function budgetCeiling(v) {
-    if (v <= 1) return 100;
-    if (v <= 3) return 200;
-    if (v <= 5) return 500;
-    if (v <= 7) return 900;
-    if (v <= 9) return 1500;
-    return Infinity;
-  }
-
   function escapeHtml(value) {
     return String(value)
       .replaceAll("&", "&amp;")
@@ -249,128 +150,37 @@ const Wineer = (() => {
       .replaceAll("'", "&#39;");
   }
 
-  function brandScore(item) {
-    let s = 0;
-    if (FAMOUS_BRANDS.has(item.brand)) s += 12;
-    if (item.priceTier === "高端") s += 5;
-    if (item.priceTier === "超高端") s += 10;
-    if (item.scene.includes("送礼")) s += 4;
-    if (item.scene.includes("商务宴请")) s += 4;
-    return s;
-  }
-
-  // 打分匹配
-  function scoreItem(item) {
-    let s = 0; const why = [];
-
-    // 预算：先按价位档加分，再对明显超预算做强惩罚，避免低预算推荐高端酒
-    const tiers = ["口粮", "中端", "高端", "超高端"];
-    const targetTier = budgetTier(answers.budget);
-    const ceiling = budgetCeiling(answers.budget);
-    const di = Math.abs(tiers.indexOf(item.priceTier) - tiers.indexOf(targetTier));
-    if (di === 0) { s += 30; why.push("预算匹配"); }
-    else if (di === 1) { s += 12; }
-    else { s -= 14; }
-
-    if (Number.isFinite(ceiling) && item.price > ceiling) {
-      const overRatio = item.price / ceiling;
-      if (overRatio <= 1.15) {
-        s -= 8;
-        why.push("略超预算");
-      } else if (overRatio <= 1.5) {
-        s -= 22;
-      } else {
-        s -= 45;
-      }
-    }
-
-    // 场面/用途
-    const scenes = sceneTargets(answers.occasion);
-    if (scenes.some(sc => item.scene.includes(sc))) {
-      s += 24;
-      if (answers.occasion >= 7) why.push("适合宴请送礼");
-      else if (answers.occasion <= 2) why.push("适合自饮");
-      else why.push("场景合适");
-    }
-
-    // 柔和度/酒劲承受
-    if (answers.softness <= 2) {
-      s += (item.beginner - 3) * 7;
-      if (item.abv <= 42) s += 6;
-      if (item.abv >= 55) s -= 16;
-      if (item.beginner >= 5) why.push("入口友好");
-    } else if (answers.softness <= 5) {
-      s += (item.beginner - 2) * 3;
-      if (item.abv >= 60) s -= 10;
-    } else if (answers.softness <= 7) {
-      if (item.abv >= 50 && item.abv <= 53) s += 7;
-    } else {
-      if (item.abv >= 53) s += 10;
-      if (item.abv >= 56) s += 5;
-      why.push("酒劲够");
-    }
-
-    // 香味厚重程度
-    const aromas = aromaTargets(answers.flavorWeight);
-    if (aromas.includes(item.aroma)) {
-      s += 22;
-      if (["清香", "米香"].includes(item.aroma)) why.push("清爽干净");
-      else if (item.aroma === "浓香") why.push("香气浓郁");
-      else why.push("风味有辨识度");
-    }
-
-    // 品牌/面子需求
-    if (answers.brandFace <= 2) {
-      if (item.priceTier === "口粮" || item.priceTier === "中端") s += 6;
-      if (!FAMOUS_BRANDS.has(item.brand)) s += 3;
-    } else if (answers.brandFace <= 5) {
-      if (FAMOUS_BRANDS.has(item.brand)) s += 6;
-    } else {
-      const b = brandScore(item);
-      s += Math.round(b * (answers.brandFace / 10));
-      if (b >= 18) why.push("品牌有面子");
-    }
-
-    // 尝新/个性程度
-    if (answers.adventure <= 2) {
-      if (STEADY_AROMAS.has(item.aroma)) s += 10;
-      if (item.beginner >= 4) s += 5;
-      if (CHARACTER_AROMAS.has(item.aroma) && item.beginner <= 2) s -= 10;
-      why.push("稳妥不踩雷");
-    } else if (answers.adventure <= 5) {
-      if (item.aroma === "兼香" || item.aroma === "酱香") s += 4;
-    } else {
-      if (CHARACTER_AROMAS.has(item.aroma)) s += 12;
-      if (item.beginner <= 2) s += 6;
-      why.push("个性风味");
-    }
-
-    return { item, score: s, why };
-  }
-
   function recommend() {
     if (DB.length === 0) {
-      load().then(recommend);
+      alert("数据尚未加载完成，请稍后重试");
       return;
     }
-    const ceiling = budgetCeiling(answers.budget);
-    const ranked = DB.map(scoreItem).sort((a,b)=>b.score-a.score);
-    const withinBudget = Number.isFinite(ceiling)
-      ? ranked.filter(r => r.item.price <= ceiling * 1.15)
-      : ranked;
-    // 优先保证推荐不明显超预算；若可选项不足，再回退到全库排序。
-    const top3 = (withinBudget.length >= 3 ? withinBudget : ranked).slice(0, 3);
+
+    answers = normalizeAnswers(answers);
+    let top3;
+    try {
+      top3 = rankWines(DB, answers, 3);
+    } catch (error) {
+      console.error("recommendation failed", error);
+      alert("推荐数据异常，请稍后再试");
+      return;
+    }
+
     lastTop3 = top3;
     track("recommend", {
       answers: { ...answers },
-      top3: top3.map(r => ({ id: r.item.id, name: r.item.name, score: r.score, price: r.item.price }))
+      top3: top3.map(({ item, score }) => ({
+        id: item.id,
+        name: item.name,
+        score,
+        price: item.price
+      }))
     });
     renderResult(top3);
     switchScreen("result");
   }
 
   function renderResult(top3) {
-    const bestScore = Math.max(...top3.map(r => r.score), 1);
     const html = `
       <div class="result-head">
         <div class="lead">为你推荐</div>
@@ -384,7 +194,7 @@ const Wineer = (() => {
       <div class="top3-list">
         ${top3.map((r, index) => {
           const it = r.item;
-          const pct = Math.max(60, Math.min(99, Math.round(r.score / bestScore * 96)));
+          const pct = r.matchPercent;
           const buyUrl = "https://search.jd.com/Search?keyword=" + encodeURIComponent(it.name);
           const whyText = r.why.length ? [...new Set(r.why)].slice(0, 4).map(escapeHtml).join(" · ") : "综合条件最优";
           return `
