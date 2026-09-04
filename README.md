@@ -50,6 +50,19 @@ bash scripts/check.sh                 # 完整本地校验
 
 **数据说明**：种子库为手工整理并参考公开榜单校对。价格为市场参考价（会随行情波动），仅用于推荐分档，**非实时报价**。不做无脑电商爬虫（反爬 + 版权风险）；扩库走"公开信息结构化 + 人工审核入库"。
 
+## 微信小程序 MVP
+
+从仓库根目录生成运行时文件并执行完整校验：
+
+```bash
+bash scripts/build.sh
+bash scripts/check.sh
+```
+
+在微信开发者工具中导入 `/Users/yhe/Work/wineer/wechat`（仓库内目录为 `wechat/`）。`wechat/project.config.json` 默认使用占位 AppID `touristappid`；获得正式 AppID 后，在该文件中替换 `appid`。
+
+酒款数据只编辑 `data/baijiu.json`。`web/data/baijiu.json`、`web/shared/recommender.js`、`wechat/miniprogram/data/baijiu.js` 和 `wechat/miniprogram/shared/recommender.js` 均由 `bash scripts/build.sh` 生成，不要直接修改。页面、功能范围和人工验收步骤见 [`wechat/README.md`](wechat/README.md)。
+
 ## 部署
 
 静态站，部署前先运行：
@@ -94,4 +107,4 @@ bash scripts/check.sh
 - [x] 结果分享（链接 + 本地海报）
 - [x] 简单埋点统计推荐/分享/购买点击
 - [ ] 接入真实 analytics endpoint
-- [ ] 微信小程序版（同一份 baijiu.json 复用）
+- [ ] 微信小程序版（代码与自动化校验已完成；待微信开发者工具/真机人工验收）
