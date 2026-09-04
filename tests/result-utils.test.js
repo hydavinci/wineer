@@ -3,6 +3,9 @@ const test = require("node:test");
 const data = require("../data/baijiu.json");
 const { defaultAnswers, recommend } = require("../shared/recommender");
 const {
+  RecommendationDataError
+} = require("../wechat/miniprogram/shared/recommender");
+const {
   buildResultView,
   purchaseKeyword,
   shareTitle
@@ -29,4 +32,19 @@ test("builds the approved purchase search keyword", () => {
 test("uses the top wine in the share title", () => {
   assert.equal(shareTitle(ranked), `Wineer 推荐：${ranked[0].item.name}`);
   assert.equal(shareTitle([]), "Wineer 白酒推荐");
+});
+
+test("throws a data error when a required display field is missing", () => {
+  const malformedRanked = [{
+    ...ranked[0],
+    item: {
+      ...ranked[0].item,
+      taste: undefined
+    }
+  }];
+
+  assert.throws(
+    () => buildResultView(malformedRanked),
+    error => error instanceof RecommendationDataError && /field taste/.test(error.message)
+  );
 });

@@ -1,3 +1,7 @@
+const {
+  RecommendationDataError
+} = require("../shared/recommender");
+
 function uniqueWhy(why) {
   return [...new Set(Array.isArray(why) ? why : [])];
 }
@@ -8,7 +12,10 @@ function toWhyText(why) {
 }
 
 function buildResultView(ranked) {
-  return ranked.map(({ item, why, matchPercent }, index) => ({
+  return ranked.map(({ item, why, matchPercent }, index) => {
+    validateResultItem(item, index);
+
+    return {
     id: item.id,
     rank: index + 1,
     name: item.name,
@@ -23,7 +30,37 @@ function buildResultView(ranked) {
     caution: item.caution,
     matchPercent,
     whyText: toWhyText(why)
-  }));
+    };
+  });
+}
+
+function validateResultItem(item, index) {
+  if (!item || typeof item !== "object" || Array.isArray(item)) {
+    throw new RecommendationDataError(`Invalid item at index ${index}: expected object`);
+  }
+
+  validateStringArrayField(item, index, "taste");
+  validateStringField(item, index, "region");
+  validateStringField(item, index, "highlight");
+  validateStringField(item, index, "caution");
+}
+
+function validateStringField(item, index, field) {
+  if (typeof item[field] !== "string" || item[field].trim() === "") {
+    throw new RecommendationDataError(`Invalid item at index ${index}: field ${field}`);
+  }
+}
+
+function validateStringArrayField(item, index, field) {
+  if (!Array.isArray(item[field]) || item[field].length === 0) {
+    throw new RecommendationDataError(`Invalid item at index ${index}: field ${field}`);
+  }
+
+  item[field].forEach(value => {
+    if (typeof value !== "string" || value.trim() === "") {
+      throw new RecommendationDataError(`Invalid item at index ${index}: field ${field}`);
+    }
+  });
 }
 
 function purchaseKeyword(item) {

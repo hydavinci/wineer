@@ -3,6 +3,7 @@ const path = require("node:path");
 const test = require("node:test");
 
 const root = path.resolve(__dirname, "..");
+const wineData = require("../wechat/miniprogram/data/baijiu");
 const defaultAnswers = {
   budget: 4,
   occasion: 4,
@@ -128,6 +129,33 @@ test("result page shows an explicit message when recommendation data is invalid"
     answers: null,
     ranked: [{ item: { id: "stale" } }],
     wines: [{ id: "stale" }],
+    errorMessage: "",
+    isLoading: true
+  });
+
+  withMutedConsoleError(() => resultPage.onLoad.call(page, {}));
+
+  assert.equal(page.data.isLoading, false);
+  assert.equal(page.data.errorMessage, "推荐数据异常，请稍后重试");
+  assert.deepEqual(page.data.ranked, []);
+  assert.deepEqual(page.data.wines, []);
+});
+
+test("result page classifies malformed result view data as a recommendation data error", () => {
+  const resultPage = withMockedModules({
+    "wechat/miniprogram/data/baijiu.js": {
+      ...wineData,
+      items: wineData.items.map(item => (
+        item.id === "kouzijiao"
+          ? { ...item, taste: undefined }
+          : item
+      ))
+    }
+  }, () => loadPageDefinition("../wechat/miniprogram/pages/result/result"));
+  const page = createPageContext(resultPage, {
+    answers: null,
+    ranked: [],
+    wines: [],
     errorMessage: "",
     isLoading: true
   });
