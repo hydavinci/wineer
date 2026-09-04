@@ -1,0 +1,11 @@
+{
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "miniprogram/",
+  "projectname": "wineer-wechat",
+  "setting": {
+    "es6": true,
+    "minified": true,
+    "postcss": true
+  }
+}

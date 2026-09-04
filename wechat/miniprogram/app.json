@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/home/home"
+  ],
+  "window": {
+    "navigationBarTitleText": "Wineer 白酒推荐",
+    "navigationBarBackgroundColor": "#1a1210",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#1a1210"
+  },
+  "sitemapLocation": "sitemap.json"
+}
