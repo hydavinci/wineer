@@ -69,7 +69,7 @@ node --test tests/analytics.test.js tests/poster.test.js tests/result-utils.test
 - Confirmed the generated poster path remains available if preview fails, allowing a later save attempt.
 
 ## Commit
-- Pending final commit.
+- `9a9609b` — `feat: add Mini Program sharing and analytics`
 
 ## Concerns
 - Canvas output should receive one device-preview pass in WeChat DevTools/on-device because font metrics can vary across platforms; automated tests cover deterministic model content, drawing calls, DPR clamping, export/preview state, and failures.
