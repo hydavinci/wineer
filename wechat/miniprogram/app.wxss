@@ -36,6 +36,11 @@
   border: 1rpx solid rgba(201, 162, 75, 0.28);
 }
 
+.button-primary::after,
+.button-secondary::after {
+  border: none;
+}
+
 .muted {
   color: #a99a8c;
 }

@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/home/home"
+    "pages/home/home",
+    "pages/quiz/quiz"
   ],
   "window": {
     "navigationBarTitleText": "Wineer 白酒推荐",

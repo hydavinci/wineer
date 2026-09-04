@@ -12,5 +12,7 @@
       <text class="muted">本站内容涉及酒精饮品，仅供 18 岁及以上人士浏览。</text>
       <text class="muted">过量饮酒有害健康，请理性饮酒。</text>
     </view>
+
+    <button class="button-primary home-start" bindtap="startQuiz">我已满 18 岁，开始</button>
   </view>
 </view>

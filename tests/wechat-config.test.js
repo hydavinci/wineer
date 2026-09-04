@@ -21,7 +21,10 @@ test("private project config example stays minimal", () => {
 
 test("app config starts with the home page and shell styling", () => {
   const config = readJson("wechat/miniprogram/app.json");
-  assert.deepEqual(config.pages, ["pages/home/home"]);
+  assert.deepEqual(config.pages, [
+    "pages/home/home",
+    "pages/quiz/quiz"
+  ]);
   assert.equal(config.window.navigationBarTitleText, "Wineer 白酒推荐");
   assert.equal(config.window.navigationBarBackgroundColor, "#1a1210");
   assert.equal(config.window.navigationBarTextStyle, "white");

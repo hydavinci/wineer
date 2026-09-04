@@ -1,0 +1,37 @@
+<view class="page quiz-page">
+  <view class="quiz-head card">
+    <text class="quiz-title">按真实需求打分</text>
+    <text class="quiz-description muted">每项 0–10，按“这瓶酒要拿来干嘛、谁来喝、愿意花多少钱”来调</text>
+  </view>
+
+  <view class="quiz-list">
+    <view class="card slider-card" wx:for="{{dimensions}}" wx:key="key">
+      <view class="slider-top">
+        <view class="slider-copy">
+          <text class="slider-title">{{item.title}}</text>
+          <text class="slider-hint muted">{{item.hint}}</text>
+        </view>
+        <text class="slider-value">{{item.value}}</text>
+      </view>
+
+      <slider
+        min="0"
+        max="10"
+        step="1"
+        value="{{item.value}}"
+        activeColor="#e0be6a"
+        backgroundColor="rgba(201, 162, 75, 0.16)"
+        block-color="#e0be6a"
+        data-key="{{item.key}}"
+        bindchange="onSliderChange"
+      />
+
+      <view class="slider-labels muted">
+        <text>{{item.left}}</text>
+        <text>{{item.right}}</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="button-primary quiz-submit" bindtap="showResults">生成 Top 3 推荐</button>
+</view>

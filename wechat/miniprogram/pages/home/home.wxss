@@ -57,3 +57,7 @@
 .home-warning .muted + .muted {
   margin-top: 12rpx;
 }
+
+.home-start {
+  margin-top: 40rpx;
+}

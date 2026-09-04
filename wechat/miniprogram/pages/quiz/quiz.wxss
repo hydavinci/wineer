@@ -1,0 +1,84 @@
+.quiz-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.quiz-head {
+  padding-bottom: 44rpx;
+}
+
+.quiz-title {
+  display: block;
+  margin-bottom: 14rpx;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #f2e9df;
+}
+
+.quiz-description {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+.quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.slider-card {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.slider-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.slider-copy {
+  flex: 1;
+}
+
+.slider-title {
+  display: block;
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #f2e9df;
+}
+
+.slider-hint {
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+
+.slider-value {
+  min-width: 72rpx;
+  padding: 10rpx 0;
+  border-radius: 18rpx;
+  background: rgba(201, 162, 75, 0.14);
+  font-size: 30rpx;
+  font-weight: 700;
+  text-align: center;
+  color: #e0be6a;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+.quiz-submit {
+  margin-top: 8rpx;
+}
