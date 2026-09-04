@@ -5,6 +5,7 @@ const test = require("node:test");
 const vm = require("node:vm");
 
 const data = require("../data/baijiu.json");
+const { DIMENSIONS } = require("../shared/recommender");
 
 const root = path.resolve(__dirname, "..");
 const indexHtml = fs.readFileSync(path.join(root, "web/index.html"), "utf8");
@@ -40,6 +41,87 @@ test("Web bundle restores shared answer parameters", async () => {
     "yubingshao",
     "fenjiu-bofen"
   ]);
+});
+
+test("Web quiz renders six sliders and refreshes value and hint text", async () => {
+  const context = await bootWebBundle();
+
+  context.Wineer.startQuiz();
+  const quiz = context.document.getElementById("quiz");
+  const questionHtml = context.document.getElementById("questionArea").innerHTML;
+  assert.equal(quiz.classList.contains("active"), true);
+  assert.equal([...questionHtml.matchAll(/type="range"/g)].length, 6);
+
+  context.Wineer.setDim("softness", 9);
+
+  assert.equal(context.document.getElementById("softnessValue").textContent, 9);
+  assert.equal(
+    context.document.getElementById("softnessHint").textContent,
+    DIMENSIONS.find(({ key }) => key === "softness").hint(9)
+  );
+});
+
+for (const profile of [
+  {
+    name: "business gift",
+    answers: { budget: 9, occasion: 10, softness: 6, flavorWeight: 7, brandFace: 10, adventure: 2 },
+    ids: ["gujing-gu20", "wuliangye-pujing", "guojiao1573"]
+  },
+  {
+    name: "adventurous",
+    answers: { budget: 6, occasion: 3, softness: 9, flavorWeight: 10, brandFace: 1, adventure: 10 },
+    ids: ["hengshui-gufa20", "laobaigan", "dongjiu"]
+  }
+]) {
+  test(`Web bundle preserves the ${profile.name} ranking`, async () => {
+    const context = await bootWebBundle();
+
+    context.Wineer.startQuiz();
+    for (const [key, value] of Object.entries(profile.answers)) {
+      context.Wineer.setDim(key, value);
+    }
+    context.Wineer.recommend();
+
+    assert.deepEqual(extractRenderedWineIds(context), profile.ids);
+  });
+}
+
+test("Web result sharing copies the normalized answer URL", async () => {
+  const context = await bootWebBundle();
+
+  context.Wineer.startQuiz();
+  context.Wineer.recommend();
+  await context.Wineer.shareResult();
+
+  assert.equal(context.clipboardWrites.length, 1);
+  const shared = new URL(context.clipboardWrites[0]);
+  assert.equal(shared.searchParams.get("w"), "1");
+  assert.deepEqual(
+    Object.fromEntries(DIMENSIONS.map(({ key }) => [key, Number(shared.searchParams.get(key))])),
+    { budget: 4, occasion: 4, softness: 3, flavorWeight: 4, brandFace: 4, adventure: 3 }
+  );
+  assert.equal(context.alerts.at(-1), "分享链接已复制");
+});
+
+test("Web result renders purchase links and downloads a PNG poster", async () => {
+  const context = await bootWebBundle();
+
+  context.Wineer.startQuiz();
+  context.Wineer.recommend();
+
+  const expectedPurchaseUrl = "https://search.jd.com/Search?keyword="
+    + encodeURIComponent("口子窖 10年兼香型50度");
+  assert.match(
+    context.document.getElementById("resultArea").innerHTML,
+    new RegExp(expectedPurchaseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  );
+
+  context.Wineer.downloadPoster();
+
+  const download = context.createdElements.find(({ tagName }) => tagName === "a");
+  assert.equal(download.download, "wineer-recommendation.png");
+  assert.match(download.href, /^data:image\/png;base64,/);
+  assert.equal(download.clicked, true);
 });
 
 test("Web index loads the shared recommender before the app bundle", () => {
@@ -143,12 +225,16 @@ function createBrowserContext(query, fetchPlan = []) {
   const prompts = [];
   const fetchUrls = [];
   const consoleErrors = [];
+  const clipboardWrites = [];
+  const createdElements = [];
   const localStorageState = new Map();
   const elements = new Map();
   const location = new URL(`https://wineer.example/${query.replace(/^\?/, "?")}`);
 
   const createElementNode = (id = "") => ({
     id,
+    tagName: "",
+    clicked: false,
     innerHTML: "",
     textContent: "",
     classList: {
@@ -163,7 +249,9 @@ function createBrowserContext(query, fetchPlan = []) {
         return this.values.has(value);
       }
     },
-    click() {},
+    click() {
+      this.clicked = true;
+    },
     getContext() {
       return createCanvasContext();
     },
@@ -219,7 +307,11 @@ function createBrowserContext(query, fetchPlan = []) {
     globalThis: null,
     location,
     navigator: {
-      clipboard: { writeText: async () => {} },
+      clipboard: {
+        async writeText(value) {
+          clipboardWrites.push(value);
+        }
+      },
       sendBeacon: undefined,
       share: undefined
     },
@@ -232,7 +324,10 @@ function createBrowserContext(query, fetchPlan = []) {
         return [];
       },
       createElement(tagName) {
-        return createElementNode(tagName);
+        const element = createElementNode(tagName);
+        element.tagName = tagName;
+        createdElements.push(element);
+        return element;
       }
     },
     localStorage: {
@@ -257,7 +352,9 @@ function createBrowserContext(query, fetchPlan = []) {
     alerts,
     prompts,
     fetchUrls,
-    consoleErrors
+    consoleErrors,
+    clipboardWrites,
+    createdElements
   };
 
   context.window = context;
