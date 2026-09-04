@@ -3,6 +3,7 @@ const {
   defaultAnswers,
   normalizeAnswers
 } = require("../../shared/recommender");
+const { track } = require("../../utils/analytics");
 const { encodeAnswers } = require("../../utils/navigation");
 
 function toViewDimensions(answers) {
@@ -44,7 +45,9 @@ Page({
   },
 
   showResults() {
-    const query = encodeAnswers(this.data.answers);
+    const answers = normalizeAnswers(this.data.answers);
+    const query = encodeAnswers(answers);
+    track("recommend", { answers: { ...answers } });
     wx.navigateTo({ url: `/pages/result/result?${query}` });
   }
 });

@@ -123,8 +123,15 @@ test("quiz page encodes answers into the future result route", () => {
     }
   });
   const urls = [];
+  let stored = [];
 
   global.wx = {
+    getStorageSync() {
+      return stored;
+    },
+    setStorageSync(_key, value) {
+      stored = value;
+    },
     navigateTo({ url }) {
       urls.push(url);
     }
@@ -139,13 +146,34 @@ test("quiz page encodes answers into the future result route", () => {
   assert.deepEqual(urls, [
     "/pages/result/result?budget=1&occasion=2&softness=3&flavorWeight=4&brandFace=5&adventure=6"
   ]);
+  assert.deepEqual(stored.at(-1), {
+    event: "recommend",
+    payload: {
+      answers: {
+        budget: 1,
+        occasion: 2,
+        softness: 3,
+        flavorWeight: 4,
+        brandFace: 5,
+        adventure: 6
+      }
+    },
+    ts: stored.at(-1).ts
+  });
 });
 
 test("home page starts the quiz route", () => {
   const homePage = loadPageDefinition("../wechat/miniprogram/pages/home/home");
   const urls = [];
+  let stored = [];
 
   global.wx = {
+    getStorageSync() {
+      return stored;
+    },
+    setStorageSync(_key, value) {
+      stored = value;
+    },
     navigateTo({ url }) {
       urls.push(url);
     }
@@ -158,4 +186,6 @@ test("home page starts the quiz route", () => {
   }
 
   assert.deepEqual(urls, ["/pages/quiz/quiz"]);
+  assert.equal(stored.at(-1).event, "start_quiz");
+  assert.deepEqual(stored.at(-1).payload, { fromShare: false });
 });

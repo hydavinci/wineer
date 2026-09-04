@@ -19,6 +19,13 @@
 
     <view class="result-actions">
       <button class="button-primary" open-type="share">转发给朋友</button>
+      <button
+        class="button-secondary"
+        loading="{{posterBusy}}"
+        disabled="{{posterBusy}}"
+        bindtap="generatePoster"
+      >生成分享海报</button>
+      <button class="button-secondary" bindtap="savePoster">保存到相册</button>
       <button class="button-secondary" bindtap="restart">重新选择</button>
     </view>
 
@@ -33,4 +40,10 @@
       />
     </view>
   </block>
+
+  <canvas
+    id="posterCanvas"
+    type="2d"
+    class="poster-canvas"
+  />
 </view>
