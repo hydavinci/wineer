@@ -3,11 +3,12 @@
 module.exports = {
   "meta": {
     "name": "Wineer 白酒数据库",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "updated": "2026-09-07",
-    "note": "共144款，扩容目标200款。价格区分未核实估值、商家报价、官方指导价和挂牌价，仅作预算参考，非实时成交报价。逐款证据及身份冲突见catalog-provenance.json；分档目标见catalog-targets.json。",
+    "note": "共145条酒款资料，扩容目标200款。价格区分未核实估值、商家报价、官方指导价和挂牌价，仅作预算参考，非实时成交报价。逐款证据及身份冲突见catalog-provenance.json；分档目标见catalog-targets.json。",
     "schema": {
       "id": "唯一标识",
+      "identityGroup": "可选：经核实同一产品的分组，保留旧ID但推荐只占一席；疑似同款不填写",
       "name": "酒款全名",
       "brand": "品牌",
       "aroma": "香型: 酱香/浓香/清香/兼香/米香/凤香/其他",
@@ -645,7 +646,7 @@ module.exports = {
       "caution": "兼香派没有鲜明记忆点，喜欢个性风味的略平",
       "volumeMl": 500,
       "edition": "十年型（50度）",
-      "source": "https://product.suning.com/0070854614/12114026939.html",
+      "source": "https://product.suning.com/0070854614/12114038638.html",
       "priceSource": null,
       "priceUpdated": null,
       "priceBasis": "estimate"
@@ -821,7 +822,7 @@ module.exports = {
       "beginner": 5,
       "region": "山西杏花村",
       "highlight": "清香型日常选项，包装朴素，口感偏爽净",
-      "caution": "53度酒精度较高，口感清爽不代表刺激小；送礼需考虑包装",
+      "caution": "53度酒精度较高，口感清爽不代表刺激小；送礼需考虑包装。与黄盖玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
       "volumeMl": 475,
       "edition": "玻瓶装（非献礼版）",
       "source": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3904.html",
@@ -2155,7 +2156,7 @@ module.exports = {
       "beginner": 5,
       "region": "山西杏花村",
       "highlight": "清香口粮标杆，便宜、干净、适合长期自饮",
-      "caution": "包装太朴素，送礼宴请不够看",
+      "caution": "包装太朴素，送礼宴请不够看。与玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
       "volumeMl": 475,
       "edition": null,
       "source": "https://www.suning.com/item/0000000000/612856581.html",
@@ -4153,6 +4154,33 @@ module.exports = {
       "source": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117390096879.html",
       "priceBasis": "listing",
       "priceSource": "https://www.chinanews.com/cj/2026/05-16/10622216.shtml",
+      "priceUpdated": "2026-09-07"
+    },
+    {
+      "id": "yanghe-m9-52",
+      "name": "洋河 梦之蓝M9 52度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 52,
+      "price": 1099,
+      "priceTier": "高端",
+      "taste": [
+        "浓香风格（按香型归类）"
+      ],
+      "scene": [
+        "家庭聚餐",
+        "商务宴请",
+        "送礼"
+      ],
+      "beginner": 3,
+      "region": "江苏宿迁",
+      "highlight": "52度、500mL普通M9；产品规格有公开资料依据，非实饮评价",
+      "caution": "场景和新手适应评分为规则推断，未做实饮评测；1099元为商品页面活动展示价，不代表实际结算价，库存及活动截止日未核实。1599元为划线原价；普通蓝盒M9，不是金M9。",
+      "volumeMl": 500,
+      "edition": "普通M9蓝盒装（非金M9）",
+      "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
+      "priceBasis": "listing",
+      "priceSource": "https://detail.youzan.com/show/goods?alias=26wl5g4yo2bs3&from_source=gbox_seo",
       "priceUpdated": "2026-09-07"
     }
   ]

@@ -8,7 +8,8 @@ const { track, flushEvents, reportingState, setReportingConsent } = require("../
 const { decodeAnswers, encodeAnswers, navigate } = require("../../utils/navigation");
 const { ensureAdult } = require("../../utils/age");
 const { buildPosterModel, drawPoster } = require("../../utils/poster");
-const { buildResultView, purchaseKeyword, shareTitle } = require("../../utils/result");
+const { buildResultView, shareTitle } = require("../../utils/result");
+const { copyWineKeyword } = require("../../utils/purchase");
 
 const MAX_CANVAS_SIZE = 1365;
 
@@ -45,6 +46,15 @@ Page({
 
   onUnload() {
     this._unloaded = true;
+  },
+
+  onShow() {
+    this.setData({ navigationBusy: false });
+  },
+
+  openCatalog() {
+    if (this.data.agePending) return;
+    navigate(this, "/pages/catalog/catalog", "navigateTo");
   },
 
   loadRecommendations() {
@@ -171,29 +181,7 @@ Page({
       .map(({ item: rankedItem }) => rankedItem)
       .find(({ id }) => id === event.detail.id);
 
-    if (!item) {
-      wx.showToast({ title: "酒款信息不存在", icon: "none" });
-      return;
-    }
-
-    const payload = {
-      id: item.id,
-      name: item.name,
-      answers: { ...this.data.answers }
-    };
-    track("copy_keyword_attempt", payload);
-    wx.setClipboardData({
-      data: purchaseKeyword(item),
-      success: () => {
-        track("copy_keyword_success", payload);
-        wx.showToast({ title: "已复制，可在平台搜索比价", icon: "none" });
-      },
-      fail: error => {
-        console.error("clipboard failed", error);
-        track("copy_keyword_failed", { id: item.id });
-        wx.showToast({ title: "复制失败，请重试", icon: "none" });
-      }
-    });
+    copyWineKeyword(item, { answers: { ...this.data.answers } });
   },
 
   generatePoster() {

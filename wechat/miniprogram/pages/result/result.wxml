@@ -20,7 +20,7 @@
       <text class="result-eyebrow">Wineer 为你推荐</text>
       <text class="result-title">{{wines.length ? '为你挑选的白酒' : '预算内暂无合适酒款'}}</text>
       <text class="result-description muted">{{budgetLabel}}；按静态参考价筛选，合适的低价款也会推荐。成交价可能超预算，购买前请核实规格和报价。</text>
-      <text wx:if="{{wines.length < 3}}" class="muted">当前参考价符合预算的仅有 {{wines.length}} 款，不用超预算款凑数。</text>
+      <text wx:if="{{wines.length < 3}}" class="muted">按预算筛选并去除已确认同款后，可展示 {{wines.length}} 款，不用超预算款凑数。</text>
     </view>
 
     <view class="result-list">
@@ -31,8 +31,9 @@
         bind:buy="copyPurchaseKeyword"
       />
     </view>
-    <text wx:if="{{wines.length}}" class="result-buy-hint muted">同分时依次优先冲突更少、参考价更低的酒款，最后按酒款 ID 排序；排名不是满意概率。复制搜索词后可到平台比价。</text>
+    <text wx:if="{{wines.length}}" class="result-buy-hint muted">同分时先看偏好冲突和报价依据；条件相同时，备选尽量提供不同品牌，再按参考价与固定 ID 排序。排名不是满意概率，报价也不是成交保证。</text>
     <button class="button-secondary" loading="{{navigationBusy}}" disabled="{{navigationBusy}}" bindtap="adjustPreferences">调整偏好（保留当前选择）</button>
+    <button class="button-secondary" disabled="{{navigationBusy}}" bindtap="openCatalog">浏览全部酒库</button>
 
     <view wx:if="{{wines.length && reportingAvailable}}" class="card reporting-settings">
       <label class="reporting-option">

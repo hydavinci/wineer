@@ -12,6 +12,7 @@ Wineer 白酒数据采集/维护脚本 (半自动)
     python3 collect.py stats         # 统计各维度分布
     python3 collect.py stats --json  # 按问答预算分档，输出配额及价格依据统计
     python3 collect.py quality       # 输出逐款资料缺口（JSON）
+    python3 collect.py review        # 按推荐曝光优先排列资料复核清单（JSON）
     python3 collect.py template      # 打印一条新增酒款模板
 """
 import json, sys, os, subprocess
@@ -91,6 +92,18 @@ def template():
     print(json.dumps(tpl, ensure_ascii=False, indent=2))
 
 
+def review():
+    import argparse
+    parser = argparse.ArgumentParser(description="推荐覆盖抽样与资料复核")
+    parser.add_argument("--as-of", help="复核日期 YYYY-MM-DD，默认当天 UTC 日期")
+    args = parser.parse_args(sys.argv[2:])
+    command = ["node", os.path.join(os.path.dirname(__file__), "catalog-review.js"), DB_PATH]
+    if args.as_of:
+        command.append(args.as_of)
+    result = subprocess.run(command, check=False)
+    sys.exit(result.returncode)
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "validate"
-    {"validate":validate, "stats":stats, "quality":quality, "template":template}.get(cmd, validate)()
+    {"validate":validate, "stats":stats, "quality":quality, "review":review, "template":template}.get(cmd, validate)()

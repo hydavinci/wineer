@@ -1,7 +1,7 @@
-<view class="wine-card {{wine.rank === 1 ? 'wine-card-main' : ''}}">
+<view class="wine-card {{!catalogMode && wine.rank === 1 ? 'wine-card-main' : ''}}">
   <view class="wine-card-head">
     <view class="wine-card-copy">
-      <text class="wine-rank">{{wine.rank === 1 ? '优先考虑这一款' : wine.rankLabel}}</text>
+      <text class="wine-rank">{{catalogMode ? '酒库资料' : wine.rank === 1 ? '优先考虑这一款' : wine.rankLabel}}</text>
       <text class="wine-name">{{wine.name}}</text>
       <text class="wine-brand">{{wine.specText}}</text>
     </view>
@@ -12,8 +12,8 @@
     <text class="wine-tag">{{wine.abv}}度</text>
     <text class="wine-tag">参考价约 ¥{{wine.price}} / 瓶</text>
   </view>
-  <text class="wine-why">{{wine.whyText}}</text>
-  <text class="wine-block-text">权衡：{{wine.tradeoffText}}</text>
+  <text wx:if="{{!catalogMode}}" class="wine-why">{{wine.whyText}}</text>
+  <text wx:if="{{!catalogMode}}" class="wine-block-text">权衡：{{wine.tradeoffText}}</text>
   <text class="wine-block-text">选购提醒：{{wine.caution}}</text>
   <text class="wine-quality-notice">{{wine.qualityNotice}}</text>
 

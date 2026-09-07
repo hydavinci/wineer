@@ -9,6 +9,10 @@ Page({
     this.setData({ navigationBusy: false });
   },
 
+  openCatalog() {
+    navigate(this, "/pages/catalog/catalog", "navigateTo");
+  },
+
   startQuiz() {
     if (this.data.navigationBusy || !confirmAdult()) return;
     track("start_quiz", { fromShare: false });

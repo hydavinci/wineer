@@ -175,6 +175,8 @@
       throw new RecommendationDataError("Invalid items dataset: expected a non-empty array");
     }
 
+    const ids = new Set();
+    const identities = new Map();
     for (let index = 0; index < items.length; index += 1) {
       const item = items[index];
       if (!item || typeof item !== "object" || Array.isArray(item)) {
@@ -182,6 +184,10 @@
       }
 
       validateStringField(item, index, "id");
+      if (ids.has(item.id)) {
+        throw new RecommendationDataError(`Invalid item at index ${index}: duplicate id ${item.id}`);
+      }
+      ids.add(item.id);
       validateStringField(item, index, "name");
       validateStringField(item, index, "brand");
       validateStringField(item, index, "aroma");
@@ -201,6 +207,21 @@
         throw new RecommendationDataError(`Invalid item at index ${index}: field scene`);
       }
       validateCatalogFields(item, index);
+      if (item.identityGroup != null) {
+        validateStringField(item, index, "identityGroup");
+        if (!item.source || !item.volumeMl) {
+          throw new RecommendationDataError(`Invalid item at index ${index}: identity group requires sourced specifications`);
+        }
+        const identity = identities.get(item.identityGroup) || {};
+        for (const field of ["brand", "abv", "volumeMl", "aroma", "edition"]) {
+          if (item[field] == null) continue;
+          if (identity[field] != null && identity[field] !== item[field]) {
+            throw new RecommendationDataError(`Invalid item at index ${index}: conflicting identity group ${field}`);
+          }
+          identity[field] = item[field];
+        }
+        identities.set(item.identityGroup, identity);
+      }
     }
   }
 
@@ -375,19 +396,46 @@
       .sort((left, right) =>
         right.score - left.score
         || left.tradeoffs.length - right.tradeoffs.length
+        || priceConfidence(right.item) - priceConfidence(left.item)
         || left.item.price - right.item.price
         || (left.item.id < right.item.id ? -1 : left.item.id > right.item.id ? 1 : 0)
       );
     const withinBudget = Number.isFinite(ceiling)
       ? ranked.filter(({ item }) => item.price <= ceiling)
       : ranked;
-    const selected = withinBudget.slice(0, resultLimit);
+    const selected = [];
+    const identities = new Set();
+    const brands = new Set();
+    const remaining = withinBudget.slice();
+    while (selected.length < resultLimit && remaining.length) {
+      const first = remaining[0];
+      const alternative = remaining.findIndex(entry =>
+        selected.length > 0
+        && entry.score === first.score
+        && entry.tradeoffs.length === first.tradeoffs.length
+        && priceConfidence(entry.item) === priceConfidence(first.item)
+        && !brands.has(entry.item.brand)
+      );
+      const [entry] = remaining.splice(alternative >= 0 ? alternative : 0, 1);
+      selected.push(entry);
+      brands.add(entry.item.brand);
+      if (entry.item.identityGroup) identities.add(entry.item.identityGroup);
+      for (let index = remaining.length - 1; index >= 0; index -= 1) {
+        if (identities.has(remaining[index].item.identityGroup)) remaining.splice(index, 1);
+      }
+    }
     const bestScore = Math.max(...selected.map(({ score }) => score), 1);
     return selected.map((entry, position) => ({
       ...entry,
       rankLabel: position === 0 ? "优先推荐" : `备选 ${position}`,
       matchPercent: Math.max(60, Math.min(99, Math.round(entry.score / bestScore * 96)))
     }));
+  }
+
+  function priceConfidence(item) {
+    if (!item.priceSource || !item.priceUpdated) return 0;
+    if (item.priceBasis === "retail") return 2;
+    return ["msrp", "listing"].includes(item.priceBasis) ? 1 : 0;
   }
 
   return {
@@ -398,6 +446,7 @@
     budgetOptions,
     describeItem,
     validateItems,
+    priceConfidence,
     normalizeAnswers,
     scoreItem,
     recommend

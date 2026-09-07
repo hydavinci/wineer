@@ -1,6 +1,7 @@
 Component({
   data: { expanded: false },
   properties: {
+    catalogMode: { type: Boolean, value: false },
     wine: {
       type: Object,
       value: null

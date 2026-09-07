@@ -14,5 +14,6 @@
     </view>
 
     <button class="button-primary home-start" loading="{{navigationBusy}}" disabled="{{navigationBusy}}" bindtap="startQuiz">我已满 18 岁，开始</button>
+    <button class="button-secondary home-browse" disabled="{{navigationBusy}}" bindtap="openCatalog">先浏览酒库</button>
   </view>
 </view>

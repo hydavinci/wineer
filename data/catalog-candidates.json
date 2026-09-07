@@ -1,6 +1,6 @@
 {
   "reviewedAt": "2026-09-07",
-  "catalogVersion": "0.4.0",
+  "catalogVersion": "0.4.1",
   "note": "未入推荐库的候选或待核实条目；不要直接当作已确认SKU、价格或产品推荐。",
   "entries": [
     {
@@ -1002,33 +1002,6 @@
         }
       ],
       "notes": "产品页香型栏为空，浓香由厂家系列说明支持。未把大师版、未分年份手工班或2019老酒价格迁移到此SKU。",
-      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
-    },
-    {
-      "id": "yanghe-m9-52",
-      "name": "洋河 梦之蓝M9 52度",
-      "brand": "洋河",
-      "aroma": "浓香",
-      "abv": 52,
-      "volumeMl": 500,
-      "edition": null,
-      "region": "江苏宿迁",
-      "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
-      "price": null,
-      "priceBasis": null,
-      "priceSource": null,
-      "priceUpdated": null,
-      "evidence": [
-        {
-          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
-          "summary": "已读取厂家梦之蓝M9页面：单瓶500ml，度数包含52%vol。"
-        },
-        {
-          "url": "https://lt.chinayanghe.com/about",
-          "summary": "已打开厂家简介，确认宿迁产区、洋河浓香体系及梦之蓝绵柔风格。"
-        }
-      ],
-      "notes": "不同于现有M6+和水晶版。厂家产品页香型栏为空，按厂家系列说明归类浓香；搜索摘要曾出现报价，但实际读取店铺未复现，故价格留空。",
       "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
     },
     {

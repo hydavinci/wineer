@@ -43,6 +43,8 @@ data/baijiu.json
 
 查看资料缺口：`python3 scripts/collect.py quality`。逐款核对记录保存在 `data/catalog-provenance.json`，覆盖已补字段、实际资料依据、未解决的度数/版本冲突以及未采用的价格信息。补入产品规格不代表已核实该规格的售价。
 
+运行 `python3 scripts/collect.py review` 可获得固定2,430组偏好的前三名曝光统计及优先复核清单；通过 `--as-of YYYY-MM-DD` 固定复核日期。先处理高曝光酒款的价格和规格缺口，超过90天的观察记录提醒人工重访，不冒充报价发布日期，也不将抽样未出现误写成不参与推荐。
+
 资料核对日期为 2026-09-07。普通产品资料访问日期不作为价格日期；只有实际观察到并采用的报价才记录 `priceUpdated`，并说明挂牌价或其他口径。具体来源保存在酒款的 `source` 字段。最初六款资料的版本边界如下，其余记录见上述台账：
 
 | 酒款 ID | 资料依据与边界 |
@@ -69,7 +71,9 @@ data/baijiu.json
 
 扩容按200款目标推进，单瓶参考价区间为：≤100元35款、>100–200元40款、>200–500元55款、>500–900元35款、>900–1500元20款、>1500元15款。区间不重叠，沿用现有六档预算；目标和实际数量分开记录。运行 `python3 scripts/collect.py stats` 查看数量、占比、配额缺口及价格待核实数，追加 `--json` 获取机器可读结果。
 
-`0.4.0` 实际为144款，六档分别为23、31、52、24、7、7款，距200款目标仍差56款；未用估价凑齐新增配额。新增44款均有具体容量、产品资料和独立记录的价格依据。当前全库容量覆盖106款、产品来源107款、版本标识45款、价格依据45款；原99条无依据价格仍标为未核实估值。其余70条候选保存于 `data/catalog-candidates.json`，不打入运行时包，也不参与推荐。
+`0.4.1` 实际为145条酒款资料，六档分别为23、31、52、24、8、7条，距200款目标仍差55条；未用估价凑齐新增配额。自100条基线新增的45条均有具体容量、产品资料和独立记录的价格依据。当前全库容量覆盖107条、产品来源108条、版本标识46条、价格依据46条；原99条无依据价格仍标为未核实估值。其余69条候选保存于 `data/catalog-candidates.json`，不打入运行时包，也不参与推荐。
+
+本次将普通梦之蓝M9（52度500mL、非金M9）从候选移入900–1500元档，采用官方商城1099元活动展示价，1599元是划线原价；活动截止日、库存与结算未核实。商务送礼示例中，它与国窖1573等同分，因已有报价依据进入备选，不代表实饮评价优于其他酒。口子窖十年型改用匹配50度500mL单瓶来源，但仍无可采用的报价。两条53度475mL玻汾仅新增“疑似同款”可见提示，没有强行设置 `identityGroup`；未采用报价及阻塞原因保存在台账。
 
 卡片通过 `priceBasis` 区分商家报价、官方指导价、挂牌价和未核实估值。指导价和挂牌价不等于成交价，报价观察日也不证明价格刚刚更新；具体历史时间与来源限制见逐款台账。新增酒款的场景和新手适应评分如仅为规则推断，会明确提示“未做实饮评测”，不会包装成厂家背书或体验结论。
 
@@ -87,6 +91,7 @@ data/baijiu.json
 | 首页 | `pages/home/home` | 确认已满 18 岁并开始问答 |
 | 问答 | `pages/quiz/quiz` | 金额档位和场景单选；按需展开其余四维偏好；恢复默认 |
 | 结果 | `pages/result/result` | 首选与精简备选、按需展开口感资料、保留当前选择调整偏好、分享及辅助海报 |
+| 酒库 | `pages/catalog/catalog` | 成年确认后按酒名/品牌/规格搜索，按价格区间和香型筛选，分批浏览资料 |
 
 ## MVP 支持范围
 
@@ -97,12 +102,16 @@ data/baijiu.json
 - 同一预算文案使用同一打分档位；预算指每瓶上限，不强制花满
 - 携带六维答案和 `from=share` 来源标记的分享路径；酒库更新后重新计算，不冻结历史排名
 - 使用“优先推荐 / 备选”标签，不显示概率百分比；同时展示实际匹配理由和需要权衡的条件
-- 得分相同时，依次按偏好冲突数量、参考价、稳定酒款 ID 排序，不受数据文件顺序影响；不为追求香型多样性而降低匹配得分
+- 得分相同时，先比较偏好冲突数量和报价依据级别，再按参考价、稳定酒款 ID 排序；备选仅在得分、冲突数和报价依据均相同时优先补充不同品牌，不降低匹配得分
+- 报价依据仅区分有来源和观察日期的商家报价、指导价/挂牌价及估值，不保证可购买或实时有效；不按访问日期把旧报价升为新报价
+- 已确认同款可标注 `identityGroup`，保留旧 ID，但推荐只占一个名额；来源和容量必需，已知规格冲突会阻止构建，疑似重复不直接合并
 - 去掉重复对比区；卡片收起时仍展示理由、权衡、选购提醒、规格和价格风险，口感与资料依据按需展开
 - 规格和价格来源透明展示，缺少资料时提示待核实
 - 复制酒名及已知容量、版本作为购买搜索关键词；未知字段不会拼入
 - 本地 Canvas 海报生成、预览与保存权限处理
 - 本地最近 200 条行为事件；可选、需用户同意的 HTTPS 上报
+- 首页与结果页可进入酒库浏览，返回不丢失原推荐；搜索支持多词、大小写及全角字符归一化，价格区间独立于问答的预算上限
+- 酒库按静态参考价由低到高展示，每批20条，空结果可清除筛选；不显示推荐排名或偏好理由，不收录未定价候选，也不新增满意度询问
 - 调整偏好保留答案，全部重选恢复默认；无效参数和无效数据有独立处理
 
 ## 行为记录
@@ -145,7 +154,7 @@ data/baijiu.json
 导入并编译项目后，逐项验证。未实际完成开发者工具或真机操作时，不要勾选：
 
 - [ ] 1. Home renders and `我已满 18 岁，开始` opens the quiz.
-- [ ] 2. Budget and occasion use labeled radio options; expanding advanced preferences reveals four sliders. Presets keep the chosen budget; reset restores defaults. Old links retain all six values even within a shared budget band.
+- [ ] 2. Budget and occasion use labeled radio options; expanding advanced preferences reveals four sliders. Changing the scene preserves the budget and other preferences; reset restores defaults. No scene presets are shown. Old links retain all six values even within a shared budget band.
 - [ ] 3. Default answers render exactly three different wines in this order: `kouzijiao`, `fenjiu-laobaifen10`, `shuanggou-shengfang`.
 - [ ] 4. The low-budget profile renders `jiujiang-shuangzheng`, `yubingshao`, `fenjiu-huanggaibofen`.
 - [ ] 5. On a fresh device, a shared result stays hidden until age confirmation, then restores the same six answers. Declining returns home without showing wines.
@@ -154,6 +163,9 @@ data/baijiu.json
 - [ ] 8. Poster generation displays a preview; saving handles success and denied album permission distinctly.
 - [ ] 9. Adjust preferences retains all six answers; restart returns to a fresh quiz. Rapid navigation taps and failures have explicit handling.
 - [ ] 10. Invalid result parameters normalize safely, and invalid wine data shows an error state without retry loops.
-- [ ] 11. Negative feedback asks for a reason before saving. Cancel and storage failure leave it retryable; successful submission is stored once per result. Reason-based adjustment preserves answers and highlights the relevant control.
+- [ ] 11. No recommendation helpfulness question, feedback buttons or reason picker appears. Adjustment preserves answers, and legacy focused adjustment links remain usable.
 - [ ] 12. With no endpoint or no user consent, no analytics request is sent. With both enabled, HTTP failures retain records; retry succeeds; disabling stops reporting.
 - [ ] 13. The save button appears only after a poster exists. Card sharing opens the result; the auxiliary poster does not claim to contain a scannable entry.
+- [ ] 14. Home and result can open the catalog. Direct catalog entry requires adult confirmation; declining returns home. Returning to a result preserves its answers and allows navigation again.
+- [ ] 15. Catalog search, price and aroma filters combine correctly. Exact upper price boundaries belong to one band only. Empty searches offer reset; additional batches do not duplicate rows. Catalog cards retain warnings without recommendation ranks.
+- [ ] 16. On both Android and iOS, check loading/disabled button colors, long names and source links, keyboard input, catalog scrolling, share return and poster permissions. Native rendering and browser checks do not replace device acceptance.

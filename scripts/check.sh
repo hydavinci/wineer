@@ -29,11 +29,14 @@ node --check wechat/miniprogram/config.js
 node --check wechat/miniprogram/utils/age.js
 node --check wechat/miniprogram/utils/navigation.js
 node --check wechat/miniprogram/utils/result.js
+node --check wechat/miniprogram/utils/catalog.js
+node --check wechat/miniprogram/utils/purchase.js
 node --check wechat/miniprogram/utils/analytics.js
 node --check wechat/miniprogram/utils/poster.js
 node --check wechat/miniprogram/pages/home/home.js
 node --check wechat/miniprogram/pages/quiz/quiz.js
 node --check wechat/miniprogram/pages/result/result.js
+node --check wechat/miniprogram/pages/catalog/catalog.js
 node --check wechat/miniprogram/components/wine-card/wine-card.js
 node --test tests/*.test.js
 

@@ -14,11 +14,13 @@ let context;
 function render(file, data) {
   if (!context) {
     const result = spawnSync(compiler, [
-      "pages/quiz/quiz.wxml", "pages/result/result.wxml", "components/wine-card/wine-card.wxml"
+      "pages/home/home.wxml", "pages/quiz/quiz.wxml", "pages/result/result.wxml",
+      "pages/catalog/catalog.wxml", "components/wine-card/wine-card.wxml"
     ], {
       cwd: path.resolve(__dirname, "../wechat/miniprogram"),
       encoding: "utf8", timeout: 15000, maxBuffer: 8 * 1024 * 1024
     });
+
     assert.equal(result.status, 0, result.error?.message || result.stderr);
     context = vm.createContext({ window: {}, console });
     vm.runInContext(result.stdout, context, { timeout: 5000 });
@@ -90,6 +92,40 @@ test("native result omits feedback prompts while retaining adjustment, sharing a
     assert.ok(!JSON.stringify(withReporting).includes("这些推荐有帮助吗"));
     page.setData({ agePending: true });
     assert.equal(nodes(render("pages/result/result.wxml", page.data), "wx-wine-card").length, 0);
+  } finally {
+    delete global.wx;
+  }
+});
+
+test("native browsing exposes filters and empty recovery without suggesting a recommendation rank", { skip: !available }, () => {
+  global.wx = createWx();
+  try {
+    const page = createPage("wechat/miniprogram/pages/catalog/catalog");
+    page.onLoad();
+    const tree = render("pages/catalog/catalog.wxml", page.data);
+    assert.equal(nodes(tree, "wx-input").length, 1);
+    assert.equal(nodes(tree, "wx-picker").length, 2);
+    assert.equal(nodes(tree, "wx-wine-card").length, 20);
+    const card = JSON.stringify(render("components/wine-card/wine-card.wxml", {
+      wine: { ...page.data.wines[0], caution: "PURCHASE_CAUTION", qualityNotice: "PRICE_UNCERTAINTY" },
+      catalogMode: true, expanded: false
+    }));
+    assert.ok(!card.includes("优先考虑这一款"));
+    assert.ok(!card.includes("权衡："));
+    assert.ok(card.includes("PURCHASE_CAUTION"));
+    assert.ok(card.includes("PRICE_UNCERTAINTY"));
+    page.onSearchInput({ detail: { value: "不存在的酒款" } });
+    const empty = render("pages/catalog/catalog.wxml", page.data);
+    assert.equal(nodes(empty, "wx-wine-card").length, 0);
+    assert.ok(nodes(empty, "wx-button").some(node => node.attr.bindtap === "resetFilters"));
+    page.setData({ agePending: true });
+    const gated = render("pages/catalog/catalog.wxml", page.data);
+    assert.equal(nodes(gated, "wx-input").length, 0);
+    assert.equal(nodes(gated, "wx-wine-card").length, 0);
+    for (const file of ["pages/home/home.wxml", "pages/result/result.wxml"]) {
+      const viewData = file.includes("home") ? {} : { agePending: false, isLoading: false, wines: [] };
+      assert.ok(nodes(render(file, viewData), "wx-button").some(node => node.attr.bindtap === "openCatalog"));
+    }
   } finally {
     delete global.wx;
   }

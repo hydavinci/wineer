@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-09-07",
-  "catalogVersion": "0.4.0",
+  "catalogVersion": "0.4.1",
   "policy": {
     "scope": "逐条记录产品规格证据与身份冲突，不代表口感评分或所有原始字段均已核实。",
     "unknowns": "没有可靠依据的字段保留null；不以相近度数、同系列其他容量或包装代替。",
@@ -9,6 +9,32 @@
     "dates": "reviewedAt是资料核对日期；已采用报价的priceUpdated为观察记录日期，不冒充页面发布日期或成交日期。",
     "heuristics": "新入库酒款未做实饮评分；beginner=3为中性占位，场景按价段推断，taste按香型归类，卡片明确提示。",
     "legacyPriceClassification": "原100款仅将1915已有挂牌证据标记listing，其余原参考价标记estimate；这是证据状态分类，不是新增价格核实。"
+  },
+  "followUpPriceReview": {
+    "observedAt": "2026-09-07",
+    "scope": "高曝光酒款价格及薄弱价段候选复核；下列线索未写入运行时价格。",
+    "notAdopted": [
+      {
+        "id": "fenjiu-laobaifen10",
+        "source": "https://www.huizhishang.net/goods-549.html",
+        "reason": "158元仅见搜索线索，直接商品页访问超时，未采用摘要；厂家页仅确认53度475mL，不支持价格。"
+      },
+      {
+        "id": "shuanggou-shengfang",
+        "source": "https://detail.youzan.com/show/goods?alias=3ep9s8v2367xvdb&from_source=gbox_seo",
+        "reason": "实际商品页是205至1258元多规格区间，未将205元绑定到单瓶，也未确认21版；拒绝使用列表最低值。"
+      },
+      {
+        "id": "jiujiang-shuangzheng",
+        "source": "https://www.heshan.gov.cn/zwgk/zdlyxxgk/spypanxxgk/aqjggzxx/content/post_2598156.html",
+        "reason": "现有监管抽检来源只支持29.5度610mL规格；本轮未获得精确单瓶报价，不采用自媒体约价或其他容量替代品。"
+      },
+      {
+        "id": "yubingshao",
+        "source": "https://shiwanmall.com/Default",
+        "reason": "商城访问超时；检索线索为30.3度或29度等不同产品，未证明原记录30度SKU，不能换度数或拆算整箱价格。"
+      }
+    ]
   },
   "entries": [
     {
@@ -344,10 +370,14 @@
       "appliedFields": {
         "volumeMl": 500,
         "edition": "十年型（50度）",
-        "source": "https://product.suning.com/0070854614/12114026939.html",
+        "source": "https://product.suning.com/0070854614/12114038638.html",
         "priceBasis": "estimate"
       },
       "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/12114038638.html",
+          "summary": "2026-09-07读取官方旗舰店单瓶商品原始HTML，标题和规格标为十年型50度500ML*1瓶；据此用单瓶来源替换四瓶装来源。主报价未取得，拒绝通用38元抢购弹层。"
+        },
         {
           "url": "https://product.suning.com/0070854614/12114026939.html",
           "summary": "已重新读取口子窖官方旗舰店SKU原始HTML：十年型50度500ML乘4瓶，参数与包装清单确认单瓶500mL。"
@@ -357,7 +387,7 @@
           "summary": "已读取厂家十年型页面：500ml，但度数只列41%vol及46%vol，不能完整证明目录50度SKU。"
         }
       ],
-      "reviewNotes": "保留匹配50度的既有官方旗舰店来源，不替换为厂家41/46度商品，也不将十年型等同兼10。"
+      "reviewNotes": "采用匹配50度的官方旗舰店单瓶规格来源，不替换为厂家41/46度商品，也不将十年型等同兼10；仅强化身份来源，180元旧估值未获证实。"
     },
     {
       "id": "baiyunbian",
@@ -439,12 +469,17 @@
     {
       "id": "fenjiu-bofen",
       "appliedFields": {
+        "caution": "53度酒精度较高，口感清爽不代表刺激小；送礼需考虑包装。与黄盖玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
         "volumeMl": 475,
         "edition": "玻瓶装（非献礼版）",
         "source": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3904.html",
         "priceBasis": "estimate"
       },
       "evidence": [
+        {
+          "url": "https://detail.youzan.com/show/goods?alias=2oiv4ynm7sfa7&from_source=gbox_seo",
+          "summary": "2026-09-07读取汾酒官方旗舰店，53度475mL同一商品标题同时使用玻汾和黄盖名称，支持别名推断；283元对应六瓶装，不拆成单瓶报价。未取得两条目录记录各自的条码或背标映射，仍为疑似。"
+        },
         {
           "url": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3904.html",
           "summary": "已重新读取厂家53度玻瓶汾酒页面，明确53%Vol和475mL。"
@@ -1137,11 +1172,16 @@
     {
       "id": "fenjiu-huanggaibofen",
       "appliedFields": {
+        "caution": "包装太朴素，送礼宴请不够看。与玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
         "volumeMl": 475,
         "source": "https://www.suning.com/item/0000000000/612856581.html",
         "priceBasis": "estimate"
       },
       "evidence": [
+        {
+          "url": "https://detail.youzan.com/show/goods?alias=2oiv4ynm7sfa7&from_source=gbox_seo",
+          "summary": "2026-09-07读取官方旗舰店，53度475mL商品标题同时使用玻汾和黄盖名称，但仍无目录条码或版本映射。283元是六瓶装；苏宁聚合展示56.50元未取得商家落地页主价格，均不采用为单瓶核实价。"
+        },
         {
           "url": "https://www.suning.com/item/0000000000/612856581.html",
           "summary": "已打开并读取具体商品聚合详情原始HTML：黄盖玻汾53度475ml单瓶，参数确认53度及475mL，页面卖方标为汾酒官方旗舰店。"
@@ -3964,6 +4004,65 @@
         "price": 4279,
         "priceBasis": "listing",
         "priceSource": "https://www.chinanews.com/cj/2026/05-16/10622216.shtml",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "yanghe-m9-52",
+      "addedIn": "0.4.1",
+      "appliedFields": {
+        "id": "yanghe-m9-52",
+        "name": "洋河 梦之蓝M9 52度",
+        "brand": "洋河",
+        "aroma": "浓香",
+        "abv": 52,
+        "price": 1099,
+        "priceTier": "高端",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "江苏宿迁",
+        "highlight": "52度、500mL普通M9；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；1099元为商品页面活动展示价，不代表实际结算价，库存及活动截止日未核实。1599元为划线原价；普通蓝盒M9，不是金M9。",
+        "volumeMl": 500,
+        "edition": "普通M9蓝盒装（非金M9）",
+        "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
+        "priceBasis": "listing",
+        "priceSource": "https://detail.youzan.com/show/goods?alias=26wl5g4yo2bs3&from_source=gbox_seo",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
+          "summary": "厂家普通M9产品页明确单瓶500ml、度数包含52%vol；500ml*4为厂家箱规，不用于单瓶价格计算。"
+        },
+        {
+          "url": "https://lt.chinayanghe.com/about",
+          "summary": "原候选资料核对已确认宿迁产区及洋河浓香体系；M9产品页香型栏为空，沿用厂家系列归类。"
+        },
+        {
+          "url": "https://detail.youzan.com/show/goods?alias=26wl5g4yo2bs3&from_source=gbox_seo",
+          "summary": "2026-09-07读取洋河官方商城52度500mL普通M9商品页，主活动展示价1099元，1599元为划线原价；图片为普通蓝盒单瓶及外盒，非金M9。未核实结算、库存及活动截止日期。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "从未定价候选移入>900–1500元档，不以1599元划线价填充>1500档。观察日期不是活动发布日期。保持规则推断提示，不声称实饮测评。",
+      "priceEvidence": {
+        "price": 1099,
+        "priceBasis": "listing",
+        "priceSource": "https://detail.youzan.com/show/goods?alias=26wl5g4yo2bs3&from_source=gbox_seo",
         "priceUpdated": "2026-09-07",
         "adopted": true
       }

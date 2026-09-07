@@ -14,27 +14,25 @@ function toWhyText(why) {
 
 function buildResultView(ranked) {
   return ranked.map(({ item, why, rankLabel, tradeoffs }, index) => {
-    validateResultItem(item, index);
-
     return {
-      id: item.id,
+      ...buildWineView(item, index),
       rank: index + 1,
-      name: item.name,
-      brand: item.brand,
-      aroma: item.aroma,
-      abv: item.abv,
-      price: item.price,
-      priceTier: item.priceTier,
-      region: item.region,
-      tasteText: item.taste.join("、"),
-      highlight: item.highlight,
-      caution: item.caution,
       rankLabel,
       whyText: toWhyText(why),
-      tradeoffText: tradeoffs.length ? tradeoffs.join(" · ") : "未发现明显偏好冲突，仍需留意口味和选购提示",
-      ...describeItem(item)
+      tradeoffText: tradeoffs.length ? tradeoffs.join(" · ") : "未发现明显偏好冲突，仍需留意口味和选购提示"
     };
   });
+}
+
+function buildWineView(item, index = 0) {
+  validateResultItem(item, index);
+  return {
+    id: item.id, name: item.name, brand: item.brand, aroma: item.aroma,
+    abv: item.abv, price: item.price, priceTier: item.priceTier,
+    region: item.region, tasteText: item.taste.join("、"),
+    highlight: item.highlight, caution: item.caution,
+    ...describeItem(item)
+  };
 }
 
 function validateResultItem(item, index) {
@@ -80,4 +78,4 @@ function shareTitle(ranked) {
     : "Wineer 白酒推荐";
 }
 
-module.exports = { buildResultView, purchaseKeyword, shareTitle };
+module.exports = { buildResultView, buildWineView, purchaseKeyword, shareTitle };

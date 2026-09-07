@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "浏览酒库",
+  "usingComponents": {
+    "wine-card": "../../components/wine-card/wine-card"
+  }
+}

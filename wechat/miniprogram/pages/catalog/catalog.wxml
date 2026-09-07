@@ -1,0 +1,41 @@
+<view class="page catalog-page">
+  <view wx:if="{{agePending}}" class="card catalog-state">
+    <text class="catalog-title">请先确认已满 18 岁</text>
+    <button class="button-primary" bindtap="confirmAge">确认后浏览</button>
+  </view>
+  <view wx:elif="{{errorMessage}}" class="card catalog-state">
+    <text>{{errorMessage}}</text>
+    <button class="button-secondary" bindtap="resetFilters">重试加载</button>
+  </view>
+  <block wx:else>
+    <view class="card catalog-filters">
+      <text class="catalog-title">浏览酒库</text>
+      <text class="muted catalog-description">共 {{total}} 条已入库资料，按参考价从低到高展示，不是推荐排名。含待核实估值；购买前请核实规格与报价。</text>
+      <input class="catalog-search" value="{{query}}" bindinput="onSearchInput" maxlength="80" placeholder="搜索酒名、品牌或规格" placeholder-class="muted" confirm-type="search" />
+      <view class="catalog-selects">
+        <picker class="catalog-picker" mode="selector" range="{{priceOptions}}" range-key="label" value="{{priceIndex}}" bindchange="onPriceChange">
+          <view class="catalog-select"><text class="muted">价格区间</text><text>{{priceOptions[priceIndex].label}} ▾</text></view>
+        </picker>
+        <picker class="catalog-picker" mode="selector" range="{{aromaOptions}}" range-key="label" value="{{aromaIndex}}" bindchange="onAromaChange">
+          <view class="catalog-select"><text class="muted">香型</text><text>{{aromaOptions[aromaIndex].label}} ▾</text></view>
+        </picker>
+      </view>
+      <view class="catalog-summary">
+        <text class="muted">找到 {{resultCount}} 条资料</text>
+        <button wx:if="{{query || priceIndex || aromaIndex}}" class="catalog-reset" bindtap="resetFilters">清除筛选</button>
+      </view>
+    </view>
+    <view wx:if="{{!resultCount}}" class="card catalog-state">
+      <text>暂无符合条件的酒款</text>
+      <text class="muted">试试更短的酒名，或清除价格、香型筛选。</text>
+      <button class="button-secondary" bindtap="resetFilters">查看全部酒库</button>
+    </view>
+    <view class="catalog-list">
+      <view wx:for="{{wines}}" wx:key="id" class="catalog-item">
+        <wine-card wine="{{item}}" catalog-mode="{{true}}" bind:buy="copyPurchaseKeyword" />
+      </view>
+    </view>
+    <button wx:if="{{hasMore}}" class="button-secondary" bindtap="onReachBottom">显示更多酒款</button>
+    <text wx:elif="{{resultCount}}" class="muted catalog-end">已显示全部 {{resultCount}} 条资料 · 请理性饮酒</text>
+  </block>
+</view>

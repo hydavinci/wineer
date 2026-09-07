@@ -77,7 +77,7 @@ for (const profile of [
   {
     name: "business gift",
     answers: { budget: 9, occasion: 10, softness: 6, flavorWeight: 7, brandFace: 10, adventure: 2 },
-    ids: ["gujing-gu20", "guojiao1573", "wuliangye-pujing"]
+    ids: ["gujing-gu20", "yanghe-m9-52", "guojiao1573"]
   },
   {
     name: "adventurous",
