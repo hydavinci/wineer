@@ -8,7 +8,7 @@
     <button class="button-secondary" bindtap="resetFilters">重试加载</button>
   </view>
   <block wx:else>
-    <view class="card catalog-filters">
+    <view class="catalog-filters">
       <text class="catalog-title">浏览酒库</text>
       <text class="muted catalog-description">共 {{total}} 条已入库资料，按参考价从低到高展示，不是推荐排名。含待核实估值；购买前请核实规格与报价。</text>
       <input class="catalog-search" value="{{query}}" bindinput="onSearchInput" maxlength="80" placeholder="搜索酒名、品牌或规格" placeholder-class="muted" confirm-type="search" />
@@ -22,7 +22,7 @@
       </view>
       <view class="catalog-summary">
         <text class="muted">找到 {{resultCount}} 条资料</text>
-        <button wx:if="{{query || priceIndex || aromaIndex}}" class="catalog-reset" bindtap="resetFilters">清除筛选</button>
+        <button wx:if="{{query || priceIndex || aromaIndex}}" class="button-link catalog-reset" bindtap="resetFilters">清除筛选</button>
       </view>
     </view>
     <view wx:if="{{!resultCount}}" class="card catalog-state">
@@ -30,7 +30,7 @@
       <text class="muted">试试更短的酒名，或清除价格、香型筛选。</text>
       <button class="button-secondary" bindtap="resetFilters">查看全部酒库</button>
     </view>
-    <view class="catalog-list">
+    <view wx:if="{{resultCount}}" class="catalog-list">
       <view wx:for="{{wines}}" wx:key="id" class="catalog-item">
         <wine-card wine="{{item}}" catalog-mode="{{true}}" bind:buy="copyPurchaseKeyword" />
       </view>

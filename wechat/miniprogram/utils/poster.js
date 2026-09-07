@@ -68,28 +68,28 @@ function drawPoster(canvas, width, height, model) {
   const cardGap = height * 0.025;
   const firstCardY = height * 0.25;
 
-  context.fillStyle = "#1a1210";
+  context.fillStyle = "#f7f6f2";
   context.fillRect(0, 0, width, height);
 
-  context.fillStyle = "#e0be6a";
+  context.fillStyle = "#242722";
   context.font = `bold ${Math.round(width * 0.065)}px sans-serif`;
   context.fillText(model.title, horizontalPadding, height * 0.095);
 
-  context.fillStyle = "#cbbcaf";
+  context.fillStyle = "#696c65";
   context.font = `${Math.round(width * 0.035)}px sans-serif`;
   context.fillText(model.subtitle, horizontalPadding, height * 0.15);
 
   model.wines.forEach((wine, index) => {
     const cardY = firstCardY + index * (cardHeight + cardGap);
     roundedRect(context, horizontalPadding, cardY, cardWidth, cardHeight, width * 0.025);
-    context.fillStyle = "#2e211d";
+    context.fillStyle = "#ffffff";
     context.fill();
 
-    context.fillStyle = "#e0be6a";
+    context.fillStyle = "#80603a";
     context.font = `bold ${Math.round(width * 0.035)}px sans-serif`;
     context.fillText(`TOP ${wine.rank}`, horizontalPadding + width * 0.035, cardY + cardHeight * 0.25);
 
-    context.fillStyle = "#f2e9df";
+    context.fillStyle = "#242722";
     context.font = `bold ${Math.round(width * 0.043)}px sans-serif`;
     const nameX = horizontalPadding + width * 0.035;
     const nameY = cardY + cardHeight * 0.5;
@@ -97,20 +97,20 @@ function drawPoster(canvas, width, height, model) {
       context.fillText(line, nameX, nameY + lineIndex * width * 0.052);
     });
 
-    context.fillStyle = "#a99a8c";
+    context.fillStyle = "#696c65";
     context.font = `${Math.round(width * 0.027)}px sans-serif`;
     context.fillText(wine.details, nameX, cardY + cardHeight * 0.85);
 
-    context.fillStyle = "#e0be6a";
+    context.fillStyle = "#80603a";
     context.font = `bold ${Math.round(width * 0.033)}px sans-serif`;
     context.fillText(wine.rankLabel, horizontalPadding + cardWidth * 0.76, cardY + cardHeight * 0.52);
   });
 
-  context.fillStyle = "#cbbcaf";
+  context.fillStyle = "#696c65";
   context.font = `bold ${Math.round(width * 0.029)}px sans-serif`;
   context.fillText(model.sharePrompt, horizontalPadding, height * 0.89);
 
-  context.fillStyle = "#8f8176";
+  context.fillStyle = "#696c65";
   context.font = `${Math.round(width * 0.026)}px sans-serif`;
   context.fillText(model.disclaimer, horizontalPadding, height * 0.94);
 }

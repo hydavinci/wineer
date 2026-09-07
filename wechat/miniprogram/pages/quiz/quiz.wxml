@@ -4,7 +4,7 @@
     <button class="button-primary" bindtap="confirmAge">确认后继续</button>
   </view>
   <block wx:else>
-  <view class="quiz-head card">
+  <view class="quiz-head">
     <text class="quiz-title">先定预算，再选场景</text>
     <text class="quiz-description muted">选好每瓶预算和用途即可推荐；口味、品牌和尝新偏好可按需展开微调。</text>
     <text wx:if="{{focusDimension}}" class="quiz-focus-hint">已保留所有选择，请调整下方标记的选项。</text>
@@ -16,7 +16,7 @@
       <text class="slider-hint muted">{{dimensions[0].hint}}</text>
       <radio-group class="option-list" data-key="budget" bindchange="selectOption">
         <label wx:for="{{budgetOptions}}" wx:key="value" class="option-item {{budgetSelected === item.value ? 'option-selected' : ''}}">
-          <radio value="{{item.value}}" checked="{{budgetSelected === item.value}}" disabled="{{resultBusy}}" color="#c9a24b" />
+          <radio value="{{item.value}}" checked="{{budgetSelected === item.value}}" disabled="{{resultBusy}}" color="#80603a" />
           <text>{{item.label}}</text>
         </label>
       </radio-group>
@@ -24,9 +24,9 @@
     </view>
     <view class="card option-card">
       <text class="slider-title">这次主要用来做什么？</text>
-      <radio-group class="option-list" data-key="occasion" bindchange="selectOption">
+      <radio-group class="option-list occasion-options" data-key="occasion" bindchange="selectOption">
         <label wx:for="{{occasionOptions}}" wx:key="value" class="option-item {{occasionSelected === item.value ? 'option-selected' : ''}}">
-          <radio value="{{item.value}}" checked="{{occasionSelected === item.value}}" disabled="{{resultBusy}}" color="#c9a24b" />
+          <radio value="{{item.value}}" checked="{{occasionSelected === item.value}}" disabled="{{resultBusy}}" color="#80603a" />
           <text>{{item.label}}</text>
         </label>
       </radio-group>
@@ -48,9 +48,9 @@
         step="1"
         value="{{item.value}}"
         disabled="{{resultBusy}}"
-        activeColor="#e0be6a"
-        backgroundColor="rgba(201, 162, 75, 0.16)"
-        block-color="#e0be6a"
+        activeColor="#80603a"
+        backgroundColor="#ddded6"
+        block-color="#80603a"
         data-key="{{item.key}}"
         bindchanging="onSliderChange"
         bindchange="onSliderChange"
@@ -63,7 +63,10 @@
     </view>
     </block>
   </view>
-  <button class="button-secondary" bindtap="toggleAdvanced">{{advanced ? '收起口味等偏好' : '展开口味、品牌和尝新偏好'}}</button>
+  <button class="button-link advanced-toggle" bindtap="toggleAdvanced">
+    <text>{{advanced ? '收起更多偏好' : '展开口味、品牌和尝新偏好'}}</text>
+    <view class="advanced-chevron {{advanced ? 'is-open' : ''}}"></view>
+  </button>
 
   <button
     class="button-primary quiz-submit"
@@ -71,6 +74,6 @@
     disabled="{{resultBusy}}"
     bindtap="showResults"
   >查看推荐（最多 3 款）</button>
-  <button class="button-secondary" disabled="{{resultBusy}}" bindtap="resetAnswers">恢复默认选择</button>
+  <button class="button-link" disabled="{{resultBusy}}" bindtap="resetAnswers">恢复默认选择</button>
   </block>
 </view>

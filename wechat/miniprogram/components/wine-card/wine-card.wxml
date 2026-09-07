@@ -1,16 +1,15 @@
-<view class="wine-card {{!catalogMode && wine.rank === 1 ? 'wine-card-main' : ''}}">
+<view class="wine-card {{catalogMode ? 'wine-card-catalog' : wine.rank === 1 ? 'wine-card-main' : ''}}">
   <view class="wine-card-head">
     <view class="wine-card-copy">
-      <text class="wine-rank">{{catalogMode ? '酒库资料' : wine.rank === 1 ? '优先考虑这一款' : wine.rankLabel}}</text>
+      <text wx:if="{{!catalogMode}}" class="wine-rank">{{wine.rank === 1 ? '优先推荐' : wine.rankLabel}}</text>
       <text class="wine-name">{{wine.name}}</text>
       <text class="wine-brand">{{wine.specText}}</text>
     </view>
   </view>
 
   <view class="wine-tags">
-    <text class="wine-tag">{{wine.aroma}}型</text>
-    <text class="wine-tag">{{wine.abv}}度</text>
-    <text class="wine-tag">参考价约 ¥{{wine.price}} / 瓶</text>
+    <text class="wine-tag">{{wine.aroma}}型 · {{wine.abv}}度</text>
+    <view class="wine-price"><text class="wine-price-label">参考价 </text><text class="wine-price-value">¥{{wine.price}}</text><text class="wine-price-label"> / 瓶</text></view>
   </view>
   <text wx:if="{{!catalogMode}}" class="wine-why">{{wine.whyText}}</text>
   <text wx:if="{{!catalogMode}}" class="wine-block-text">权衡：{{wine.tradeoffText}}</text>

@@ -15,7 +15,7 @@
   display: block;
   font-size: 38rpx;
   font-weight: 700;
-  color: #f2e9df;
+  color: #242722;
 }
 
 .result-state-copy {
@@ -35,21 +35,15 @@
 }
 
 .result-eyebrow {
-  display: inline-block;
-  align-self: flex-start;
-  padding: 10rpx 18rpx;
-  border-radius: 999rpx;
-  background: rgba(201, 162, 75, 0.14);
-  font-size: 22rpx;
-  font-weight: 700;
-  color: #e0be6a;
+  color: #80603a;
+  font-size: 26rpx;
 }
 
 .result-title {
   display: block;
-  font-size: 40rpx;
+  font-size: 42rpx;
   font-weight: 700;
-  color: #f2e9df;
+  color: #242722;
 }
 
 .result-description {
@@ -58,15 +52,22 @@
   line-height: 1.8;
 }
 
-.result-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20rpx;
+.result-actions,
+.result-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8rpx 16rpx;
+}
+
+.result-navigation {
+  padding-top: 12rpx;
+  border-top: 1rpx solid #ddded6;
 }
 
 .result-buy-hint {
   display: block;
-  font-size: 24rpx;
+  font-size: 26rpx;
   line-height: 1.7;
 }
 
@@ -80,8 +81,8 @@
   display: flex;
   flex-direction: column;
   gap: 24rpx;
-  padding: 32rpx;
-  font-size: 25rpx;
+  padding: 28rpx;
+  font-size: 26rpx;
   line-height: 1.7;
 }
 
@@ -90,7 +91,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 16rpx;
-  margin-bottom: 16rpx;
 }
 
 .poster-canvas {

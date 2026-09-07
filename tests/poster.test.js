@@ -34,8 +34,8 @@ test("drawPoster uses the supplied canvas context", () => {
     beginPath: (...args) => calls.push(["beginPath", ...args]),
     closePath: (...args) => calls.push(["closePath", ...args]),
     fill: (...args) => calls.push(["fill", ...args]),
-    fillRect: (...args) => calls.push(["fillRect", ...args]),
-    fillText: (...args) => calls.push(["fillText", ...args]),
+    fillRect: (...args) => calls.push(["fillRect", ...args, context.fillStyle]),
+    fillText: (...args) => calls.push(["fillText", ...args, context.fillStyle]),
     lineTo: (...args) => calls.push(["lineTo", ...args]),
     measureText: text => ({ width: String(text).length * 20 }),
     moveTo: (...args) => calls.push(["moveTo", ...args]),
@@ -49,4 +49,7 @@ test("drawPoster uses the supplied canvas context", () => {
   assert.ok(calls.some(([name]) => name === "fillRect"));
   assert.ok(calls.some(([name]) => name === "fillText"));
   assert.ok(calls.some(([name, text]) => name === "fillText" && text === model.sharePrompt));
+  assert.equal(calls.find(([name]) => name === "fillRect").at(-1), "#f7f6f2");
+  assert.equal(calls.find(([name, text]) => name === "fillText" && text === model.title).at(-1), "#242722");
+  assert.equal(calls.find(([name, text]) => name === "fillText" && text === model.disclaimer).at(-1), "#696c65");
 });

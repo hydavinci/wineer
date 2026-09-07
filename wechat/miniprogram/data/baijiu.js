@@ -3,9 +3,9 @@
 module.exports = {
   "meta": {
     "name": "Wineer 白酒数据库",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "updated": "2026-09-07",
-    "note": "共145条酒款资料，扩容目标200款。价格区分未核实估值、商家报价、官方指导价和挂牌价，仅作预算参考，非实时成交报价。逐款证据及身份冲突见catalog-provenance.json；分档目标见catalog-targets.json。",
+    "note": "共146条酒款资料，扩容目标200款。价格区分未核实估值、商家报价、官方指导价和挂牌价，仅作预算参考，非实时成交报价。逐款证据及身份冲突见catalog-provenance.json；分档目标见catalog-targets.json。",
     "schema": {
       "id": "唯一标识",
       "identityGroup": "可选：经核实同一产品的分组，保留旧ID但推荐只占一席；疑似同款不填写",
@@ -2141,7 +2141,7 @@ module.exports = {
       "brand": "汾酒",
       "aroma": "清香",
       "abv": 53,
-      "price": 55,
+      "price": 56.5,
       "priceTier": "口粮",
       "taste": [
         "清香",
@@ -2156,13 +2156,13 @@ module.exports = {
       "beginner": 5,
       "region": "山西杏花村",
       "highlight": "清香口粮标杆，便宜、干净、适合长期自饮",
-      "caution": "包装太朴素，送礼宴请不够看。与玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
+      "caution": "包装太朴素，送礼宴请不够看。56.50元仅为苏宁聚合页的单瓶展示价，商家结算价及库存未核实。与玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
       "volumeMl": 475,
       "edition": null,
       "source": "https://www.suning.com/item/0000000000/612856581.html",
-      "priceSource": null,
-      "priceUpdated": null,
-      "priceBasis": "estimate"
+      "priceSource": "https://www.suning.com/item/0000000000/612856581.html",
+      "priceUpdated": "2026-09-07",
+      "priceBasis": "listing"
     },
     {
       "id": "fenjiu-laobaifen10",
@@ -4181,6 +4181,33 @@ module.exports = {
       "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
       "priceBasis": "listing",
       "priceSource": "https://detail.youzan.com/show/goods?alias=26wl5g4yo2bs3&from_source=gbox_seo",
+      "priceUpdated": "2026-09-07"
+    },
+    {
+      "id": "luzhou-1952-52",
+      "name": "泸州老窖1952 52度",
+      "brand": "泸州老窖",
+      "aroma": "浓香",
+      "abv": 52,
+      "price": 752,
+      "priceTier": "高端",
+      "taste": [
+        "浓香风格（按香型归类）"
+      ],
+      "scene": [
+        "家庭聚餐",
+        "商务宴请",
+        "送礼"
+      ],
+      "beginner": 3,
+      "region": "四川泸州",
+      "highlight": "52度、500mL浓香型；1952为产品名称，不是生产年份",
+      "caution": "场景和新手适应评分为规则推断，未做实饮评测；752元为银行商城第三方供应商单瓶展示价，采用全额支付价格，不采用分期月供。购买资格、库存、运费及实际结算价未核实，不代表全国通用到手价。1952为产品名称，不据此推断出厂年份或酒龄。",
+      "volumeMl": 500,
+      "edition": null,
+      "source": "https://www.lzlj.com/brand/1952/3772.html",
+      "priceBasis": "listing",
+      "priceSource": "https://shop.jshbank.com/ccmall/product/productDetail?productId=107141",
       "priceUpdated": "2026-09-07"
     }
   ]

@@ -1,6 +1,6 @@
 {
   "reviewedAt": "2026-09-07",
-  "catalogVersion": "0.4.1",
+  "catalogVersion": "0.4.2",
   "note": "未入推荐库的候选或待核实条目；不要直接当作已确认SKU、价格或产品推荐。",
   "entries": [
     {
@@ -377,12 +377,16 @@
       "priceUpdated": null,
       "evidence": [
         {
+          "url": "https://item.jd.com/product/ZQvYnC57Dw8mChDHH19xMg.html",
+          "summary": "0.4.2复核原始HTML主购买区：红运郎三十53度500mL一瓶，商家限定2021至2022年出厂年份随机，展示价2000元，提示登录查看到手价。仅存证，不把特定陈年版本价格赋给当前无年份限定的候选；储存条件、库存与结算未核实。"
+        },
+        {
           "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=96",
           "summary": "厂家红运郎详情明确53%vol、500mL、酱香型；产区文字为云贵高原与四川盆地接壤的赤水河左岸。"
         }
       ],
       "notes": "未把叁拾年寓意当作全酒体酒龄；地区保留厂家可验证范围，不补未经该详情证实的镇名。",
-      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+      "reason": "已取得限定出厂年份的商家展示价，但未确认与当前无年份限定候选一致，不套价入库"
     },
     {
       "id": "diaoyutai-yueji-53",
@@ -744,33 +748,6 @@
         }
       ],
       "notes": "不宣称酒液陈年90年，不把同款不同度数全部铺开扩数。",
-      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
-    },
-    {
-      "id": "luzhou-1952-52",
-      "name": "泸州老窖1952 52度",
-      "brand": "泸州老窖",
-      "aroma": "浓香",
-      "abv": 52,
-      "volumeMl": 500,
-      "edition": null,
-      "region": "四川泸州",
-      "source": "https://www.lzlj.com/brand/1952/3772.html",
-      "price": null,
-      "priceBasis": null,
-      "priceSource": null,
-      "priceUpdated": null,
-      "evidence": [
-        {
-          "url": "https://www.lzlj.com/brand/1952/3772.html",
-          "summary": "厂家独立产品详情明确泸州老窖1952、浓香型、包含52%vol、500ml。"
-        },
-        {
-          "url": "https://www.lzlj.com/contact/",
-          "summary": "厂家确认泸州老窖股份有限公司及四川泸州地址。"
-        }
-      ],
-      "notes": "1952为产品名称及纪念含义，不是生产年份；没有把定位词换算成价格。",
       "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
     },
     {
@@ -1481,12 +1458,16 @@
       "priceUpdated": null,
       "evidence": [
         {
+          "url": "https://item.jd.com/product/tYd17NZHimhZPqyes9FE0g.html",
+          "summary": "0.4.2复核原始HTML主购买区：商家标为金标大曲第六代50度500mL一瓶，展示价32元，提示登录查看到手价。主商品价格不是推荐卡片报价，但厂家金标与六代大曲分列，且现有baofeng-daqu身份未清，暂不新增或合并；商家主体、库存、运费与结算未核实。"
+        },
+        {
           "url": "https://www.hnbfjy.com/html/product/product4/gaoxianguangping/58.html",
           "summary": "已读取厂家金标与六代大曲分列页面；金标参数包括50%vol、500ml，文字明确清香风格，厂址宝丰县。"
         }
       ],
-      "notes": "厂家金标与大曲分列，但现有baofeng-daqu身份宽泛；建议集成时保留此区分依据，若旧条实际为金标则应转为完善旧条而非新增。未取得明确报价。",
-      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+      "notes": "厂家金标与大曲分列，但现有baofeng-daqu身份宽泛；若旧条实际为金标，应完善旧条而非新增。现有商家展示价仅作证据，不解除该身份审查。",
+      "reason": "取得商家展示价，但与既有大曲条目的潜在重复身份尚未排除，不以新增数量掩盖旧条身份问题"
     },
     {
       "id": "baofeng-guose25-50",

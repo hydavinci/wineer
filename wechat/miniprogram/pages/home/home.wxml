@@ -1,19 +1,18 @@
 <view class="page home-page">
-  <view class="card home-card">
+  <view class="home-content">
     <view class="home-logo-wrap">
-      <text class="home-logo-mark">🍶</text>
       <text class="home-logo-text">Wineer</text>
     </view>
 
-    <text class="home-title">白酒推荐</text>
-    <text class="home-description muted">回答几个问题，帮你选到对味的那一款白酒</text>
+    <text class="home-title">选一瓶对味的酒</text>
+    <text class="home-description muted">选好预算和场景，找到适合你的白酒。</text>
 
     <view class="home-warning">
-      <text class="muted">本站内容涉及酒精饮品，仅供 18 岁及以上人士浏览。</text>
+      <text class="muted">仅供年满 18 岁人士浏览。</text>
       <text class="muted">过量饮酒有害健康，请理性饮酒。</text>
     </view>
 
     <button class="button-primary home-start" loading="{{navigationBusy}}" disabled="{{navigationBusy}}" bindtap="startQuiz">我已满 18 岁，开始</button>
-    <button class="button-secondary home-browse" disabled="{{navigationBusy}}" bindtap="openCatalog">先浏览酒库</button>
+    <button class="button-link home-browse" disabled="{{navigationBusy}}" bindtap="openCatalog">先浏览酒库</button>
   </view>
 </view>

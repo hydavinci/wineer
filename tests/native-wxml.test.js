@@ -63,8 +63,15 @@ test("native quiz renders labeled options, retains legacy selections and reveals
     assert.equal(nodes(tree, "wx-slider").length, 0);
     const selected = nodes(tree, "wx-radio").filter(node => node.attr.checked);
     assert.deepEqual(selected.map(node => String(node.attr.value)), ["4", "4"]);
+    const toggle = nodes(tree, "wx-button").find(node => node.attr.bindtap === "toggleAdvanced");
+    assert.match(JSON.stringify(toggle), /展开.*偏好/);
+    assert.ok(nodes(toggle, "wx-view").some(node => node.attr.class.includes("advanced-chevron")));
     page.toggleAdvanced();
-    assert.equal(nodes(render("pages/quiz/quiz.wxml", page.data), "wx-slider").length, 4);
+    const expanded = render("pages/quiz/quiz.wxml", page.data);
+    assert.equal(nodes(expanded, "wx-slider").length, 4);
+    const collapse = nodes(expanded, "wx-button").find(node => node.attr.bindtap === "toggleAdvanced");
+    assert.match(JSON.stringify(collapse), /收起.*偏好/);
+    assert.ok(nodes(collapse, "wx-view").some(node => node.attr.class.includes("is-open")));
     page.setData({ agePending: true });
     assert.equal(nodes(render("pages/quiz/quiz.wxml", page.data), "wx-radio").length, 0);
   } finally {
@@ -83,6 +90,8 @@ test("native result omits feedback prompts while retaining adjustment, sharing a
     assert.ok(!JSON.stringify(before).includes("默认只保存在本机"), "omit the unconfigured feedback/status card");
     const buttons = nodes(before, "wx-button");
     assert.equal(buttons.filter(node => node.attr.bindtap === "adjustPreferences").length, 1);
+    assert.ok(buttons.find(node => node.attr.bindtap === "adjustPreferences").attr.class.includes("button-primary"));
+    assert.ok(!buttons.find(node => node.attr.openType === "share").attr.class.includes("button-primary"));
     assert.equal(buttons.filter(node => node.attr.bindtap === "generatePoster").length, 1);
     assert.equal(buttons.filter(node => node.attr.openType === "share").length, 1);
     assert.equal(buttons.filter(node => /Feedback/.test(node.attr.bindtap || "")).length, 0);
@@ -111,6 +120,7 @@ test("native browsing exposes filters and empty recovery without suggesting a re
       catalogMode: true, expanded: false
     }));
     assert.ok(!card.includes("优先考虑这一款"));
+    assert.ok(!card.includes("酒库资料"), "do not repeat the catalog badge on every row");
     assert.ok(!card.includes("权衡："));
     assert.ok(card.includes("PURCHASE_CAUTION"));
     assert.ok(card.includes("PRICE_UNCERTAINTY"));

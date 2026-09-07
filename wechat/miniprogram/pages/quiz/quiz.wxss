@@ -7,9 +7,9 @@
 .quiz-title {
   display: block;
   margin-bottom: 14rpx;
-  font-size: 38rpx;
+  font-size: 42rpx;
   font-weight: 700;
-  color: #f2e9df;
+  color: #242722;
 }
 
 .quiz-description {
@@ -25,8 +25,8 @@
 }
 
 .slider-card {
-  padding-top: 40rpx;
-  padding-bottom: 40rpx;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
 }
 
 .slider-top {
@@ -47,31 +47,31 @@
   font-size: 30rpx;
   font-weight: 700;
   line-height: 1.5;
-  color: #f2e9df;
+  color: #242722;
 }
 
 .slider-hint {
   display: block;
-  font-size: 24rpx;
+  font-size: 26rpx;
   line-height: 1.7;
 }
 
 .slider-value {
   min-width: 72rpx;
   padding: 10rpx 0;
-  border-radius: 18rpx;
-  background: rgba(201, 162, 75, 0.14);
+  border-radius: 12rpx;
+  background: #f3ede2;
   font-size: 30rpx;
   font-weight: 700;
   text-align: center;
-  color: #e0be6a;
+  color: #80603a;
 }
 
 .slider-labels {
   display: flex;
   justify-content: space-between;
   margin-top: 8rpx;
-  font-size: 22rpx;
+  font-size: 24rpx;
   line-height: 1.6;
 }
 
@@ -79,37 +79,62 @@
   margin-top: 8rpx;
 }
 
+.advanced-toggle {
+  gap: 16rpx;
+  color: #80603a;
+}
+
+.advanced-chevron {
+  flex-shrink: 0;
+  width: 12rpx;
+  height: 12rpx;
+  margin-top: -6rpx;
+  border-right: 2rpx solid currentColor;
+  border-bottom: 2rpx solid currentColor;
+  transform: rotate(45deg);
+}
+
+.advanced-chevron.is-open {
+  margin-top: 6rpx;
+  transform: rotate(225deg);
+}
+
 .option-card {
   padding: 32rpx;
 }
 
 .option-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16rpx;
-  margin: 24rpx 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12rpx;
+  margin: 20rpx 0;
 }
 
 .option-item {
   display: flex;
   align-items: center;
-  min-height: 88rpx;
+  min-width: 0;
+  min-height: 44px;
   box-sizing: border-box;
-  padding: 16rpx 20rpx;
-  border: 2rpx solid #574339;
-  border-radius: 20rpx;
-  font-size: 28rpx;
+  padding: 16rpx 12rpx;
+  border: 1rpx solid #ddded6;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+}
+
+.occasion-options .option-item:last-child {
+  grid-column: 1 / -1;
 }
 
 .option-selected,
 .option-focused {
-  border-color: #e0be6a;
-  background: rgba(201, 162, 75, 0.12);
+  border-color: #80603a;
+  background: #f3ede2;
 }
 
 .quiz-focus-hint {
   display: block;
   margin-top: 20rpx;
-  color: #e0be6a;
+  color: #80603a;
   font-size: 26rpx;
 }

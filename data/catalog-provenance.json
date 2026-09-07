@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-09-07",
-  "catalogVersion": "0.4.1",
+  "catalogVersion": "0.4.2",
   "policy": {
     "scope": "逐条记录产品规格证据与身份冲突，不代表口感评分或所有原始字段均已核实。",
     "unknowns": "没有可靠依据的字段保留null；不以相近度数、同系列其他容量或包装代替。",
     "prices": "价格口径独立标记为估值、商家报价、官方指导价或挂牌价；后三类有来源和观察记录日期也不等于实时成交报价。",
     "dates": "reviewedAt是资料核对日期；已采用报价的priceUpdated为观察记录日期，不冒充页面发布日期或成交日期。",
     "heuristics": "新入库酒款未做实饮评分；beginner=3为中性占位，场景按价段推断，taste按香型归类，卡片明确提示。",
-    "legacyPriceClassification": "原100款仅将1915已有挂牌证据标记listing，其余原参考价标记estimate；这是证据状态分类，不是新增价格核实。"
+    "legacyPriceClassification": "初次分类时，原100款仅将1915已有挂牌证据标记listing，其余原参考价标记estimate；后续按逐项priceEvidence记录更新，不把产品规格来源视为价格凭据。"
   },
   "followUpPriceReview": {
     "observedAt": "2026-09-07",
@@ -33,6 +33,63 @@
         "id": "yubingshao",
         "source": "https://shiwanmall.com/Default",
         "reason": "商城访问超时；检索线索为30.3度或29度等不同产品，未证明原记录30度SKU，不能换度数或拆算整箱价格。"
+      }
+    ]
+  },
+  "latestPriceReview": {
+    "catalogVersion": "0.4.2",
+    "observedAt": "2026-09-07",
+    "scope": "继续复核高曝光酒款及未入库候选；采用可匹配规格与单瓶单位的展示价并标为listing，不升级为实时零售价。候选的版本、重复身份与包装数量阻塞独立记录。",
+    "notAdopted": [
+      {
+        "id": "qinghua30",
+        "source": "https://www.suning.com/item/0000000000/12401683119.html",
+        "reason": "直接HTML确认53度500mL复兴版单瓶；875元仅位于display:none的标题价格字段，未取得对应的可见商家报价行，不把隐藏字段作为展示报价。保留原估值及待核实状态。"
+      },
+      {
+        "id": "fenjiu-laobaifen15",
+        "source": "https://item.jd.com/product/-QZM0WAd187kGl6yOBT-kQ.html",
+        "reason": "直接HTML标题确认封坛15、53度475mL单瓶，未取得可绑定主商品的价格。推荐商品卡价格不能代替主商品报价，不更新价格口径或观察日期。"
+      },
+      {
+        "id": "baofeng-jinbiao-50",
+        "source": "https://item.jd.com/product/tYd17NZHimhZPqyes9FE0g.html",
+        "reason": "已记录50度500mL一瓶的32元主商品展示价，但既有baofeng-daqu身份仍宽泛，未排除重复；厂家金标与六代大曲分列，不凭商家别名直接合并或新增。完整条件另存候选证据。"
+      },
+      {
+        "id": "langjiu-hongyun-53",
+        "source": "https://item.jd.com/product/ZQvYnC57Dw8mChDHH19xMg.html",
+        "reason": "2000元主商品展示价限定2021至2022年出厂年份随机的53度500mL一瓶陈年商品，不套给没有年份限定的通用候选。完整条件另存候选证据。"
+      },
+      {
+        "id": "jiannanchun-zhencangji-52",
+        "source": "https://item.jd.com/product/L_QnVuM1V1pE8Cik8HpB7Q.html",
+        "reason": "读取到52度500mL珍藏级主商品578元展示价，但未取得明确包装数量；不凭默认理解或评论认定单瓶。"
+      },
+      {
+        "id": "langjiu-xiaolang-45",
+        "source": "https://item.jd.com/product/hY6YVbA3z-XiGE73XRUG-g.html",
+        "reason": "可读商品正文出现经典45度100mL一瓶和90元展示价，但未厘清该标价条件，也未追加原始HTML主购买区核对。本轮只保留线索，不当作常规单瓶预算依据。"
+      },
+      {
+        "id": "luzhou-jiaoling30-52",
+        "source": "https://www.suning.com/item/0000000000/12430158520.html",
+        "reason": "标题确认52度500mL单瓶、新老包装随机发；后续直接HTML未复现早前229元线索对应的主商品报价，不使用推荐区其他酒款价格。"
+      },
+      {
+        "id": "luzhou-jiaoling60-52",
+        "source": "https://item.jd.com/100145554812.html",
+        "reason": "直接HTML仅返回京东通用页面壳，无主商品正文或价格；停止重试，未采用列表摘要。"
+      },
+      {
+        "id": "zhenjiu-zhen8-53",
+        "source": "https://item.jd.com/4369755.html",
+        "reason": "直接HTML仅返回京东通用页面壳，无主商品正文或价格；未采用搜索摘要或双瓶价拆算。"
+      },
+      {
+        "id": "zhenjiu-zhen10-53",
+        "source": "https://item.jd.com/100007935894.html",
+        "reason": "直接HTML仅返回京东通用页面壳，无主商品正文或价格；未猜测映射至其他商品页。"
       }
     ]
   },
@@ -1172,15 +1229,22 @@
     {
       "id": "fenjiu-huanggaibofen",
       "appliedFields": {
-        "caution": "包装太朴素，送礼宴请不够看。与玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
+        "caution": "包装太朴素，送礼宴请不够看。56.50元仅为苏宁聚合页的单瓶展示价，商家结算价及库存未核实。与玻汾53度疑似同款，条码及版本映射待核实，不宜当作两个独立产品比较。",
         "volumeMl": 475,
         "source": "https://www.suning.com/item/0000000000/612856581.html",
-        "priceBasis": "estimate"
+        "price": 56.5,
+        "priceSource": "https://www.suning.com/item/0000000000/612856581.html",
+        "priceUpdated": "2026-09-07",
+        "priceBasis": "listing"
       },
       "evidence": [
         {
+          "url": "https://www.suning.com/item/0000000000/612856581.html",
+          "summary": "0.4.2复核直接商品聚合页原始HTML：标题为黄盖玻汾53度475mL单瓶，t-price及商家报价行均为56.50元。仅采用为聚合展示价listing，不认定为已核实的商家零售价；商家落地页结算与库存仍未核实。"
+        },
+        {
           "url": "https://detail.youzan.com/show/goods?alias=2oiv4ynm7sfa7&from_source=gbox_seo",
-          "summary": "2026-09-07读取官方旗舰店，53度475mL商品标题同时使用玻汾和黄盖名称，但仍无目录条码或版本映射。283元是六瓶装；苏宁聚合展示56.50元未取得商家落地页主价格，均不采用为单瓶核实价。"
+          "summary": "0.4.1核对时，53度475mL商品标题同时使用玻汾和黄盖名称，但仍无目录条码或版本映射。283元是六瓶装，不拆算单瓶。苏宁聚合展示56.50元当时暂缓采用，后续采纳口径见0.4.2证据，不等于商家主价格已核实。"
         },
         {
           "url": "https://www.suning.com/item/0000000000/612856581.html",
@@ -1191,7 +1255,14 @@
           "summary": "已读取厂家普通53度玻瓶汾酒页面，参数为475mL，与黄盖玻汾规格一致。"
         }
       ],
-      "reviewNotes": "与fenjiu-bofen高度疑似重复；未取得不同条码、出口标或版本证据，不删除、不合并，不虚构edition。"
+      "reviewNotes": "与fenjiu-bofen高度疑似重复；未取得不同条码、出口标或版本证据，不删除、不合并，不虚构edition，也不把本条挂牌价复制至该疑似别名。观察日期不代表报价更新或成交日期。",
+      "priceEvidence": {
+        "price": 56.5,
+        "priceBasis": "listing",
+        "priceSource": "https://www.suning.com/item/0000000000/612856581.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
     },
     {
       "id": "fenjiu-laobaifen10",
@@ -4063,6 +4134,64 @@
         "price": 1099,
         "priceBasis": "listing",
         "priceSource": "https://detail.youzan.com/show/goods?alias=26wl5g4yo2bs3&from_source=gbox_seo",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "luzhou-1952-52",
+      "addedIn": "0.4.2",
+      "appliedFields": {
+        "id": "luzhou-1952-52",
+        "name": "泸州老窖1952 52度",
+        "brand": "泸州老窖",
+        "aroma": "浓香",
+        "abv": 52,
+        "price": 752,
+        "priceTier": "高端",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "四川泸州",
+        "highlight": "52度、500mL浓香型；1952为产品名称，不是生产年份",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；752元为银行商城第三方供应商单瓶展示价，采用全额支付价格，不采用分期月供。购买资格、库存、运费及实际结算价未核实，不代表全国通用到手价。1952为产品名称，不据此推断出厂年份或酒龄。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.lzlj.com/brand/1952/3772.html",
+        "priceBasis": "listing",
+        "priceSource": "https://shop.jshbank.com/ccmall/product/productDetail?productId=107141",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/1952/3772.html",
+          "summary": "厂家独立产品详情明确泸州老窖1952、浓香型、包含52%vol、500ml。1952为名称与纪念含义，不是该瓶生产年份。"
+        },
+        {
+          "url": "https://www.lzlj.com/contact/",
+          "summary": "厂家确认泸州老窖股份有限公司及四川泸州地址。"
+        },
+        {
+          "url": "https://shop.jshbank.com/ccmall/product/productDetail?productId=107141",
+          "summary": "2026-09-07直接商品正文及原始HTML确认商品编号298458：泸州老窖1952、52度500mL单瓶，商城价752.00元；页面区分全额支付与分期。采用全额价，不拆算月供或使用含息金额。页面披露第三方供应商供货；购买资格、库存、运费及结算未核实。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner"
+      ],
+      "reviewNotes": "从候选移入>500–900元档。仅为特定商城挂牌信息，不保证非持卡用户可购买，也不认定为厂家零售价。观察日期不冒充上架或报价生效日期。",
+      "priceEvidence": {
+        "price": 752,
+        "priceBasis": "listing",
+        "priceSource": "https://shop.jshbank.com/ccmall/product/productDetail?productId=107141",
         "priceUpdated": "2026-09-07",
         "adopted": true
       }

@@ -38,9 +38,9 @@ test("app config starts with the home page and shell styling", () => {
     "pages/result/result",
     "pages/catalog/catalog"
   ]);
-  assert.equal(config.window.navigationBarTitleText, "Wineer 白酒推荐");
-  assert.equal(config.window.navigationBarBackgroundColor, "#1a1210");
-  assert.equal(config.window.navigationBarTextStyle, "white");
-  assert.equal(config.window.backgroundColor, "#1a1210");
+  assert.equal(config.window.navigationBarTitleText, "杯中札记");
+  assert.equal(config.window.navigationBarBackgroundColor, "#f7f6f2");
+  assert.equal(config.window.navigationBarTextStyle, "black");
+  assert.equal(config.window.backgroundColor, "#f7f6f2");
   assert.equal(config.sitemapLocation, "sitemap.json");
 });
