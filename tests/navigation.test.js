@@ -3,6 +3,10 @@ const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
 const { DIMENSIONS, defaultAnswers } = require("../shared/recommender");
+const { createWx, setPageData } = require("./helpers/miniprogram");
+
+test.beforeEach(() => { global.wx = createWx(); });
+test.afterEach(() => { delete global.wx; });
 
 const root = path.resolve(__dirname, "..");
 
@@ -28,10 +32,8 @@ function loadPageDefinition(relativePath) {
 function createPageContext(definition, initialData = {}) {
   return {
     ...definition,
-    data: { ...initialData },
-    setData(nextData) {
-      this.data = { ...this.data, ...nextData };
-    }
+    data: { ...structuredClone(definition.data), agePending: false, ...initialData },
+    setData: setPageData
   };
 }
 
@@ -159,7 +161,9 @@ test("quiz redirects to the encoded result route so restart keeps the page stack
   // Quiz -> result and result -> fresh quiz both replace the current layer,
   // keeping the native stack at [home, current page] while Back still returns home.
   assert.deepEqual(stored.at(-1), {
-    event: "recommend",
+    id: stored.at(-1).id,
+    schemaVersion: 1,
+    event: "recommend_attempt",
     payload: {
       answers: {
         budget: 1,
@@ -208,7 +212,7 @@ test("quiz ignores duplicate result taps while redirect navigation is in flight"
 
   assert.equal(navigationCalls, 1);
   assert.equal(page.data.resultBusy, true);
-  assert.equal(stored.filter(({ event }) => event === "recommend").length, 1);
+  assert.equal(stored.filter(({ event }) => event === "recommend_attempt").length, 1);
 });
 
 test("quiz resets the result busy state and reports redirect failures", () => {
@@ -257,7 +261,7 @@ test("quiz WXML wires continuous slider updates and disables a busy submit", () 
     "utf8"
   );
   const slider = source.match(/<slider[\s\S]*?\/>/)?.[0] || "";
-  const submit = source.match(/<button[\s\S]*?>生成 Top 3 推荐<\/button>/)?.[0] || "";
+  const submit = source.match(/<button\b[^>]*\bbindtap="showResults"[^>]*>/)?.[0] || "";
 
   assert.match(slider, /\bbindchanging="onSliderChange"/);
   assert.match(submit, /\bloading="{{resultBusy}}"/);
@@ -267,27 +271,23 @@ test("quiz WXML wires continuous slider updates and disables a busy submit", () 
 test("home page starts the quiz route", () => {
   const homePage = loadPageDefinition("../wechat/miniprogram/pages/home/home");
   const urls = [];
-  let stored = [];
+  const api = createWx();
 
   global.wx = {
-    getStorageSync() {
-      return stored;
-    },
-    setStorageSync(_key, value) {
-      stored = value;
-    },
+    ...api,
     navigateTo({ url }) {
       urls.push(url);
     }
   };
 
   try {
-    homePage.startQuiz();
+    homePage.startQuiz.call(createPageContext(homePage));
   } finally {
     delete global.wx;
   }
 
-  assert.deepEqual(urls, ["/pages/quiz/quiz"]);
+  assert.deepEqual(urls, ["/pages/quiz/quiz?from=home"]);
+  const stored = api.storage.get("wineer_events");
   assert.equal(stored.at(-1).event, "start_quiz");
   assert.deepEqual(stored.at(-1).payload, { fromShare: false });
 });

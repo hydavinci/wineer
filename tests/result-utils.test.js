@@ -18,15 +18,20 @@ test("builds cards without changing ranking", () => {
 
   assert.deepEqual(cards.map(({ id }) => id), [
     "kouzijiao",
-    "qinghua20",
+    "fenjiu-laobaifen10",
     "shuanggou-shengfang"
   ]);
   assert.equal(cards[0].rank, 1);
-  assert.match(cards[0].whyText, /预算匹配/);
+  assert.match(cards[0].whyText, /预算内/);
+  assert.equal(cards[0].rankLabel, "优先推荐");
+  assert.ok(cards[0].tradeoffText.length > 0);
+  assert.match(cards[0].specText, /500mL/);
+  assert.match(cards[0].qualityNotice, /价格待核实/);
 });
 
 test("builds the approved purchase search keyword", () => {
-  assert.equal(purchaseKeyword(ranked[0].item), `${ranked[0].item.name} 京东搜索`);
+  assert.equal(purchaseKeyword(ranked[0].item), "口子窖 10年兼香型50度 500mL 十年型（50度）");
+  assert.doesNotMatch(purchaseKeyword(ranked[0].item), /京东搜索/);
 });
 
 test("uses the top wine in the share title", () => {
@@ -47,4 +52,10 @@ test("throws a data error when a required display field is missing", () => {
     () => buildResultView(malformedRanked),
     error => error instanceof RecommendationDataError && /field taste/.test(error.message)
   );
+});
+
+test("purchase keywords include known specifications without inventing unknown ones", () => {
+  assert.equal(purchaseKeyword({ name: "测试酒", volumeMl: 475, edition: null }), "测试酒 475mL");
+  assert.equal(purchaseKeyword({ name: "测试酒", volumeMl: null, edition: null }), "测试酒");
+  assert.equal(purchaseKeyword({ name: "测试酒", volumeMl: 500, edition: "21版" }), "测试酒 500mL 21版");
 });

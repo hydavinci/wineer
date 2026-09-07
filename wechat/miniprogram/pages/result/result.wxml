@@ -1,5 +1,10 @@
 <view class="page result-page">
-  <view wx:if="{{isLoading}}" class="card result-state-card">
+  <view wx:if="{{agePending}}" class="card result-state-card">
+    <text class="result-state-title">请先确认已满 18 岁</text>
+    <text class="muted">确认后将继续展示这次分享的推荐。</text>
+    <button class="button-primary" bindtap="confirmAge">确认后继续</button>
+  </view>
+  <view wx:elif="{{isLoading}}" class="card result-state-card">
     <text class="result-state-title">正在生成推荐…</text>
     <text class="result-state-copy muted">会根据你的六维偏好和本地酒款库，计算最适合的 Top 3。</text>
   </view>
@@ -7,29 +12,16 @@
   <view wx:elif="{{errorMessage}}" class="card result-state-card">
     <text class="result-state-title">暂时没法给出推荐</text>
     <text class="result-state-copy muted">{{errorMessage}}</text>
-    <button class="button-secondary result-state-action" bindtap="restart">重新选择</button>
+    <button class="button-secondary result-state-action" disabled="{{navigationBusy}}" bindtap="adjustPreferences">调整偏好</button>
   </view>
 
   <block wx:else>
     <view class="card result-head">
       <text class="result-eyebrow">Wineer 为你推荐</text>
-      <text class="result-title">Top 3 白酒选择</text>
-      <text class="result-description muted">结果会随当前内置酒款数据实时重算，价格仅供分档参考，请理性饮酒。</text>
+      <text class="result-title">{{wines.length ? '为你挑选的白酒' : '预算内暂无合适酒款'}}</text>
+      <text class="result-description muted">{{budgetLabel}}；按静态参考价筛选，合适的低价款也会推荐。成交价可能超预算，购买前请核实规格和报价。</text>
+      <text wx:if="{{wines.length < 3}}" class="muted">当前参考价符合预算的仅有 {{wines.length}} 款，不用超预算款凑数。</text>
     </view>
-
-    <view class="result-actions">
-      <button class="button-primary" open-type="share">转发给朋友</button>
-      <button
-        class="button-secondary"
-        loading="{{posterBusy}}"
-        disabled="{{posterBusy}}"
-        bindtap="generatePoster"
-      >生成分享海报</button>
-      <button class="button-secondary" bindtap="savePoster">保存到相册</button>
-      <button class="button-secondary" bindtap="restart">重新选择</button>
-    </view>
-
-    <text class="result-buy-hint muted">想购买时可先复制搜索词，再到京东手动搜索比价。</text>
 
     <view class="result-list">
       <wine-card
@@ -39,6 +31,25 @@
         bind:buy="copyPurchaseKeyword"
       />
     </view>
+    <text wx:if="{{wines.length}}" class="result-buy-hint muted">同分时依次优先冲突更少、参考价更低的酒款，最后按酒款 ID 排序；排名不是满意概率。复制搜索词后可到平台比价。</text>
+    <button class="button-secondary" loading="{{navigationBusy}}" disabled="{{navigationBusy}}" bindtap="adjustPreferences">调整偏好（保留当前选择）</button>
+
+    <view wx:if="{{wines.length && reportingAvailable}}" class="card reporting-settings">
+      <label class="reporting-option">
+        <text>允许向开发者发送使用记录</text>
+        <switch checked="{{reportingEnabled}}" bindchange="toggleReporting" color="#c9a24b" />
+      </label>
+      <button wx:if="{{reportingEnabled}}" class="button-secondary" loading="{{reportingBusy}}" disabled="{{reportingBusy}}" bindtap="uploadEvents">上报本机记录 / 重试</button>
+      <text class="muted">{{reportStatus}}</text>
+    </view>
+
+    <view wx:if="{{wines.length}}" class="result-actions">
+      <button class="button-primary" open-type="share">转发给朋友</button>
+      <button class="button-secondary" loading="{{posterBusy}}" disabled="{{posterBusy}}" bindtap="generatePoster">生成辅助海报</button>
+      <button wx:if="{{posterPath}}" class="button-secondary" loading="{{saveBusy}}" disabled="{{saveBusy}}" bindtap="savePoster">保存到相册</button>
+    </view>
+    <text wx:if="{{wines.length}}" class="muted result-buy-hint">建议转发小程序卡片，朋友可直接打开；海报没有扫码入口。价格与规格请核实，请理性饮酒。</text>
+    <button class="button-secondary" disabled="{{navigationBusy}}" bindtap="restart">全部重选</button>
   </block>
 
   <canvas

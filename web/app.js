@@ -4,6 +4,7 @@ const Wineer = (() => {
     DIMENSIONS,
     defaultAnswers,
     normalizeAnswers,
+    describeItem,
     recommend: rankWines
   } = WineerRecommender;
 
@@ -194,14 +195,14 @@ const Wineer = (() => {
       <div class="top3-list">
         ${top3.map((r, index) => {
           const it = r.item;
-          const pct = r.matchPercent;
+          const details = describeItem(it);
           const buyUrl = "https://search.jd.com/Search?keyword=" + encodeURIComponent(it.name);
           const whyText = r.why.length ? [...new Set(r.why)].slice(0, 4).map(escapeHtml).join(" · ") : "综合条件最优";
           return `
             <div class="top-card ${index === 0 ? "top-card-main" : ""}">
               <div class="top-rank">TOP ${index + 1}</div>
               <div class="top-name">${escapeHtml(it.name)}</div>
-              <div class="match-score">推荐指数 ${pct}% · ${whyText}</div>
+              <div class="match-score">${escapeHtml(r.rankLabel)} · ${whyText}</div>
               <div class="r-tags">
                 <span class="tag">${escapeHtml(it.aroma)}型</span>
                 <span class="tag">${escapeHtml(it.abv)}度</span>
@@ -218,8 +219,15 @@ const Wineer = (() => {
                 <p>${it.taste.map(escapeHtml).join("、")}</p>
               </div>
               <div class="r-block r-caution">
+                <h4>需要权衡</h4>
+                <p>${escapeHtml(r.tradeoffs.join(" · ") || "未发现明显偏好冲突，仍需留意口味和选购提示")}</p>
+              </div>
+              <div class="r-block r-caution">
                 <h4>⚠️ 选购提示</h4>
                 <p>${escapeHtml(it.caution)}</p>
+                <p>${escapeHtml(details.specText)}</p>
+                <p>${escapeHtml(details.priceNote)}</p>
+                <p>${escapeHtml(details.sourceText)}</p>
               </div>
               <a class="btn-buy" href="${buyUrl}" target="_blank" rel="noopener" onclick="Wineer.trackBuy('${escapeHtml(it.id)}')">去看看 / 比价 →</a>
             </div>

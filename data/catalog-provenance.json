@@ -1,0 +1,3972 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07",
+  "catalogVersion": "0.4.0",
+  "policy": {
+    "scope": "逐条记录产品规格证据与身份冲突，不代表口感评分或所有原始字段均已核实。",
+    "unknowns": "没有可靠依据的字段保留null；不以相近度数、同系列其他容量或包装代替。",
+    "prices": "价格口径独立标记为估值、商家报价、官方指导价或挂牌价；后三类有来源和观察记录日期也不等于实时成交报价。",
+    "dates": "reviewedAt是资料核对日期；已采用报价的priceUpdated为观察记录日期，不冒充页面发布日期或成交日期。",
+    "heuristics": "新入库酒款未做实饮评分；beginner=3为中性占位，场景按价段推断，taste按香型归类，卡片明确提示。",
+    "legacyPriceClassification": "原100款仅将1915已有挂牌证据标记listing，其余原参考价标记estimate；这是证据状态分类，不是新增价格核实。"
+  },
+  "entries": [
+    {
+      "id": "maotai-feitian",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117423682414.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117423682414.html",
+          "summary": "已读取厂家产品详情HTML：贵州茅台酒（飞天），53%vol，500ml/瓶。补丁对应此常规规格，不代表所有飞天容量。"
+        }
+      ],
+      "reviewNotes": "生产年份未指定，不填2026等年份；厂家另有其他容量飞天，不将本记录解释为全部规格。"
+    },
+    {
+      "id": "wuliangye-pujing",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "第八代",
+        "source": "https://www.wuliangye.com.cn/zh/main/main.html#/g=PRODUCT&id=38&dId=4",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.wuliangye.com.cn/zh/main/js/inc_style/Product.js",
+          "summary": "厂家首页实际加载的产品展示脚本将“第八代五粮液”明确链接至categoryId=38、dId=4。"
+        },
+        {
+          "url": "https://www.wuliangye.com.cn/wly_eap/cn/api/v1/publix/product/id/4",
+          "summary": "按官网公开脚本的正常访客流程读取产品数据：名称52度五粮液，spec.degree=52，spec.netWeight=500；未读取价格接口。"
+        },
+        {
+          "url": "https://www.wuliangye.com.cn/zh/locales/cn-CH/translation.json",
+          "summary": "官网规格显示模板将netWeight明确格式化为ml，确认数字500的单位为毫升。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "guojiao1573",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/1573/3742.html",
+          "summary": "厂家国窖1573经典装详情列有52%vol，同时列50、100、250、375、500、750ml、1.5L和3L多种容量。"
+        }
+      ],
+      "reviewNotes": "原记录未明确经典装及容量。厂家经典装详情同时列多种度数和容量，不能据此选择500ml或将经典装认定为原SKU。"
+    },
+    {
+      "id": "qinghua20",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.fenjiu.com.cn/gf/qinghua/2023-02-08/988.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2023-02-08/988.html",
+          "summary": "已打开并读取厂家页面原始HTML：青花汾酒20，度数包括53%Vol，净含量500mL。保留既有容量及来源。"
+        }
+      ],
+      "reviewNotes": "未明确包装版本，保留edition为null。"
+    },
+    {
+      "id": "qinghua30",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "复兴版",
+        "source": "https://product.suning.com/0000000000/12284042270.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0000000000/12284042270.html",
+          "summary": "已打开并读取苏宁自营具体SKU原始HTML：标题明确青花30复兴版53度500ml单瓶，参数再次确认53度及500ml。"
+        },
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2023-02-15/1157.html",
+          "summary": "已读取厂家青花汾酒30页面，确认53%Vol选项及500mL；厂家文字未明确复兴版，故版本另由明确标注的自营SKU核验。"
+        }
+      ],
+      "reviewNotes": "未核定复兴版的升级年份，不填2020版或2025升级版。苏宁产地字段写临汾，与目录不一致，不采用该字段。"
+    },
+    {
+      "id": "jiannanchun",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://product.suning.com/0030001198/12431666343.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030001198/12431666343.html",
+          "summary": "已打开并读取剑南春苏宁自营旗舰店SKU原始HTML：水晶剑52度500ml单瓶，参数与包装清单一致。"
+        }
+      ],
+      "reviewNotes": "厂家官网仅取得JavaScript应用外壳，使用平台自营具体商品作为替代来源；包装代际未核定。"
+    },
+    {
+      "id": "yanghe-mengzhilan-m6",
+      "appliedFields": {
+        "volumeMl": 550,
+        "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/2.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/2.html",
+          "summary": "已读取厂家梦之蓝M6+页面原始HTML：净含量550ml，酒精度包含52%vol，箱规550ml乘4。"
+        }
+      ],
+      "reviewNotes": "未标包装年份，不增加年份edition；不能默认写500mL。"
+    },
+    {
+      "id": "yanghe-haizhilan",
+      "appliedFields": {
+        "volumeMl": 480,
+        "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/19.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/19.html",
+          "summary": "已读取厂家海之蓝页面原始HTML：净含量480ml，度数包含42%vol，箱规为480ml乘6或乘4。"
+        }
+      ],
+      "reviewNotes": "页面没有包装年份，edition不填；容量证据限于厂家此产品页。"
+    },
+    {
+      "id": "gujing-gu8",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://detail.youzan.com/show/goods?alias=3f44l672fgmb9c9&from_source=gbox_seo",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://detail.youzan.com/show/goods?alias=3f44l672fgmb9c9&from_source=gbox_seo",
+          "summary": "已打开并读取有赞古井贡酒官方品牌旗舰店具体商品：古8、50度、500ml乘6瓶，每瓶容量明确。"
+        }
+      ],
+      "reviewNotes": "没有证据指定米兰世博纪念版或升级年份。店铺标示官方品牌旗舰店，但运营主体执照未独立复核；厂家官网返回脚本外壳。"
+    },
+    {
+      "id": "langjiu-honghualang",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.langjiu.cn/product?categoryId=6",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.langjiu.cn/product?categoryId=6",
+          "summary": "已读取官方产品家族页面及其产品渲染脚本；红花郎分类提供可选择的红花郎·15，详情不是静态HTML。"
+        },
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=71",
+          "summary": "读取该页面实际调用的厂家产品详情：红花郎·15，53%vol，500mL，酱香型。接口不含本次采纳的价格或报价日期。"
+        }
+      ],
+      "reviewNotes": "未发现详情明确标注包装代次，不填第五代等版本；source页面需要选择红花郎·15，精确产品数据定位见goodsId=71。"
+    },
+    {
+      "id": "qinghualang",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.langjiu.cn/product?categoryId=3",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=67",
+          "summary": "已读取官方产品页面实际调用的详情数据：青花郎，53%vol，500mL，酱香型。"
+        }
+      ],
+      "reviewNotes": "厂家当前详情未给出可用于edition的明确年份或代次；不将20等数字解释为本瓶全部酒体酒龄。"
+    },
+    {
+      "id": "xijiu-junpin",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.gzxijiu.com/product/detail?menuId=Wds3VhamjqkrJ4TCRFJY5&id=55%E4%BA%A7%E5%93%81%E4%B8%AD%E5%BF%83",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzxijiu.com/product/detail?menuId=Wds3VhamjqkrJ4TCRFJY5&id=55%E4%BA%A7%E5%93%81%E4%B8%AD%E5%BF%83",
+          "summary": "厂家详情HTML明确列品名君品习酒、53%vol、规格500ml×6；单瓶容量500ml，非将整箱容量当作单瓶。"
+        }
+      ],
+      "reviewNotes": "未采用另列的君品习酒精装、崇礼等不同产品。"
+    },
+    {
+      "id": "xijiu-yaozhi",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzxijiu.com/product/detail?menuId=52HqZJwHrszb9VKnICnLF&id=P1mpMegs0U1EyS6kzjABn",
+          "summary": "当前厂家详情为习酒·窖藏1988（2025），53%vol、500ml×6。"
+        },
+        {
+          "url": "https://www.gzxijiu.com/product/mainProduct-jiaocang?menuId=52HqZJwHrszb9VKnICnLF",
+          "summary": "已读取厂家完整窖藏目录及内嵌产品数据，同时存在2025、2020、雅致版2020和4盒装条目，均须区别。"
+        }
+      ],
+      "reviewNotes": "厂家分别列2025版、2020版、雅致版2020及4盒装；原记录未指定版本。不得按id中的yaozhi或当前官网排序任意选版。"
+    },
+    {
+      "id": "jinshahuijiu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/zy.html",
+          "summary": "已读取厂家摘要目录：初代、第二代、第三代珍品版，以及宋词、唐诗、元曲、摘10、真实年份15年等分别列项。"
+        },
+        {
+          "url": "https://www.jinshajiuye.com/zy_1/17.html",
+          "summary": "第三代摘要酒·珍品版的厂家详情明确为53%vol、500ml，但仅能支持这一具体版本。"
+        }
+      ],
+      "reviewNotes": "“摘要53度”是未充分限定的名称；不能直接指定为第三代珍品版或默认500ml。需主代理确定原记录是珍品哪一代或其他摘要产品。"
+    },
+    {
+      "id": "guotai",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.guotaijiu.com/?products_81/724.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.guotaijiu.com/?products_81/724.html",
+          "summary": "文本提取器未显示关键参数；已检查HTML内document.write内容，名称国台酒·国标，酒精度53%vol，净含量500ml。"
+        }
+      ],
+      "reviewNotes": "当前页面未明确对应哪一年酿造的国标酒，不填写真实年份、灌装年份或edition。"
+    },
+    {
+      "id": "niulanshan-baipai",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "白瓶陈酿（52度）",
+        "source": "https://www.suning.com/item/0000000000/10015173415.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.suning.com/item/0000000000/10015173415.html",
+          "summary": "苏宁自营商品名称及参数列明白瓶陈酿、52度、每瓶500mL，页面无有效商品报价。"
+        }
+      ],
+      "reviewNotes": "包装批次、原参考价和酒体分类仍需核实，不把零售分类等同于瓶标执行标准。"
+    },
+    {
+      "id": "hongxing-erguotou",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://shop.suning.com/30000752/all.html",
+          "summary": "红星自营店区分蓝瓶绵柔8的43/53度与绿瓶大二56度。"
+        }
+      ],
+      "reviewNotes": "原条目将蓝瓶绵柔8与56度组合，未找到一致的可靠SKU；不能用43/53度蓝瓶或56度绿瓶的容量替代。"
+    },
+    {
+      "id": "laobaigan",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "1915（67度礼盒装）",
+        "source": "https://www.hslbgjq.com/oderCenter/21.cshtml",
+        "price": 3318,
+        "priceTier": "超高端",
+        "priceSource": "https://www.hslbgjq.com/oderCenter/21.cshtml",
+        "priceUpdated": "2026-09-07",
+        "caution": "参考价采用景区官网挂牌价，不代表商城结算价；67度极烈，新手绝对不建议上手",
+        "priceBasis": "listing"
+      },
+      "evidence": [
+        {
+          "url": "https://www.hslbgjq.com/oderCenter/21.cshtml",
+          "summary": "衡水老白干景区商品页明确1915、67度、500mL礼盒，主商品价格栏显示3318.00元；购买链接指向天猫商品594592482860。"
+        }
+      ],
+      "reviewNotes": "未验证跳转商城结算价或库存；原400元参考价无来源，不应继续冒充该规格的可靠价格。",
+      "priceEvidence": {
+        "price": 3318,
+        "priceSource": "https://www.hslbgjq.com/oderCenter/21.cshtml",
+        "priceUpdated": "2026-09-07",
+        "basis": "景区官网商品页挂牌价；日期为本次观察记录日期，不是发布日或成交日，不代表市场最低价。",
+        "adopted": true
+      }
+    },
+    {
+      "id": "xifeng",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details102_6294.html",
+          "summary": "厂家西凤酒6年陈酿页规格标题为45度、500mL。"
+        }
+      ],
+      "reviewNotes": "原条目52度与厂家该页面45度不一致，不能静默改度数或套用该容量。"
+    },
+    {
+      "id": "dongjiu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinadongjiu.com/products/",
+          "summary": "厂家产品目录展示佰草香、国密等系列，没有与原名称一致的密钥1957条目。"
+        }
+      ],
+      "reviewNotes": "未找到密钥1957的可靠产品身份证据，疑似与密藏等命名混淆；保持未核实。"
+    },
+    {
+      "id": "kouzijiao",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "十年型（50度）",
+        "source": "https://product.suning.com/0070854614/12114026939.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/12114026939.html",
+          "summary": "已重新读取口子窖官方旗舰店SKU原始HTML：十年型50度500ML乘4瓶，参数与包装清单确认单瓶500mL。"
+        },
+        {
+          "url": "https://www.kouzi.com/index.php?c=show&id=5834",
+          "summary": "已读取厂家十年型页面：500ml，但度数只列41%vol及46%vol，不能完整证明目录50度SKU。"
+        }
+      ],
+      "reviewNotes": "保留匹配50度的既有官方旗舰店来源，不替换为厂家41/46度商品，也不将十年型等同兼10。"
+    },
+    {
+      "id": "baiyunbian",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://byb.hbbyb.com/index.php?read-32.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://byb.hbbyb.com/index.php?list-31.html",
+          "summary": "厂家年份系列目录明确42度十五年陈酿500mL，并链接read-32。另有450mL零售礼盒，不混用报价。"
+        }
+      ],
+      "reviewNotes": "包装代次及价格仍未知。"
+    },
+    {
+      "id": "guijiao",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jd.com/xinghao/12259c75ee5e9d00cb1c0.html",
+          "summary": "零售目录同时存在52度480mL玻瓶、450mL珍品及500mL洞藏。"
+        }
+      ],
+      "reviewNotes": "原名称仅写三花酒52度，无法唯一确定具体产品，不擅选容量或包装。"
+    },
+    {
+      "id": "shuijingfang",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070990283/12060385194.html",
+          "summary": "已打开并读取官方旗舰店具体SKU原始HTML：臻酿八号52度500mL会员专用商品，单瓶参数明确。"
+        },
+        {
+          "url": "https://shuijingfang.jd.com/view_search-661102-32549410-99-1-20-1.html",
+          "summary": "已打开官方旗舰店目录，同时列有52度500mL和520mL等臻酿八号商品。"
+        }
+      ],
+      "reviewNotes": "目录只写臻酿八号52度，不能唯一选择容量或会员SKU，不填volumeMl、edition、source。官网遇脚本验证，停止重试。"
+    },
+    {
+      "id": "tuopai",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.tuopaishede.cn/productInfo_1.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_1.html",
+          "summary": "已读取舍得酒业智慧舍得产品页原始HTML：浓香型、净含量500ml，酒精度选项包括52%vol。"
+        }
+      ],
+      "reviewNotes": "不映射为藏品、名人版或大典版；上市年份不等于具体包装版本或生产年份。"
+    },
+    {
+      "id": "langpai-tianbao",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=82",
+          "summary": "官方产品页面实际调用的数据为郎牌特曲·T9，度数38、42、50%vol，容量500ml；香型明确为浓酱兼香型。"
+        },
+        {
+          "url": "https://www.langjiu.cn/assets/js/Index.dfe1906f.1785684760257.js",
+          "summary": "已读取官网产品渲染脚本，确认goodsDetail接口及goodsDegreeList、goodsSpecificationList、goodsScentList是页面展示数据来源。"
+        }
+      ],
+      "reviewNotes": "严重版本/香型冲突：库内aroma=浓香且highlight称浓香线，当前厂家T9为浓酱兼香。可能涉及历史版本变化；本轮暂缓全部补丁，避免将现售版来源绑定到未明确版本的旧条目；需先确认原记录版本。"
+    },
+    {
+      "id": "fenjiu-bofen",
+      "appliedFields": {
+        "volumeMl": 475,
+        "edition": "玻瓶装（非献礼版）",
+        "source": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3904.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3904.html",
+          "summary": "已重新读取厂家53度玻瓶汾酒页面，明确53%Vol和475mL。"
+        },
+        {
+          "url": "https://www.fenjiu.com.cn/gf/fenjiu/index.html",
+          "summary": "已读取厂家目录原始HTML，普通53度玻瓶汾酒475mL与53度玻汾献礼版500mL分列。"
+        }
+      ],
+      "reviewNotes": "与fenjiu-huanggaibofen疑似同一普通53度475mL玻汾SKU；未取得不同条码或版本证据，不删除、不合并。"
+    },
+    {
+      "id": "gujing-xiaoban",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://caijing.chinadaily.com.cn/2018-01/12/content_35493822.htm",
+          "summary": "已打开2018年1月12日上市报道：古井小罍子首发为42度、每瓶130ml、4瓶礼盒；此为媒体材料，不匹配目录50度淡雅。"
+        }
+      ],
+      "reviewNotes": "未找到可确认完整身份“小罍子淡雅50度”的权威产品来源。不得将42度130mL小罍子、72度小罍神或淡雅系列互换；三项字段均留空。"
+    },
+    {
+      "id": "jinsanjiao",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.jinshiyuan.com.cn/display.php?id=176",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jinshiyuan.com.cn/display.php?id=176",
+          "summary": "已打开厂家国缘四开具体产品页，规格500ml，度数42%vol和52%vol。"
+        }
+      ],
+      "reviewNotes": "官网并列幽雅醇厚型和浓香型，未明确与各度数的一一对应关系；不自动改aroma，包装代际不填。"
+    },
+    {
+      "id": "maotai-yingbin",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://product.suning.com/0030000757/191188718.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000757/191188718.html",
+          "summary": "已打开贵州茅台酱香酒苏宁自营旗舰店的精确商品页。标题、核心参数和包装清单均为普通茅台迎宾酒53度500ml单瓶；页面标注已下架。"
+        },
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117071199057.html",
+          "summary": "厂家当前官网提供的是茅台迎宾酒（紫）53%vol、500ml；这是另一个带明确紫色版本名称的产品，未将其替换进普通迎宾记录。"
+        }
+      ],
+      "reviewNotes": "采用的是品牌苏宁自营旗舰店历史商品规格，不是厂家现售普通迎宾页面。若主代理只接受厂家直营证据而不接受平台自营旗舰店，应暂缓该补丁。无有效当前报价。"
+    },
+    {
+      "id": "maotai-prince-jin",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "金王子",
+        "source": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117071059890.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117071059890.html",
+          "summary": "厂家详情HTML明确列茅台王子酒（金王子）、53%vol、500ml/瓶。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "maotai-prince-zhenpin",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "珍品王子",
+        "source": "https://product.suning.com/0030000757/10446378347.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000757/10446378347.html",
+          "summary": "已打开贵州茅台酱香酒苏宁自营旗舰店精确商品页。标题为珍品王子53度500ml单瓶，参数及包装清单均再次确认；页面标注已下架。"
+        }
+      ],
+      "reviewNotes": "厂家当前酱香目录未列珍品王子；不能用贵州茅台酒（珍品）或王子酒（酱香经典）代替。该证据为平台自营旗舰店历史商品资料；如要求仅厂家直营来源需暂缓。"
+    },
+    {
+      "id": "maotai-hanjiang",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117071031095.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117071031095.html",
+          "summary": "厂家汉酱酒详情明确为51%vol、500ml/瓶，与原记录51度一致；没有切换成53度其他汉酱产品。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "maotai-1935",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117095122594.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-11/01/article_2023110117095122594.html",
+          "summary": "厂家茅台1935详情HTML明确53%vol、500ml/瓶。"
+        }
+      ],
+      "reviewNotes": "1935是产品名称，不当作本瓶生产年份。"
+    },
+    {
+      "id": "laimao-chuancheng-lan",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "传承蓝",
+        "source": "https://www.laymauchina.com/products/743.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.laymauchina.com/products/743.html",
+          "summary": "赖茅厂家产品详情明确赖茅·传承蓝、53度、净含量500ml，与传承棕等其他条目分开。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "xijiu-jinzhi",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzxijiu.com/product/detail?menuId=VzB2Cj6KjnJ6jUrbtW92W&id=5%E4%BA%A7%E5%93%81%E4%B8%AD%E5%BF%83",
+          "summary": "厂家详情为金质习酒（第四代），酒精度53%vol，规格500ml×6。"
+        },
+        {
+          "url": "https://www.gzxijiu.com/product/mainProduct-jinzuan?menuId=VzB2Cj6KjnJ6jUrbtW92W",
+          "summary": "厂家金钻系列目录同时单列金质习酒第四代及二十周年庆版，未将周年庆版混入普通金质。"
+        }
+      ],
+      "reviewNotes": "取得的精确厂家详情为金质习酒第四代，目录另有周年庆版；原记录未指定代次，暂不将第四代的来源和容量绑定至原SKU。"
+    },
+    {
+      "id": "xijiu-jiaocang1998",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzxijiu.com/product/mainProduct-jiaocang?menuId=52HqZJwHrszb9VKnICnLF",
+          "summary": "已读取厂家窖藏系列全部11项，未见窖藏1998；目录中的习酒感恩98不能视作同一产品。"
+        },
+        {
+          "url": "https://shop.jiuxian.com/brand-416.htm",
+          "summary": "酒仙网习酒官方旗舰店历史展示HTML列53°窖藏1998 500ml，并链接goods-11498；但精确商品页目前返回页面出错。"
+        },
+        {
+          "url": "https://www.jiuxian.com/goods-11498.html",
+          "summary": "精确商品链接已尝试打开，实际为错误页，不作为有效商品详情来源。"
+        }
+      ],
+      "reviewNotes": "存在历史旗舰店规格线索，但未取得可用的精确厂家或官方旗舰店商品详情，不填source和容量。展示页398元无日期且详情失效，不记录价格。"
+    },
+    {
+      "id": "langjiu-honghualang10",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.langjiu.cn/product?categoryId=6",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=70",
+          "summary": "官方产品页面实际调用的详情数据明确红花郎·10、53%vol、500mL、酱香型。"
+        }
+      ],
+      "reviewNotes": "当前详情未直接给包装代次，不把外部媒体所称第五代写入edition。"
+    },
+    {
+      "id": "langpai-langjiu",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.langjiu.cn/product?categoryId=6",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=73",
+          "summary": "厂家官网产品详情数据名称郎牌郎，描述明确称郎牌郎酒；酒精度53%vol，容量500mL，酱香型。"
+        }
+      ],
+      "reviewNotes": "未将外部媒体提及的2025版自动写为edition；产品家族页面需选择郎牌郎，精确定位为goodsId=73。"
+    },
+    {
+      "id": "jinsha-huisha-wuxing",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs/p-12-12.html",
+          "summary": "已读取厂家金沙回沙系列第二页，列钻石五星、钻石三星、钻石七星等，未列独立的普通五星53度。"
+        },
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/5.html",
+          "summary": "厂家可精确验证的53%vol、500ml产品是金沙回沙酒·钻石五星，已经对应另一条jinsha-huisha-zuanshi。"
+        }
+      ],
+      "reviewNotes": "严重身份风险：原记录可能是普通五星与钻石五星的混称或重复，也可能是其他五星版本。普通老五星51度的外部线索未得到本次厂家证据核实；绝不能直接改为51度或复用钻石五星补丁。"
+    },
+    {
+      "id": "jinsha-huisha-zuanshi",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "钻石五星",
+        "source": "https://www.jinshajiuye.com/jshs_1/5.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/5.html",
+          "summary": "厂家详情参数与详细描述两处均列金沙回沙酒·钻石五星、53%vol、500ml，制造商贵州金沙窖酒酒业有限公司。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "zhenjiu-laozhenjiu",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.gzzjc.cn/product/info/lzj",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/lzj",
+          "summary": "已读取贵州珍酒厂家详情HTML：老珍酒，500ml，53%vol；产品说明为经典蓝色瓷瓶。"
+        }
+      ],
+      "reviewNotes": "页面未标注具体代次，未从图片上传年月或网站版权年份推断edition。"
+    },
+    {
+      "id": "zhenjiu-zhen15",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.gzzjc.cn/product/info/z15",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/z15",
+          "summary": "厂家珍酒·珍十五详情HTML明确500ml、53%vol；页面未明确第三代、第四代或第五代。"
+        }
+      ],
+      "reviewNotes": "不根据电商目录的多代并存或图片路径推断包装代次。"
+    },
+    {
+      "id": "zhenjiu-zhen30",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.gzzjc.cn/product/info/z30",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/z30",
+          "summary": "厂家珍酒·珍三十详情HTML明确500ml、53%vol；描述为墨绿色长颈瓶。"
+        }
+      ],
+      "reviewNotes": "未取得厂家明确包装代次，不填写第三代或年份。"
+    },
+    {
+      "id": "guotai-15",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.guotaijiu.com/?z/1",
+          "summary": "厂家当前主品牌产品目录为国台酒·龍30、龍20、龍15、龍10，并非原名称国台十五年。"
+        },
+        {
+          "url": "https://www.guotaijiu.com/?z/1/1273.html",
+          "summary": "HTML内嵌参数明确国台酒·龍15为53%vol、500ml，但只能验证龍15这一不同名称产品。"
+        }
+      ],
+      "reviewNotes": "未取得原国台十五年的精确厂家详情。不得将国台十五年、龍15、尊品十五年、水晶十五年等不同产品静默归并。"
+    },
+    {
+      "id": "diaoyutai-guobin",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.diaoyutaijiu.com/ProductInfoCategory?categoryId=233166",
+          "summary": "厂家国宾酒系列明确分别列国宾酒Ⅰ、Ⅱ、Ⅲ，并提供独立详情链接。列表0.00为占位信息，不是有效价格。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/799785.html",
+          "summary": "已读取页面加载的官方静态Body.js内HTML，国宾酒Ⅰ参数为53%vol、500mL。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/800386.html",
+          "summary": "已读取对应官方静态Body.js内HTML，国宾酒Ⅱ参数为53%vol、500mL。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/521660.html",
+          "summary": "已读取对应官方静态Body.js内HTML，国宾酒Ⅲ参数为53%vol、500mL。"
+        }
+      ],
+      "reviewNotes": "厂家分别列国宾酒Ⅰ、Ⅱ、Ⅲ，已读取的三个标准版本均为53%vol、500ml；但原记录未明确代次，严格按单一SKU标准暂缓全部字段，不任意选择其中一个详情来源。"
+    },
+    {
+      "id": "wuling-hupo",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [],
+      "reviewNotes": "厂家候选域名www.wulingjiu.com及wulingjiu.com的HTTPS连接均被拒绝；已尝试武陵酒京东官方旗舰店，未取得可用的精确SKU详情。外部线索显示琥珀存在509ml、1000ml及纪念/升级版本，但未作为最终证据。尤其不能默认500ml。"
+    },
+    {
+      "id": "tanjiu-jinjiang",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.tanjiu.cn/htznf/tanjinjiang.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/htznf/tanjinjiang.html",
+          "summary": "厂家潭金酱独立详情明确53%vol、500ml/瓶。页面198元明确标作官方指导价，但未提供该价格的发布日期。"
+        }
+      ],
+      "reviewNotes": "不把产品页其他酒款的2022版标识移到潭金酱，不推断本品年份。198元为未注明日期的指导价，未生成priceEvidence。"
+    },
+    {
+      "id": "yunmen-chenniang",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [],
+      "reviewNotes": "厂家候选域名www.yunmenchunwine.com的HTTPS验证失败，提示自签名证书；未绕过证书验证。原名称也未区分玉白、青州陈酿、部优珍藏等产品；没有可用的精确第一方详情，不推断500ml或版本。"
+    },
+    {
+      "id": "wuliangchun-50",
+      "appliedFields": {
+        "edition": "第一代",
+        "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=1",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.wuliangnongxiang.com/product/proPage.html?id=1",
+          "summary": "已读取厂家产品页及正常访客流程下实际加载的产品数据：id=1明确命名五粮春·第一代，酒精度50%vol；netWeight字段为空。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/1",
+          "summary": "厂家产品详情数据明确第一代、50%vol，但不提供净含量。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/31",
+          "summary": "用于排除误配的第二代产品数据明确52%vol、500ml；不能把第二代容量复制给第一代50度。"
+        }
+      ],
+      "reviewNotes": "第一代50度身份和版本可验证，但容量缺失，故不补500ml。"
+    },
+    {
+      "id": "wuliangye-tequ",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.wuliangnongxiang.com/product/proList.html?id=90",
+          "summary": "厂家五粮特曲目录共6款，区分皇冠版、金彩版、10、普通装系列、珍品、精品系列。"
+        },
+        {
+          "url": "https://www.wuliangnongxiang.com/product/proPage.html?id=199",
+          "summary": "已读取普通装系列页面及实际产品数据：正式名称五粮特曲·普通装系列，52%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/199",
+          "summary": "精确厂家数据确认普通装系列52%vol、500ml，而非一个正式命名为五粮液特曲的独立SKU。"
+        }
+      ],
+      "reviewNotes": "原名称非厂家目录中的正式名称，未确定是否指五粮特曲普通装。主代理确认后可采用id=199的500ml和具体来源；本次不自动选择普通装替代其他特曲版本。"
+    },
+    {
+      "id": "jianzhuang-gaoguang",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.wuliangnongxiang.com/product/proList.html?id=91",
+          "summary": "已读取厂家尖庄目录及页面实际调用的全部6项产品：1911、大光、荣光、荣耀、红优、精盒；未列高光。"
+        }
+      ],
+      "reviewNotes": "当前厂家目录没有高光，未取得可核实历史高光52度的厂家详情。不能替换为大光、荣光或荣耀，容量和edition留空。"
+    },
+    {
+      "id": "luzhou-tequ",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/tequ/3778.html",
+          "summary": "厂家特曲详情明确包含52%vol，规格同时列500ml及250ml；正文说明2019年推出第十代。"
+        }
+      ],
+      "reviewNotes": "厂家详情介绍第十代并同时列500ml和250ml；原记录未指定代次或容量，不能任意选定。"
+    },
+    {
+      "id": "luzhou-touqu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/touqu/3785.html",
+          "summary": "厂家泸州老窖老头曲详情包含52%vol，规格500ml；包装说明明确介绍15版老头曲。"
+        }
+      ],
+      "reviewNotes": "取得的厂家详情为老头曲，包装说明具体介绍15版；原记录仅称头曲，未确认是否对应此版本，不移植其500ml规格。"
+    },
+    {
+      "id": "luzhou-liunianjiao",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.lzlj.com/brand/touqu/3784.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/touqu/3784.html",
+          "summary": "厂家六年窖头曲详情明确包含52%vol，规格500ml；正文介绍六年窖雅系列。"
+        }
+      ],
+      "reviewNotes": "六年窖为产品命名，不据此推断瓶内所有酒体至少陈年六年或灌装年份。"
+    },
+    {
+      "id": "yanghe-tianzhilan",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/20.html",
+          "summary": "已读取厂家天之蓝产品HTML：净含量同时列480ml和500ml，酒精度包括52%vol，箱规也同时列两种容量。"
+        }
+      ],
+      "reviewNotes": "目录只有天之蓝52度，无法唯一选定480mL或500mL及具体版本。保留所有待补字段为null，不取表中第一个容量或默认500mL。"
+    },
+    {
+      "id": "yanghe-mengzhilan-m3",
+      "appliedFields": {
+        "volumeMl": 550,
+        "edition": "水晶版",
+        "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/12.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/12.html",
+          "summary": "已读取厂家梦之蓝水晶版产品页原始HTML：净含量550ml，酒精度包含52%vol，箱规550ml乘4。"
+        }
+      ],
+      "reviewNotes": "厂家正式标题为梦之蓝水晶版，不带M3；本匹配依据目录已有水晶版限定，不外推至旧款梦之蓝M3。"
+    },
+    {
+      "id": "gujing-gu16",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://detail.youzan.com/show/goods?alias=2ogkrofpzatk5x2&from_source=gbox_seo",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://detail.youzan.com/show/goods?alias=2ogkrofpzatk5x2&from_source=gbox_seo",
+          "summary": "已打开并读取有赞古井贡酒官方品牌旗舰店具体商品：古16、50度、500ml乘6瓶。"
+        }
+      ],
+      "reviewNotes": "未核定包装年份；店铺标示官方品牌旗舰店，运营主体执照未独立复核。"
+    },
+    {
+      "id": "gujing-gu20",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://detail.youzan.com/show/goods?alias=1ybjbk2kb6uo5ad&from_source=gbox_seo",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://detail.youzan.com/show/goods?alias=1ybjbk2kb6uo5ad&from_source=gbox_seo",
+          "summary": "已打开并读取有赞古井贡酒官方品牌旗舰店具体商品：古20、52度、500ml乘6瓶。"
+        }
+      ],
+      "reviewNotes": "不映射到750mL观沧海或26度轻度古20，不填世博纪念版及包装年份；店铺运营主体执照未独立复核。"
+    },
+    {
+      "id": "kouzijiao-20",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "二十年型（50度）",
+        "source": "https://www.kouzi.com/index.php?c=show&id=5835",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.kouzi.com/index.php?c=show&id=5835",
+          "summary": "已读取厂家二十年型具体产品页：兼香型，酒精度41%vol或50%vol，净含量500ml。"
+        }
+      ],
+      "reviewNotes": "二十年型不等同兼20；包装年份未核定。"
+    },
+    {
+      "id": "shuijingfang-jingtai",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070990283/147374846.html",
+          "summary": "已读取官方旗舰店具体SKU原始HTML：标题和单支参数为井台52度500mL，但包装清单数量异常。"
+        },
+        {
+          "url": "https://shuijingfang.jd.com/view_search-661102-16554258-99-1-20-1.html",
+          "summary": "已打开官方旗舰店井台500mL分类，店内另列52度520mL商品。"
+        }
+      ],
+      "reviewNotes": "目录井台52度未唯一限定容量及版本，不填待补字段。苏宁包装清单井台x300与标题6瓶不一致，不采用数量字段，不计算价格；不指定丝路版或升级版。"
+    },
+    {
+      "id": "shede-pinwei",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.tuopaishede.cn/productInfo_2.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_2.html",
+          "summary": "已读取舍得酒业品味舍得产品页原始HTML：净含量500ml，酒精度包括52%vol，浓香型。"
+        }
+      ],
+      "reviewNotes": "正文提及历经4次迭代不等于目录已限定第四代，edition不填；不映射至藏品或精华版。"
+    },
+    {
+      "id": "tuopai-t68",
+      "appliedFields": {
+        "volumeMl": 480,
+        "source": "https://www.tuopaishede.cn/productInfo_39.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_39.html",
+          "summary": "已读取厂家沱牌特级产品页原始HTML：净含量480ml，酒精度包含50%vol，浓香型。"
+        },
+        {
+          "url": "https://product.suning.com/0070191013/11842599752.html",
+          "summary": "已打开并读取舍得官方旗舰店SKU原始HTML：沱牌9·T68、50度、480mL乘6瓶，交叉确认T68名称和容量。"
+        }
+      ],
+      "reviewNotes": "官店标题为沱牌9·T68，厂家标题为沱牌特级；未核定新老包装代际，不增加edition。"
+    },
+    {
+      "id": "jiannanchun-k6",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://product.suning.com/0030001198/12431667818.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030001198/12431667818.html",
+          "summary": "已打开并读取剑南春苏宁自营旗舰店SKU原始HTML：金剑南K6、52度、500ml单瓶，参数及包装清单一致。"
+        }
+      ],
+      "reviewNotes": "标题明确新老包装随机，edition不填；厂家官网未取得可读规格，使用平台自营具体商品资料。"
+    },
+    {
+      "id": "quanxing-daqu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0000000000/11240290850.html",
+          "summary": "自营商品明确为晶彩红52度500mL；厂家展馆还区分晶彩金。"
+        }
+      ],
+      "reviewNotes": "原条目未区分晶彩红或晶彩金，不将红款页面认定为原SKU；页面通用促销弹窗38元不是有效报价。"
+    },
+    {
+      "id": "shuanggou-shengfang",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "21版（主瓶500mL，另附20mL小瓶）",
+        "source": "https://www.chinayanghe.com/product/shuanggou/sgzbfxl/47.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/shuanggou/sgzbfxl/47.html",
+          "summary": "已重新读取厂家双沟圣坊21版页面原始HTML：净含量500ml加20ml，产品页酒精度42%vol。保留既有主瓶容量及版本。"
+        }
+      ],
+      "reviewNotes": "主瓶容量保持500mL，不合计成520mL；页面未独立给出辅助小瓶度数，不推断其度数。"
+    },
+    {
+      "id": "jinshiyuan-guoyuan-duikai",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.jinshiyuan.com.cn/display.php?id=175",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jinshiyuan.com.cn/display.php?id=175",
+          "summary": "已打开厂家国缘对开具体产品页：规格500ml，酒精度42%vol和52%vol。"
+        }
+      ],
+      "reviewNotes": "官网并列柔雅型与浓香型，未一一对应各度数，不自动修改aroma；包装版本未核定。"
+    },
+    {
+      "id": "jinshiyuan-guoyuan-v3",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.jinshiyuan.com.cn/display.php?id=2321",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jinshiyuan.com.cn/display.php?id=2321",
+          "summary": "已打开厂家国缘V3具体产品页：规格500ml、浓香型、40.9%vol，与目录一致。"
+        }
+      ],
+      "reviewNotes": "未标包装代际，edition不填。"
+    },
+    {
+      "id": "yilite-qu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.xjyilite.com/plus/list.php?tid=27",
+          "summary": "厂家区分伊力特曲老字号、十年精制与其他曲酒；索引可见52度十年精制500mL，原站直接访问失败。"
+        }
+      ],
+      "reviewNotes": "原名称曲酒52度未指定系列，且具体页面未成功取得，不擅自改为十年精制。"
+    },
+    {
+      "id": "songhe-liangye",
+      "appliedFields": {
+        "volumeMl": 480,
+        "source": "https://www.tjkx.com/zt/product/1678",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tjkx.com/zt/product/1678",
+          "summary": "宋河酒业线上展馆秘藏5号记录50度、480mL、1*6箱规。"
+        }
+      ],
+      "reviewNotes": "采用展馆480mL规格；旧苏宁500mL记录不混用。188元为建议零售价，没有报价日期，不能证明原120元市场价。"
+    },
+    {
+      "id": "dukang-jiuzu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [],
+      "reviewNotes": "窖藏与6窖区是不同命名，未找到与酒祖窖藏6 52度完整一致的可靠条目；需确认瓶标产品名。"
+    },
+    {
+      "id": "fenjiu-huanggaibofen",
+      "appliedFields": {
+        "volumeMl": 475,
+        "source": "https://www.suning.com/item/0000000000/612856581.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.suning.com/item/0000000000/612856581.html",
+          "summary": "已打开并读取具体商品聚合详情原始HTML：黄盖玻汾53度475ml单瓶，参数确认53度及475mL，页面卖方标为汾酒官方旗舰店。"
+        },
+        {
+          "url": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3904.html",
+          "summary": "已读取厂家普通53度玻瓶汾酒页面，参数为475mL，与黄盖玻汾规格一致。"
+        }
+      ],
+      "reviewNotes": "与fenjiu-bofen高度疑似重复；未取得不同条码、出口标或版本证据，不删除、不合并，不虚构edition。"
+    },
+    {
+      "id": "fenjiu-laobaifen10",
+      "appliedFields": {
+        "volumeMl": 475,
+        "source": "https://www.fenjiu.com.cn/gf/baifen/2023-02-08/995.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/baifen/2023-02-08/995.html",
+          "summary": "已重新读取厂家老白汾酒10页面原始HTML：酒精度包括53%Vol，净含量475mL。保留既有容量及来源。"
+        }
+      ],
+      "reviewNotes": "未明确包装代际，edition保持null。"
+    },
+    {
+      "id": "fenjiu-laobaifen15",
+      "appliedFields": {
+        "volumeMl": 475,
+        "edition": "封坛15（53度）",
+        "source": "https://www.fenjiu.com.cn/gf/baifen/2023-05-19/3900.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/baifen/2023-05-19/3900.html",
+          "summary": "已重新读取厂家老白汾酒封坛15页面原始HTML：酒精度包括53%Vol，净含量475mL。保留现有封坛15限定。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "baofeng-daqu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product4/gaoxianguangping/57.html",
+          "summary": "厂家明确六代大曲与金标两类产品，均列50度500mL。"
+        }
+      ],
+      "reviewNotes": "原名称仅为大曲50度，尚不能确定为六代、复古或金标；保留具体版本与容量待核实。"
+    },
+    {
+      "id": "baofeng-guose",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.hnbfjy.com/html/product/product2/guoseqingxiang/22.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product2/guoseqingxiang/22.html",
+          "summary": "国色清香35厂家产品页列46/50度、500mL、6瓶箱规；不把陈坛35数字解释成全部酒体贮藏年限。"
+        }
+      ],
+      "reviewNotes": "原包装代次及售价没有核实。"
+    },
+    {
+      "id": "hongxing-lan8",
+      "appliedFields": {
+        "volumeMl": 750,
+        "source": "https://product.suning.com/0030000752/12345603407.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000752/12345603407.html",
+          "summary": "红星自营商品标题为蓝瓶绵柔8、43度750mL单瓶，注明新老包装随机。"
+        }
+      ],
+      "reviewNotes": "本条采用明确可核对的750mL规格，原35元参考价未能与该规格报价绑定；包装代次保持未知。"
+    },
+    {
+      "id": "xifeng-lvbo",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.sxxfj.com/content/details32_490.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details32_490.html",
+          "summary": "厂家老绿瓶产品页标明500mL单瓶；未取得带日期报价。"
+        }
+      ],
+      "reviewNotes": "该页面文字未单列55度，度数仍以实际瓶标核对；不把同系列其他度数资料视为核实。"
+    },
+    {
+      "id": "xifeng-huashan10",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.suning.com/item/0000000000/104949989.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.suning.com/item/0000000000/104949989.html",
+          "summary": "苏宁自营条目列华山论剑10年52度500mL，注明新老包装随机、暂无报价。"
+        }
+      ],
+      "reviewNotes": "包装代次及价格仍未知。"
+    },
+    {
+      "id": "xifeng-huashan20",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.sxxfj.com/content/details106_6302.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details106_6302.html",
+          "summary": "厂家华山论剑20年产品规格标题为45度、52度、500mL。"
+        }
+      ],
+      "reviewNotes": "包装代次及价格仍未知。"
+    },
+    {
+      "id": "hongxifeng",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.sxxfj.com/content/details19_98.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details19_98.html",
+          "summary": "厂家红西凤页列45/52度、500mL每盒、4盒箱规；不将整箱容量记为单瓶。"
+        }
+      ],
+      "reviewNotes": "不推断具体生产年份或价格。"
+    },
+    {
+      "id": "jiujiang-shuangzheng",
+      "appliedFields": {
+        "volumeMl": 610,
+        "source": "https://www.heshan.gov.cn/zwgk/zdlyxxgk/spypanxxgk/aqjggzxx/content/post_2598156.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.heshan.gov.cn/zwgk/zdlyxxgk/spypanxxgk/aqjggzxx/content/post_2598156.html",
+          "summary": "鹤山市市场监管局2022年第1期公示第22项，九江酒厂九江双蒸酒610mL/瓶、29.5%vol；生产日期为2021-07-08，非价格日期。"
+        }
+      ],
+      "reviewNotes": "采用监管公示中的产品规格，不把历史样本合格结论推广到当前所有批次；包装代次、价格和香型细分类仍待核实。"
+    },
+    {
+      "id": "yubingshao",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://shiwanmall.com/Default",
+          "summary": "官方商城索引列30.3度出口庄500mL及29度出口装等不同规格；本机未能连接商城。"
+        }
+      ],
+      "reviewNotes": "原30度无法与30.3或29度直接等同，不取其容量、价格或版本。"
+    },
+    {
+      "id": "guilin-sanhua-lao",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.jd.com/jiage/1225919f32e4e4f22768a.html",
+          "summary": "零售目录有45度老桂林与52度三花玻瓶、洞藏等不同产品。"
+        }
+      ],
+      "reviewNotes": "原老桂林52度缺少具体系列，不能把45度老桂林或52度普通三花当成同一酒款。"
+    },
+    {
+      "id": "baiyunbian-12",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://byb.hbbyb.com/index.php?read-33.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://byb.hbbyb.com/index.php?list-31.html",
+          "summary": "厂家年份系列明确42度十二年陈酿500mL并链接read-33，同时另列250mL规格。"
+        }
+      ],
+      "reviewNotes": "不混用250mL或其他零售礼盒容量报价，包装代次和售价仍未知。"
+    },
+    {
+      "id": "baiyunbian-20",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://byb.hbbyb.com/index.php?list-31.html",
+          "summary": "厂家目录本次取得的二十年条目列42/45度；另见苏宁53度标题但品牌参数错写云龙山、产地徐州。"
+        }
+      ],
+      "reviewNotes": "53度可信产品详情仍不足，拒绝以内部矛盾的零售页面填充。"
+    },
+    {
+      "id": "yangshao-tianbao",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://m.9998.tv/product/745288.html",
+          "summary": "招商页天时46度总量500mL说明实际为46度主酒与70度酒头的组合。"
+        }
+      ],
+      "reviewNotes": "需确认具体天时版本及主酒/酒头容量，不能把组合总量全部记成46度单瓶容量；厂家首页404。"
+    },
+    {
+      "id": "dongjiu-guomi",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.chinadongjiu.com/products/380.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinadongjiu.com/products/380.html",
+          "summary": "厂家国密页参数列500mL、41/54度。"
+        }
+      ],
+      "reviewNotes": "包装版本与价格未知，不采纳页面酒精饮品健康功效营销表述。"
+    },
+    {
+      "id": "dongjiu-baicao",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.chinadongjiu.com/products/17.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.chinadongjiu.com/products/17.html",
+          "summary": "厂家佰草香参数列54度、500mL。"
+        }
+      ],
+      "reviewNotes": "包装版本与价格未知，不采纳健康功效宣传。"
+    },
+    {
+      "id": "jiuguijiu-huangtan",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [],
+      "reviewNotes": "零售资料存在468mL黄坛与500mL黄坛12等版本，厂家站未连通；原条目未明确版本，不擅填。"
+    },
+    {
+      "id": "jiuguijiu-neican",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.cofco.com/cn/IndexFirst/2021/0831/50749.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.cofco.com/cn/IndexFirst/2021/0831/50749.html",
+          "summary": "中粮2021-08-31发布内参2021版上市公告，明确52度500mL；不将上市日当作价格日期。"
+        }
+      ],
+      "reviewNotes": "原条目未明确包装年份，故不将2021版直接认定为原版本；价格未知。"
+    },
+    {
+      "id": "site-dongfangyun",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.sitejiu.com/front/show/48868e727b9244f3b29a7f0c21ee5188.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.sitejiu.com/front/show/48868e727b9244f3b29a7f0c21ee5188.html",
+          "summary": "四特官网新版弘韵参数表列40/45/52度、500mL每瓶、特香型。"
+        }
+      ],
+      "reviewNotes": "页面使用新版描述但无明确年份，原包装代次和价格保持未知。"
+    },
+    {
+      "id": "jingzhi-yipin",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://shop.jiuxian.com/brand-273.htm",
+          "summary": "景芝官方旗舰店页面区分50度一品景芝和52度青花、礼尚等其他产品。"
+        }
+      ],
+      "reviewNotes": "一品景芝为多款系列，原52度缺少具体型号，不能以50/53度或其他52度景芝产品代替。"
+    },
+    {
+      "id": "hengshui-gufa20",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://product.suning.com/0000000000/12201567125.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0000000000/12201567125.html",
+          "summary": "苏宁自营商品标题和参数列古法二十67度500mL单瓶。"
+        }
+      ],
+      "reviewNotes": "包装版本和有效报价未取得。"
+    },
+    {
+      "id": "kouzi-xiaochi",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.kouzi.com/index.php?c=show&id=5837",
+          "summary": "已打开并读取厂家小池窖特酿页面：净含量500ml，度数只列41%vol与45%vol，未列40.8度。"
+        },
+        {
+          "url": "https://product.suning.com/0070854614/12114026939.html",
+          "summary": "已读取官方旗舰店商品选项：小池窖为41度500ml；40.8度400ml选项属于五年型。"
+        }
+      ],
+      "reviewNotes": "目录小池窖40.8度身份未证实，不将41/45度产品的500mL容量迁移给未知SKU；不填volumeMl、edition或source，不修改abv。"
+    },
+    {
+      "id": "qingke-huzhu",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.002646.com/",
+          "summary": "确认厂家官网，但天佑德青稞酒52度只是品牌加酒精度，不能唯一定位商品。"
+        }
+      ],
+      "reviewNotes": "需明确国之德、海拔、出口型等系列后才能填容量、版本和对应价格。"
+    },
+    {
+      "id": "maotai-jingpin",
+      "appliedFields": {
+        "volumeMl": 500,
+        "edition": "精品",
+        "source": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117411293830.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117411293830.html",
+          "summary": "厂家贵州茅台酒（精品）详情明确53%vol、500mL/瓶，未与珍品茅台混淆。"
+        }
+      ],
+      "reviewNotes": "本轮只补入证据支持的产品规格；未补入的字段继续待核实。"
+    },
+    {
+      "id": "maotai-shengxiao",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtjt/2025-12/31/article_2025123121121938437.html",
+          "summary": "已读取厂家2025年12月31日发布公告：列53%vol、500ml贵州茅台酒（丙午马年）的经典版、礼盒装及珍享版。这仅支持所列马年版本。"
+        }
+      ],
+      "reviewNotes": "原记录未指定生肖、年份和包装版本。不能因研究日为2026年就改成丙午马年，也不能把马年公告的500ml外推到全部生肖酒。"
+    },
+    {
+      "id": "wuliangye-jingdian",
+      "appliedFields": {
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.wuliangye.com.cn/zh/main/main.html#/g=PRODUCT&id=38&dId=2001",
+          "summary": "当前厂家dId=2001产品已明确命名经典五粮液10，52度、500ml；不是无后缀的经典五粮液。"
+        },
+        {
+          "url": "https://www.wuliangye.com.cn/wly_eap/cn/api/v1/publix/product/id/2001",
+          "summary": "官网实际调用数据确认经典五粮液10；同一厂家目录另外列经典五粮液20、30、50。"
+        }
+      ],
+      "reviewNotes": "严重版本风险：旧的经典五粮液与当前10、20、30、50年份系列不能自动等同；旧链接可能已更新产品内容。需先确定原记录版本，本次不把经典10的500ml和edition静默移植。"
+    },
+    {
+      "id": "guojiao1573-zhongguo-pinwei",
+      "appliedFields": {
+        "volumeMl": 500,
+        "source": "https://www.lzlj.com/brand/1573/3748.html",
+        "priceBasis": "estimate"
+      },
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/1573/3748.html",
+          "summary": "厂家国窖1573·中国品味详情明确度数38%vol和52%vol，容量500ml；正文称中国品味限量版，但未注明某一生产年份。"
+        }
+      ],
+      "reviewNotes": "不把正文提及的1996年、2006年文化遗产事件日期误用为产品edition或priceUpdated。"
+    },
+    {
+      "id": "tanjiu-zitan-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-zitan-53",
+        "name": "潭酒 紫潭53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 668,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。价格为本日观察到的厂家指导价，不是成交价；未注明价格生效日期。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.tanjiu.cn/htznf/zitan.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/zitan.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/htznf/zitan.html",
+          "summary": "厂家详情明确紫潭、酱香型、53%vol、500ml/瓶、四川古蔺仙潭酒厂及古蔺产地；实际页面显示官方指导价668元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。价格为本日观察到的厂家指导价，不是成交价；未注明价格生效日期。",
+      "priceEvidence": {
+        "price": 668,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/zitan.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-hongtan-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-hongtan-53",
+        "name": "潭酒 红潭53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 318,
+        "priceTier": "中端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。仅记录观察到的指导价；不推断某生产年份或2022版。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.tanjiu.cn/htznf/hongtan.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/hongtan.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/htznf/hongtan.html",
+          "summary": "厂家详情明确红潭、酱香型、53%vol、500ml/瓶、古蔺仙潭酒厂及古蔺产地；实际显示官方指导价318元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。仅记录观察到的指导价；不推断某生产年份或2022版。",
+      "priceEvidence": {
+        "price": 318,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/hongtan.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-ziqidonglai-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-ziqidonglai-53",
+        "name": "潭酒 紫气东来53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 1318,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。不同于紫潭的独立产品；价格不是实时报价或成交价。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.tanjiu.cn/htznf/zqdl.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/zqdl.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/htznf/zqdl.html",
+          "summary": "厂家详情明确潭紫气东来、酱香型、53%vol、500ml/瓶、古蔺仙潭酒厂和产地；实际显示官方指导价1318元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。不同于紫潭的独立产品；价格不是实时报价或成交价。",
+      "priceEvidence": {
+        "price": 1318,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/zqdl.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-hongdefazi-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-hongdefazi-53",
+        "name": "潭酒 红得发紫53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 468,
+        "priceTier": "中端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。独立产品，不与红潭或紫潭归并；价格为本日观察的MSRP。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.tanjiu.cn/htznf/hdfz.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/hdfz.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/htznf/hdfz.html",
+          "summary": "厂家详情明确潭红得发紫、酱香型、53%vol、500ml/瓶、四川古蔺仙潭酒厂有限公司及产地；指导价468元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。独立产品，不与红潭或紫潭归并；价格为本日观察的MSRP。",
+      "priceEvidence": {
+        "price": 468,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/hdfz.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-yintan-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-yintan-53",
+        "name": "潭酒 银潭53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 138,
+        "priceTier": "口粮",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。价格为指导价，不声称当前实际成交价。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.tanjiu.cn/htznf/yintan.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/yintan.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/htznf/yintan.html",
+          "summary": "厂家详情明确银潭、酱香型、53%vol、500ml/瓶、四川古蔺仙潭酒厂有限公司及产地；官方指导价138元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。价格为指导价，不声称当前实际成交价。",
+      "priceEvidence": {
+        "price": 138,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/htznf/yintan.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-vintage2014-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-vintage2014-53",
+        "name": "年份潭酒2014 53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 886,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。年份来自产品身份，不是报价日期；不据此宣称截至2026年持续桶陈12年。",
+        "volumeMl": 500,
+        "edition": "2014单一年份",
+        "source": "https://www.tanjiu.cn/dyznf/nianfentan2014.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2014.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/dyznf/nianfentan2014.html",
+          "summary": "厂家单一年份系列明确年份潭酒2014、酱香型、53%vol、500ml/瓶、古蔺仙潭酒厂及产地；指导价886元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。年份来自产品身份，不是报价日期；不据此宣称截至2026年持续桶陈12年。",
+      "priceEvidence": {
+        "price": 886,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2014.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-vintage2016-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-vintage2016-53",
+        "name": "年份潭酒2016 53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 499,
+        "priceTier": "中端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。作为厂家单一年份产品区分，不按外包装年份重复计数；价格为MSRP。",
+        "volumeMl": 500,
+        "edition": "2016单一年份",
+        "source": "https://www.tanjiu.cn/dyznf/nianfentan2016.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2016.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/dyznf/nianfentan2016.html",
+          "summary": "厂家单一年份系列明确年份潭酒2016、酱香型、53%vol、500ml/瓶、古蔺仙潭酒厂及产地；指导价499元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。作为厂家单一年份产品区分，不按外包装年份重复计数；价格为MSRP。",
+      "priceEvidence": {
+        "price": 499,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2016.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-vintage2018-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-vintage2018-53",
+        "name": "年份潭酒2018 53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 246,
+        "priceTier": "中端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。年份是厂家单一年份身份；指导价没有独立生效日期。",
+        "volumeMl": 500,
+        "edition": "2018单一年份",
+        "source": "https://www.tanjiu.cn/dyznf/nianfentan2018.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2018.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/dyznf/nianfentan2018.html",
+          "summary": "厂家详情明确年份潭酒2018、酱香型、53%vol、500ml/瓶、古蔺仙潭酒厂及产地；指导价246元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。年份是厂家单一年份身份；指导价没有独立生效日期。",
+      "priceEvidence": {
+        "price": 246,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2018.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-vintage2019-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-vintage2019-53",
+        "name": "年份潭酒2019 53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 166,
+        "priceTier": "中端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。记录页面实际观察的MSRP，不将2019当作价格更新时间。",
+        "volumeMl": 500,
+        "edition": "2019单一年份",
+        "source": "https://www.tanjiu.cn/dyznf/556.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/556.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/dyznf/556.html",
+          "summary": "厂家详情明确年份潭酒2019、酱香型、53%vol、500ml/瓶、古蔺仙潭酒厂及产地；指导价166元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。记录页面实际观察的MSRP，不将2019当作价格更新时间。",
+      "priceEvidence": {
+        "price": 166,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/556.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "langjiu-shunpin-lanshun-45",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "langjiu-shunpin-lanshun-45",
+        "name": "顺品郎 蓝顺45度",
+        "brand": "郎酒",
+        "aroma": "兼香",
+        "abv": 45,
+        "price": 77,
+        "priceTier": "口粮",
+        "taste": [
+          "兼香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "四川泸州",
+        "highlight": "45度、480mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用页面挂牌价，不代表实际结算价。京东公开推荐商品卡挂牌价，非厂家指导价；未核实商家、库存或结算价格。只采用蓝顺，不将酒体差异未确认的金盖装重复入库。",
+        "volumeMl": 480,
+        "edition": "蓝顺",
+        "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=88",
+        "priceBasis": "listing",
+        "priceSource": "https://item.jd.com/product/lvtE-oSm_fKGfNtp2EWlAA.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=88",
+          "summary": "厂家明确顺品郎蓝顺、45%vol、浓酱兼香型，列480ml及280ml；仅选480ml一个规格。"
+        },
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=80",
+          "summary": "厂家对郎酒兼香系列说明明确泸州产区。"
+        },
+        {
+          "url": "https://item.jd.com/product/lvtE-oSm_fKGfNtp2EWlAA.html",
+          "summary": "研究者及主代理实际读取推荐商品卡，77元明确对应蓝顺45度480ml单瓶；不是页面主商品红顺的48.42元。"
+        },
+        {
+          "url": "https://item.jd.com/product/ViAFN695X2qZnCIzuXCRXw.html",
+          "summary": "研究者打开被链接的蓝顺页面，标题确认45度480ml单瓶。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。京东公开推荐商品卡挂牌价，非厂家指导价；未核实商家、库存或结算价格。只采用蓝顺，不将酒体差异未确认的金盖装重复入库。",
+      "priceEvidence": {
+        "price": 77,
+        "priceBasis": "listing",
+        "priceSource": "https://item.jd.com/product/lvtE-oSm_fKGfNtp2EWlAA.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "diaoyutai-guibin3-2026-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "diaoyutai-guibin3-2026-53",
+        "name": "钓鱼台 贵宾酒Ⅲ·2026 53度",
+        "brand": "钓鱼台",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 699,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "贵州仁怀茅台镇",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。贵宾酒不是现有国宾酒；本组只选一个贵宾版本，不另计红色包装版。",
+        "volumeMl": 500,
+        "edition": "Ⅲ·2026",
+        "source": "https://www.diaoyutaijiu.com/productinfo/288772.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/288772.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/288772.html",
+          "summary": "已读取页面实际加载的官方Body.js内参数表：贵宾酒Ⅲ·2026、酱香型、53%vol、500mL、建议零售价699元。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/gywm",
+          "summary": "厂家介绍明确贵州钓鱼台国宾酒业有限公司位于仁怀市茅台镇岩滩村。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。贵宾酒不是现有国宾酒；本组只选一个贵宾版本，不另计红色包装版。",
+      "priceEvidence": {
+        "price": 699,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/288772.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "diaoyutai-zhenpin1-falang-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "diaoyutai-zhenpin1-falang-53",
+        "name": "钓鱼台 珍品一号酒珐琅彩53度",
+        "brand": "钓鱼台",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 1399,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "贵州仁怀茅台镇",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。仅选珍品一号一个版本，没有同时新增粉彩或小酒版。",
+        "volumeMl": 500,
+        "edition": "珐琅彩",
+        "source": "https://www.diaoyutaijiu.com/productinfo/978819.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/978819.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/978819.html",
+          "summary": "实际读取厂家静态Body.js内参数表，明确珍品一号酒珐琅彩、酱香型、53%vol、500mL、建议零售价1399元。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/gywm",
+          "summary": "厂家介绍确认生产企业及仁怀茅台镇所在地。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。仅选珍品一号一个版本，没有同时新增粉彩或小酒版。",
+      "priceEvidence": {
+        "price": 1399,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/978819.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "diaoyutai-shougong-huang-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "diaoyutai-shougong-huang-53",
+        "name": "钓鱼台 手工酿艺酒黄53度",
+        "brand": "钓鱼台",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 1299,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "贵州仁怀茅台镇",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。本组仅选黄版，不把蓝版、皮盒版一起计为新增。",
+        "volumeMl": 500,
+        "edition": "黄",
+        "source": "https://www.diaoyutaijiu.com/productinfo/1385729.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/1385729.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/1385729.html",
+          "summary": "实际读取厂家静态参数表，明确手工酿艺酒黄、酱香型、53%vol、500mL、建议零售价1299元。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/gywm",
+          "summary": "厂家介绍确认生产企业及仁怀茅台镇所在地。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。本组仅选黄版，不把蓝版、皮盒版一起计为新增。",
+      "priceEvidence": {
+        "price": 1299,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/1385729.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "diaoyutai-jiangse-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "diaoyutai-jiangse-53",
+        "name": "钓鱼台酒 酱色53度",
+        "brand": "钓鱼台",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 999,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "贵州仁怀茅台镇",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。官网将其作为独立系列；价格为MSRP，不是观察到的零售成交价。",
+        "volumeMl": 500,
+        "edition": "酱色",
+        "source": "https://www.diaoyutaijiu.com/productinfo/318171.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/318171.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/318171.html",
+          "summary": "厂家独立产品详情静态参数明确钓鱼台酒酱色、酱香型、53%vol、500mL、建议零售价999元。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/gywm",
+          "summary": "厂家介绍确认生产企业及仁怀茅台镇所在地。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。官网将其作为独立系列；价格为MSRP，不是观察到的零售成交价。",
+      "priceEvidence": {
+        "price": 999,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.diaoyutaijiu.com/productinfo/318171.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "wuliangchun-second-52",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "wuliangchun-second-52",
+        "name": "五粮春 第二代52度",
+        "brand": "五粮液",
+        "aroma": "浓香",
+        "abv": 52,
+        "price": 358,
+        "priceTier": "中端",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川宜宾",
+        "highlight": "52度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。采用2021年6月10日的历史上市指导价，未确认358元仍适用；2026-09-07仅为观察记录日，不是当前调价或成交日期。",
+        "volumeMl": 500,
+        "edition": "第二代",
+        "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=31",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.wuliangnongxiang.com/news/newsPage.html?id=118",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/31",
+          "summary": "官网正常访客产品数据明确五粮春第二代、浓香型、52%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "厂家五粮春类别介绍明确由宜宾五粮液股份有限公司出品。"
+        },
+        {
+          "url": "https://www.wuliangnongxiang.com/news/newsPage.html?id=118",
+          "summary": "研究者读取2021年6月10日厂家焕新公告，明确第二代45度和52度建议零售价分别328、358元；本记录采用52度价格。"
+        },
+        {
+          "url": "https://www.wuliangnongxiang.com/product/proPage.html?id=31",
+          "summary": "厂家第二代五粮春产品记录确认52度500ml，与报价产品对应。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。采用2021年6月10日的历史上市指导价，未确认358元仍适用；2026-09-07仅为观察记录日，不是当前调价或成交日期。",
+      "priceEvidence": {
+        "price": 358,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.wuliangnongxiang.com/news/newsPage.html?id=118",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "jianzhuang-1911-52",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "jianzhuang-1911-52",
+        "name": "尖庄1911 52度",
+        "brand": "五粮液",
+        "aroma": "浓香",
+        "abv": 52,
+        "price": 368,
+        "priceTier": "中端",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川宜宾",
+        "highlight": "52度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。采用2021年5月21日历史上市价，非现售成交价；报价公告通过厂家同名产品记录对应52度500ml，观察日不代表指导价生效日。",
+        "volumeMl": 500,
+        "edition": "1911",
+        "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=30",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.wuliangnongxiang.com/news/newsPage.html?id=113",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/30",
+          "summary": "厂家独立详情明确尖庄1911、浓香型、52%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "尖庄类别介绍确认宜宾五粮液股份有限公司出品。"
+        },
+        {
+          "url": "https://www.wuliangnongxiang.com/news/newsPage.html?id=113",
+          "summary": "研究者读取2021年5月21日尖庄1911厂家上市公告，明确零售价368元。"
+        },
+        {
+          "url": "https://www.wuliangnongxiang.com/product/proPage.html?id=30",
+          "summary": "厂家同名尖庄1911唯一产品记录确认52度500ml，用于交叉对应公告未重复列出的规格。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。采用2021年5月21日历史上市价，非现售成交价；报价公告通过厂家同名产品记录对应52度500ml，观察日不代表指导价生效日。",
+      "priceEvidence": {
+        "price": 368,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.wuliangnongxiang.com/news/newsPage.html?id=113",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "jianzhuang-daguang-50",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "jianzhuang-daguang-50",
+        "name": "尖庄 大光50度",
+        "brand": "五粮液",
+        "aroma": "浓香",
+        "abv": 50,
+        "price": 35.9,
+        "priceTier": "口粮",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "四川宜宾",
+        "highlight": "50度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用页面挂牌价，不代表实际结算价。第三方商家公开店铺挂牌价，非厂家指导价；金额来源是具体商品卡，结算价格与地区可售性未确认。",
+        "volumeMl": 500,
+        "edition": "大光",
+        "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=8",
+        "priceBasis": "listing",
+        "priceSource": "https://shop.jiuxian.com/index-1883.htm",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/8",
+          "summary": "厂家数据明确尖庄大光、浓香型、50%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "尖庄类别介绍确认宜宾五粮液股份有限公司出品。"
+        },
+        {
+          "url": "https://shop.jiuxian.com/index-1883.htm",
+          "summary": "研究者实际HTML商品卡将35.90元绑定50度绵柔尖庄大光500ml单瓶并链接628250。"
+        },
+        {
+          "url": "https://www.jiuxian.com/goods-628250.html",
+          "summary": "研究者打开商品标题与参数，确认50度500ml单瓶；销售商为金酿优选酒类精品店。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。第三方商家公开店铺挂牌价，非厂家指导价；金额来源是具体商品卡，结算价格与地区可售性未确认。",
+      "priceEvidence": {
+        "price": 35.9,
+        "priceBasis": "listing",
+        "priceSource": "https://shop.jiuxian.com/index-1883.htm",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "maotai-43",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "maotai-43",
+        "name": "贵州茅台酒43度",
+        "brand": "茅台",
+        "aroma": "酱香",
+        "abv": 43,
+        "price": 829,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "贵州仁怀茅台镇",
+        "highlight": "43度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用页面挂牌价，不代表实际结算价。采用2026年1月14日公告的829元自营体系价，不保证当前i茅台结算或现货；2026-09-07仅为本次观察日，不声称当天调价。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117380885242.html",
+        "priceBasis": "listing",
+        "priceSource": "https://www.moutai.com.cn/mtgf/articleFileDir/2026-01/15/a3f07b4782ce48d6a05f89f35a6ddf6a.pdf",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117380885242.html",
+          "summary": "厂家详情名称为43%vol贵州茅台酒，明确酱香型、43%vol、500ml/瓶。"
+        },
+        {
+          "url": "https://www.moutai.com.cn/mtgf/qygk/lxwm/index.html",
+          "summary": "厂家明确贵州茅台酒股份有限公司及仁怀茅台镇地址。"
+        },
+        {
+          "url": "https://www.moutai.com.cn/mtgf/articleFileDir/2026-01/15/a3f07b4782ce48d6a05f89f35a6ddf6a.pdf",
+          "summary": "主代理读取2026年1月14日董事会公告及第3页截图：飞天43%vol500ml贵州茅台酒自营体系零售价829元/瓶。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。采用2026年1月14日公告的829元自营体系价，不保证当前i茅台结算或现货；2026-09-07仅为本次观察日，不声称当天调价。",
+      "priceEvidence": {
+        "price": 829,
+        "priceBasis": "listing",
+        "priceSource": "https://www.moutai.com.cn/mtgf/articleFileDir/2026-01/15/a3f07b4782ce48d6a05f89f35a6ddf6a.pdf",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-laobaifen-chunrou-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-laobaifen-chunrou-53",
+        "name": "汾酒 老白汾醇柔53度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 53,
+        "price": 105,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西汾阳杏花村",
+        "highlight": "53度、475mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。采用105元单瓶展示价，不套用六瓶或双瓶金额，不保证实际结算价。",
+        "volumeMl": 475,
+        "edition": null,
+        "source": "https://www.fenjiu.com.cn/gf/baifen/2023-05-19/3902.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/baifen/2023-05-19/3902.html",
+          "summary": "已读取厂家老白汾醇柔页面：清香型，度数包括53%Vol，净含量475mL，产地杏花村。"
+        },
+        {
+          "url": "https://product.suning.com/0071602289/12451406413.html",
+          "summary": "实际读取53度醇柔老白汾475ml单瓶，参数与清单一致。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "实际读取店铺列表，对应单瓶SKU为105元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。采用105元单瓶展示价，不套用六瓶或双瓶金额，不保证实际结算价。",
+      "priceEvidence": {
+        "price": 105,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-bofen-42",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-bofen-42",
+        "name": "汾酒 玻瓶汾酒42度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 42,
+        "price": 49,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西汾阳杏花村",
+        "highlight": "42度、475mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。单瓶商家展示报价，不保证结算价、库存或实际成交；不另增红盖别名条目。",
+        "volumeMl": 475,
+        "edition": null,
+        "source": "https://www.fenjiu.com.cn/gf/bofen/2023-02-08/1005.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/bofen/2023-02-08/1005.html",
+          "summary": "已读取厂家42度玻瓶汾酒页面：42%Vol、475mL、清香型，产地杏花村。"
+        },
+        {
+          "url": "https://product.suning.com/0071602289/12451403891.html",
+          "summary": "实际读取红盖汾酒42度475ml商品，标题、参数、包装清单均为单瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "实际读取店铺列表，上述单瓶SKU展示49元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。单瓶商家展示报价，不保证结算价、库存或实际成交；不另增红盖别名条目。",
+      "priceEvidence": {
+        "price": 49,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "kouzi-five-year-40-8",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "kouzi-five-year-40-8",
+        "name": "口子窖 五年型40.8度",
+        "brand": "口子窖",
+        "aroma": "兼香",
+        "abv": 40.8,
+        "price": 110,
+        "priceTier": "口粮",
+        "taste": [
+          "兼香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "安徽淮北",
+        "highlight": "40.8度、400mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。不与目录身份存疑的小池窖40.8度混同。年货节字样仅为促销文案，不作为edition或报价日期。",
+        "volumeMl": 400,
+        "edition": "五年型",
+        "source": "https://product.suning.com/0070854614/108373298.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/108373298.html",
+          "summary": "已读取口子窖官方旗舰店SKU：五年型40.8度、400mL单瓶、兼香型，产地淮北。"
+        },
+        {
+          "url": "https://shop.suning.com/70854614/all.html",
+          "summary": "实际打开的店铺列表对应该单瓶SKU展示110元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。不与目录身份存疑的小池窖40.8度混同。年货节字样仅为促销文案，不作为edition或报价日期。",
+      "priceEvidence": {
+        "price": 110,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "kouzi-five-year-52",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "kouzi-five-year-52",
+        "name": "口子窖 五年型52度",
+        "brand": "口子窖",
+        "aroma": "兼香",
+        "abv": 52,
+        "price": 115,
+        "priceTier": "口粮",
+        "taste": [
+          "兼香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "安徽淮北",
+        "highlight": "52度、400mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。与40.8度五年型按ABV区分。未把50度550mL容量升级款再列为新增。",
+        "volumeMl": 400,
+        "edition": "五年型",
+        "source": "https://product.suning.com/0070854614/11906544150.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/11906544150.html",
+          "summary": "已读取官方旗舰店商品：五年型52度400mL单瓶，兼香型，安徽淮北产。"
+        },
+        {
+          "url": "https://shop.suning.com/70854614/all.html",
+          "summary": "实际打开列表对应该单瓶SKU展示115元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。与40.8度五年型按ABV区分。未把50度550mL容量升级款再列为新增。",
+      "priceEvidence": {
+        "price": 115,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "kouzi-six-year-41",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "kouzi-six-year-41",
+        "name": "口子窖 六年型41度",
+        "brand": "口子窖",
+        "aroma": "兼香",
+        "abv": 41,
+        "price": 148,
+        "priceTier": "口粮",
+        "taste": [
+          "兼香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "安徽淮北",
+        "highlight": "41度、450mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。没有把4瓶、6瓶装另外计算为新SKU。价格为单瓶挂牌，不是成交证明。",
+        "volumeMl": 450,
+        "edition": "六年型",
+        "source": "https://product.suning.com/0070854614/103339410.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/103339410.html",
+          "summary": "已读取官方旗舰店六年型41度SKU，450mL单瓶、兼香型，产地安徽淮北。"
+        },
+        {
+          "url": "https://shop.suning.com/70854614/all.html",
+          "summary": "实际打开列表对应该单瓶SKU展示148元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。没有把4瓶、6瓶装另外计算为新SKU。价格为单瓶挂牌，不是成交证明。",
+      "priceEvidence": {
+        "price": 148,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "kouzi-six-year-52",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "kouzi-six-year-52",
+        "name": "口子窖 六年型52度",
+        "brand": "口子窖",
+        "aroma": "兼香",
+        "abv": 52,
+        "price": 145,
+        "priceTier": "口粮",
+        "taste": [
+          "兼香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "安徽淮北",
+        "highlight": "52度、450mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。真实52度版本，不以50度550mL容量升级款替代。",
+        "volumeMl": 450,
+        "edition": "六年型",
+        "source": "https://product.suning.com/0070854614/11906580301.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/11906580301.html",
+          "summary": "已读取官方旗舰店六年型52度450mL单瓶商品，香型兼香，产地淮北。"
+        },
+        {
+          "url": "https://shop.suning.com/70854614/all.html",
+          "summary": "实际读取店铺列表，对应该单瓶SKU为145元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。真实52度版本，不以50度550mL容量升级款替代。",
+      "priceEvidence": {
+        "price": 145,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70854614/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "shede-zizai-29",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "shede-zizai-29",
+        "name": "舍得 自在29度",
+        "brand": "舍得",
+        "aroma": "浓香",
+        "abv": 29,
+        "price": 329,
+        "priceTier": "中端",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川射洪",
+        "highlight": "29度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。采用2025年8月30日的历史上市定价329元，非当前促销或成交价；2026-09-07仅为本次核阅日期，不表示当天调整或生效。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://www.tuopaishede.cn/productInfo_135.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.fosun.com/content/details46_4880.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_135.html",
+          "summary": "已读取厂家舍得自在页面：500ml、浓香型，酒精度字段写29vol，并描述为低酒度老酒；厂家位于射洪。"
+        },
+        {
+          "url": "https://www.fosun.com/content/details46_4880.html",
+          "summary": "研究者实际读取复星集团2025年8月30日新品发布报道及原始HTML，舍得酒业总裁介绍29度舍得自在定价329元，当日开启预售。"
+        },
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_135.html",
+          "summary": "厂家具体产品页确认29度、500ml、浓香型，与发布报道中的名称及度数相符。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。采用2025年8月30日的历史上市定价329元，非当前促销或成交价；2026-09-07仅为本次核阅日期，不表示当天调整或生效。",
+      "priceEvidence": {
+        "price": 329,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.fosun.com/content/details46_4880.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tuopai-liuliang-42",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tuopai-liuliang-42",
+        "name": "沱牌 六粮42度",
+        "brand": "沱牌",
+        "aroma": "浓香",
+        "abv": 42,
+        "price": 15,
+        "priceTier": "口粮",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "四川遂宁",
+        "highlight": "42度、250mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。只选此明确250mL表达，不再把厂家500mL六粮另算新增；不能把15元套给500mL。",
+        "volumeMl": 250,
+        "edition": null,
+        "source": "https://product.suning.com/0070191013/12450845324.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70191013/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070191013/12450845324.html",
+          "summary": "已读取舍得官方旗舰店具体SKU：沱牌六粮42度250mL单瓶，浓香型，产地四川遂宁。"
+        },
+        {
+          "url": "https://shop.suning.com/70191013/all.html",
+          "summary": "实际打开店铺列表，此250mL单瓶SKU展示15元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。只选此明确250mL表达，不再把厂家500mL六粮另算新增；不能把15元套给500mL。",
+      "priceEvidence": {
+        "price": 15,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70191013/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "hongxing-lanhe18-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "hongxing-lanhe18-53",
+        "name": "红星 二锅头蓝盒18 53度",
+        "brand": "红星",
+        "aroma": "清香",
+        "abv": 53,
+        "price": 112,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "北京",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。蓝盒18为明确产品系列，不与既有43度蓝瓶或身份存疑的56度绵柔8混同。",
+        "volumeMl": 500,
+        "edition": "蓝盒18",
+        "source": "https://product.suning.com/0030000752/10596900021.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/30000752/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000752/10596900021.html",
+          "summary": "已读取红星苏宁自营蓝盒18商品：53度、500mL单瓶、清香型，北京产。"
+        },
+        {
+          "url": "https://shop.suning.com/30000752/all.html",
+          "summary": "实际打开列表，对应该单瓶SKU展示112元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。蓝盒18为明确产品系列，不与既有43度蓝瓶或身份存疑的56度绵柔8混同。",
+      "priceEvidence": {
+        "price": 112,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/30000752/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "hongxing-lanhe12-43",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "hongxing-lanhe12-43",
+        "name": "红星 二锅头蓝盒12 43度",
+        "brand": "红星",
+        "aroma": "清香",
+        "abv": 43,
+        "price": 80,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "北京",
+        "highlight": "43度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。蓝盒12与现有蓝瓶绵柔8为不同系列标识；若旧条实际误录为蓝盒12，应先纠正旧条后再去重。",
+        "volumeMl": 500,
+        "edition": "蓝盒12",
+        "source": "https://product.suning.com/0030000752/12345671731.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/30000752/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000752/12345671731.html",
+          "summary": "已读取红星苏宁自营蓝盒12页面：43度500mL单瓶、清香型，北京产。"
+        },
+        {
+          "url": "https://shop.suning.com/30000752/all.html",
+          "summary": "实际打开店铺列表，此单瓶SKU标为80元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。蓝盒12与现有蓝瓶绵柔8为不同系列标识；若旧条实际误录为蓝盒12，应先纠正旧条后再去重。",
+      "priceEvidence": {
+        "price": 80,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/30000752/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "hongxing-gaozhao-zongshi1949-52",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "hongxing-gaozhao-zongshi1949-52",
+        "name": "红星高照 宗师1949 52度",
+        "brand": "红星",
+        "aroma": "清香",
+        "abv": 52,
+        "price": 597,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "北京",
+        "highlight": "52度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。1949是产品表达名称，不当作生产年份。零售挂牌价，不是厂家指导价或成交保证。",
+        "volumeMl": 500,
+        "edition": "宗师1949",
+        "source": "https://product.suning.com/0030000752/11663111467.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/30000752/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000752/11663111467.html",
+          "summary": "已读取红星苏宁自营商品：红星高照宗师1949、52度、500mL单瓶、清香型，北京产。"
+        },
+        {
+          "url": "https://shop.suning.com/30000752/all.html",
+          "summary": "实际打开列表，对应单瓶商品展示597元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。1949是产品表达名称，不当作生产年份。零售挂牌价，不是厂家指导价或成交保证。",
+      "priceEvidence": {
+        "price": 597,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/30000752/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-laobaifen-chunrou-42",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-laobaifen-chunrou-42",
+        "name": "汾酒 老白汾醇柔42度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 42,
+        "price": 93.1,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西汾阳杏花村",
+        "highlight": "42度、475mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。真实42度版本，与53度按ABV区分，不按包装区分。商家展示价，不保证结算或库存。",
+        "volumeMl": 475,
+        "edition": null,
+        "source": "https://www.fenjiu.com.cn/gf/baifen/2023-05-19/3902.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all-2.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/baifen/2023-05-19/3902.html",
+          "summary": "厂家醇柔页列42及53度、475mL、清香型、杏花村产地。"
+        },
+        {
+          "url": "https://product.suning.com/0071602289/12451406410.html",
+          "summary": "实际读取42度醇柔475mL单瓶SKU，标题、参数和清单一致。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all-2.html",
+          "summary": "实际读取店铺第二页，该单瓶商品展示93.10元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。真实42度版本，与53度按ABV区分，不按包装区分。商家展示价，不保证结算或库存。",
+      "priceEvidence": {
+        "price": 93.1,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all-2.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-rubo-48",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-rubo-48",
+        "name": "汾酒 乳玻汾48度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 48,
+        "price": 69,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西汾阳杏花村",
+        "highlight": "48度、475mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。替换候选fenjiu-bofen-48，不将普通玻瓶与乳玻包装重复计数；商家展示价非成交保证。",
+        "volumeMl": 475,
+        "edition": "乳玻",
+        "source": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3905.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/bofen/2023-05-19/3905.html",
+          "summary": "厂家48度乳玻页明确48度、475mL、清香型及杏花村产地。"
+        },
+        {
+          "url": "https://product.suning.com/0071602289/12451422540.html",
+          "summary": "实际读取乳玻48度475ml SKU，包装清单明确一瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "实际读取店铺列表，该单瓶SKU展示69元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。替换候选fenjiu-bofen-48，不将普通玻瓶与乳玻包装重复计数；商家展示价非成交保证。",
+      "priceEvidence": {
+        "price": 69,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-siluroad-55",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-siluroad-55",
+        "name": "汾酒 丝绸之路小批量55度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 55,
+        "price": 1368,
+        "priceTier": "高端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "55度、750mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。独立产品表达，使用单瓶1368元，不采用六瓶8328元除算；店铺页面标示官方旗舰店，运营主体未独立确认。",
+        "volumeMl": 750,
+        "edition": "丝绸之路小批量",
+        "source": "https://product.suning.com/0071602289/12451418865.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12451418865.html",
+          "summary": "实际读取55度750ml单瓶SKU，清香型、山西吕梁产，清单再次确认一瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "实际读取列表，该750ml单瓶SKU展示1368元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。独立产品表达，使用单瓶1368元，不采用六瓶8328元除算；店铺页面标示官方旗舰店，运营主体未独立确认。",
+      "priceEvidence": {
+        "price": 1368,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tuopai-shengtai-jiapin-52",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tuopai-shengtai-jiapin-52",
+        "name": "沱牌 生态佳品52度",
+        "brand": "沱牌",
+        "aroma": "浓香",
+        "abv": 52,
+        "price": 9.9,
+        "priceTier": "口粮",
+        "taste": [
+          "浓香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "四川遂宁",
+        "highlight": "52度、100mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。不同于已有T68和六粮；9.9元仅适用于100mL，不换算或当作500mL价格。",
+        "volumeMl": 100,
+        "edition": null,
+        "source": "https://product.suning.com/0070191013/12452832201.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70191013/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070191013/12452832201.html",
+          "summary": "实际读取生态佳品52度100ml单瓶SKU，浓香型，遂宁产，清单为100ml一瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/70191013/all.html",
+          "summary": "实际读取列表，该100ml单瓶SKU展示9.90元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。不同于已有T68和六粮；9.9元仅适用于100mL，不换算或当作500mL价格。",
+      "priceEvidence": {
+        "price": 9.9,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/70191013/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-vintage2015-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-vintage2015-53",
+        "name": "年份潭酒2015 53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 668,
+        "priceTier": "高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。2015是厂家年份产品标识，不是报价日期；668元为本次观察到的指导价，生效日期与库存未知，非成交价。",
+        "volumeMl": 500,
+        "edition": "2015",
+        "source": "https://www.tanjiu.cn/dyznf/nianfentan2015.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2015.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/dyznf/nianfentan2015.html",
+          "summary": "实际读取厂家独立产品页：年份潭酒2015，53度，500ml/瓶，酱香型，四川泸州古蔺产，官方指导价668元。"
+        },
+        {
+          "url": "https://www.tanjiu.cn/dyznf/",
+          "summary": "厂家将单一年份系列按2014至2019逐项列出，说明不同年份的原酒批次；非仅颜色包装差异。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。2015是厂家年份产品标识，不是报价日期；668元为本次观察到的指导价，生效日期与库存未知，非成交价。",
+      "priceEvidence": {
+        "price": 668,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2015.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "tanjiu-vintage2017-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "tanjiu-vintage2017-53",
+        "name": "年份潭酒2017 53度",
+        "brand": "潭酒",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 306,
+        "priceTier": "中端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "四川泸州古蔺",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用官方指导价，不代表市场成交价。2017是厂家年份产品标识，不是报价日期；306元为本次观察到的指导价，生效日期与库存未知，非成交价。",
+        "volumeMl": 500,
+        "edition": "2017",
+        "source": "https://www.tanjiu.cn/dyznf/nianfentan2017.html",
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2017.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.tanjiu.cn/dyznf/nianfentan2017.html",
+          "summary": "实际读取厂家独立产品页：年份潭酒2017，53度，500ml/瓶，酱香型，四川泸州古蔺产，官方指导价306元。"
+        },
+        {
+          "url": "https://www.tanjiu.cn/dyznf/",
+          "summary": "厂家按不同年份原酒批次列为独立年份产品，不是把不同颜色或箱数计作新酒。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。2017是厂家年份产品标识，不是报价日期；306元为本次观察到的指导价，生效日期与库存未知，非成交价。",
+      "priceEvidence": {
+        "price": 306,
+        "priceBasis": "msrp",
+        "priceSource": "https://www.tanjiu.cn/dyznf/nianfentan2017.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-qinghua20-42",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-qinghua20-42",
+        "name": "汾酒 青花20 42度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 42,
+        "price": 423.6,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "42度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。与原53度青花20按真实ABV区分；采用苏宁店铺列表展示价，库存、结算及包装代次未核实，非厂家直营身份认证。",
+        "volumeMl": 500,
+        "edition": null,
+        "source": "https://product.suning.com/0071602289/12437543207.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12437543207.html",
+          "summary": "实际读取标题、核心参数及清单：青花20、42度、500ml一瓶、清香型、山西吕梁产。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "对应SKU单瓶列表价423.60元，区别于六瓶及375mL报价。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。与原53度青花20按真实ABV区分；采用苏宁店铺列表展示价，库存、结算及包装代次未核实，非厂家直营身份认证。",
+      "priceEvidence": {
+        "price": 423.6,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-lanfen-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-lanfen-53",
+        "name": "汾酒 蓝汾53度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 53,
+        "price": 128.63,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "53度、475mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。按店铺独立命名的蓝汾记录，不当作黄盖玻汾的颜色变体；报价和产品资料来自店铺，实际结算与库存未确认。",
+        "volumeMl": 475,
+        "edition": null,
+        "source": "https://product.suning.com/0071602289/12437525227.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12437525227.html",
+          "summary": "实际读取蓝汾具体SKU的53度、475ml、清香型、山西吕梁核心参数，标题明确单瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "蓝汾475mL一瓶SKU展示128.63元，不采用六瓶721.04元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。按店铺独立命名的蓝汾记录，不当作黄盖玻汾的颜色变体；报价和产品资料来自店铺，实际结算与库存未确认。",
+      "priceEvidence": {
+        "price": 128.63,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-panama10-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-panama10-53",
+        "name": "汾酒 巴拿马10 53度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 53,
+        "price": 292.6,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "53度、475mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。10为产品系列名称，不推断全部酒体酒龄；未再新增名称笼统的1915巴拿马，以免重叠。店铺列表价非成交保证。",
+        "volumeMl": 475,
+        "edition": "巴拿马10",
+        "source": "https://product.suning.com/0071602289/12437525224.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12437525224.html",
+          "summary": "实际读取巴拿马10的53度、475ml、清香型、山西吕梁参数，标题明确一瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "单瓶巴拿马10 SKU展示292.60元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。10为产品系列名称，不推断全部酒体酒龄；未再新增名称笼统的1915巴拿马，以免重叠。店铺列表价非成交保证。",
+      "priceEvidence": {
+        "price": 292.6,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-bofen-55",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-bofen-55",
+        "name": "汾酒 玻汾55度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 55,
+        "price": 108,
+        "priceTier": "口粮",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "55度、950mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。采用特定SKU的108元单瓶展示价；55度为实际ABV差异，不仅因950mL包装新增。库存和结算价未核实。",
+        "volumeMl": 950,
+        "edition": null,
+        "source": "https://product.suning.com/0071602289/12451422561.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12451422561.html",
+          "summary": "实际读取玻汾55度，单支容量950ml，清香型，山西吕梁产；不是53度475mL。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "所选55度950mL SKU展示108元，另一个同规格链接展示118元，未混用或取平均。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。采用特定SKU的108元单瓶展示价；55度为实际ABV差异，不仅因950mL包装新增。库存和结算价未核实。",
+      "priceEvidence": {
+        "price": 108,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-shiwanpiao-45",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-shiwanpiao-45",
+        "name": "汾酒 小批量酿造十万票45度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 45,
+        "price": 178,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "自饮",
+          "朋友小聚"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "45度、450mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。小批量和十万票沿用产品名称，不宣称收藏价值；采用单瓶店铺展示价，库存与结算未确认。",
+        "volumeMl": 450,
+        "edition": "十万票",
+        "source": "https://product.suning.com/0071602289/12451422558.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12451422558.html",
+          "summary": "实际读取十万票45度、单瓶装、清香型、山西吕梁；容量参数为450，标题明确450ml。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "十万票450ml一瓶SKU展示178元，不采用六瓶939元拆算。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。小批量和十万票沿用产品名称，不宣称收藏价值；采用单瓶店铺展示价，库存与结算未确认。",
+      "priceEvidence": {
+        "price": 178,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-siluroad-42",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-siluroad-42",
+        "name": "汾酒 丝绸之路42度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 42,
+        "price": 288,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "42度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。与55度750mL丝绸之路按ABV和具体表达区分；不套用55度报价。实际库存与结算未确认。",
+        "volumeMl": 500,
+        "edition": "丝绸之路",
+        "source": "https://product.suning.com/0071602289/12451419595.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12451419595.html",
+          "summary": "实际读取丝绸之路42度500ml、清香型、吕梁产；清单明确500ml一瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "42度500ml单瓶SKU展示288元，不采用双瓶或六瓶价格。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。与55度750mL丝绸之路按ABV和具体表达区分；不套用55度报价。实际库存与结算未确认。",
+      "priceEvidence": {
+        "price": 288,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-jinpanama-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-jinpanama-53",
+        "name": "汾酒 金巴拿马53度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 53,
+        "price": 363,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。保留具体金巴拿马产品名，不与笼统1915巴拿马混称；报价来自店铺，非厂商指导价或实时成交。",
+        "volumeMl": 500,
+        "edition": "金巴拿马",
+        "source": "https://product.suning.com/0071602289/12451418398.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12451418398.html",
+          "summary": "实际读取独立命名金巴拿马53度、500ml、单瓶装、清香型、山西吕梁。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "53度金巴拿马500ml一瓶SKU展示363元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。保留具体金巴拿马产品名，不与笼统1915巴拿马混称；报价来自店铺，非厂商指导价或实时成交。",
+      "priceEvidence": {
+        "price": 363,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "fenjiu-jinpanama-42",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "fenjiu-jinpanama-42",
+        "name": "汾酒 金巴拿马42度",
+        "brand": "汾酒",
+        "aroma": "清香",
+        "abv": 42,
+        "price": 323,
+        "priceTier": "中端",
+        "taste": [
+          "清香风格（按香型归类）"
+        ],
+        "scene": [
+          "朋友小聚",
+          "家庭聚餐"
+        ],
+        "beginner": 3,
+        "region": "山西吕梁",
+        "highlight": "42度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用商家展示报价，购买时核对单瓶结算价与库存。与53度金巴拿马按真实ABV区分，不因箱规重复计数；店铺展示价，不保证结算或库存。",
+        "volumeMl": 500,
+        "edition": "金巴拿马",
+        "source": "https://product.suning.com/0071602289/12451418393.html",
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0071602289/12451418393.html",
+          "summary": "实际读取金巴拿马42度500ml、清香型、山西吕梁；单瓶装和一瓶清单一致。"
+        },
+        {
+          "url": "https://shop.suning.com/71602289/all.html",
+          "summary": "42度金巴拿马500ml一瓶SKU展示323元。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。与53度金巴拿马按真实ABV区分，不因箱规重复计数；店铺展示价，不保证结算或库存。",
+      "priceEvidence": {
+        "price": 323,
+        "priceBasis": "retail",
+        "priceSource": "https://shop.suning.com/71602289/all.html",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    },
+    {
+      "id": "maotai-chennian15-53",
+      "addedIn": "0.4.0",
+      "appliedFields": {
+        "id": "maotai-chennian15-53",
+        "name": "陈年贵州茅台酒（15）53度",
+        "brand": "茅台",
+        "aroma": "酱香",
+        "abv": 53,
+        "price": 4279,
+        "priceTier": "超高端",
+        "taste": [
+          "酱香风格（按香型归类）"
+        ],
+        "scene": [
+          "家庭聚餐",
+          "商务宴请",
+          "送礼"
+        ],
+        "beginner": 3,
+        "region": "贵州仁怀茅台镇",
+        "highlight": "53度、500mL；产品规格有公开资料依据，非实饮评价",
+        "caution": "场景和新手适应评分为规则推断，未做实饮评测；采用页面挂牌价，不代表实际结算价。独立陈年系列，不与原精品、飞天或生肖重复。价格采用2026年5月16日中新社公告报道，非实时商品页；不保证当前结算或库存。15为产品命名，不据此推断所有酒体酒龄。",
+        "volumeMl": 500,
+        "edition": "陈年（15）",
+        "source": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117390096879.html",
+        "priceBasis": "listing",
+        "priceSource": "https://www.chinanews.com/cj/2026/05-16/10622216.shtml",
+        "priceUpdated": "2026-09-07"
+      },
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117390096879.html",
+          "summary": "主代理实际读取厂家陈年（15）详情，明确酱香型、53度、500mL/瓶。"
+        },
+        {
+          "url": "https://www.moutai.com.cn/mtgf/qygk/lxwm/index.html",
+          "summary": "此前厂家资料核对确认贵州茅台酒股份有限公司及仁怀茅台镇所在地。"
+        },
+        {
+          "url": "https://www.chinanews.com/cj/2026/05-16/10622216.shtml",
+          "summary": "主代理读取中新社2026年5月16日报道：53度500ml陈年（15）自营体系价由4199元调至4279元/瓶，5月16日起实施。"
+        }
+      ],
+      "heuristicFields": [
+        "taste",
+        "scene",
+        "beginner",
+        "highlight"
+      ],
+      "reviewNotes": "新增具体规格。新手适应评分3为中性占位，场景按价段推断，香型标签不代表实饮测评。独立陈年系列，不与原精品、飞天或生肖重复。价格采用2026年5月16日中新社公告报道，非实时商品页；不保证当前结算或库存。15为产品命名，不据此推断所有酒体酒龄。",
+      "priceEvidence": {
+        "price": 4279,
+        "priceBasis": "listing",
+        "priceSource": "https://www.chinanews.com/cj/2026/05-16/10622216.shtml",
+        "priceUpdated": "2026-09-07",
+        "adopted": true
+      }
+    }
+  ]
+}

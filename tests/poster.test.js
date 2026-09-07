@@ -13,10 +13,19 @@ test("poster model contains Top 3, a Mini Program sharing prompt, and disclaimer
   const model = buildPosterModel(ranked);
 
   assert.deepEqual(model.wines.map(({ id }) => id), [
-    "kouzijiao", "qinghua20", "shuanggou-shengfang"
+    "kouzijiao", "fenjiu-laobaifen10", "shuanggou-shengfang"
   ]);
   assert.match(model.sharePrompt, /小程序.*分享/);
   assert.match(model.disclaimer, /非实时报价/);
+  assert.equal(model.wines[0].rankLabel, "优先推荐");
+  assert.ok(model.wines.every(wine => !Object.hasOwn(wine, "matchPercent")));
+});
+
+test("a sparse recommendation poster describes the actual result count", () => {
+  const model = buildPosterModel(ranked.slice(0, 1));
+  assert.match(model.subtitle, /1 款/);
+  assert.doesNotMatch(model.subtitle, /Top 3/);
+  assert.match(model.wines[0].details, /参考价/);
 });
 
 test("drawPoster uses the supplied canvas context", () => {

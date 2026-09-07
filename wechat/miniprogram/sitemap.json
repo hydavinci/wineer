@@ -1,4 +1,9 @@
 {
   "desc": "Wineer WeChat Mini Program sitemap",
-  "rules": []
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
 }

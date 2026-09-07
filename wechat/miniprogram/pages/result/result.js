@@ -1,10 +1,12 @@
 const wineData = require("../../data/baijiu");
 const {
   RecommendationDataError,
+  budgetBand,
   recommend
 } = require("../../shared/recommender");
-const { track } = require("../../utils/analytics");
-const { decodeAnswers, encodeAnswers } = require("../../utils/navigation");
+const { track, flushEvents, reportingState, setReportingConsent } = require("../../utils/analytics");
+const { decodeAnswers, encodeAnswers, navigate } = require("../../utils/navigation");
+const { ensureAdult } = require("../../utils/age");
 const { buildPosterModel, drawPoster } = require("../../utils/poster");
 const { buildResultView, purchaseKeyword, shareTitle } = require("../../utils/result");
 
@@ -13,31 +15,64 @@ const MAX_CANVAS_SIZE = 1365;
 Page({
   data: {
     answers: null,
-    ranked: [],
     wines: [],
     errorMessage: "",
     isLoading: true,
     posterBusy: false,
-    posterPath: ""
+    posterPath: "",
+    saveBusy: false,
+    navigationBusy: false,
+    agePending: true,
+    budgetLabel: "",
+    reportingAvailable: false,
+    reportingEnabled: false,
+    reportingBusy: false,
+    reportStatus: "使用记录默认只保存在本机"
   },
 
-  onLoad(options) {
-    const answers = decodeAnswers(options);
+  onLoad(options = {}) {
+    this.ranked = [];
+    this._options = options;
+    this.confirmAge();
+  },
+
+  confirmAge() {
+    ensureAdult(this, () => {
+      this.setData({ agePending: false });
+      this.loadRecommendations();
+    });
+  },
+
+  onUnload() {
+    this._unloaded = true;
+  },
+
+  loadRecommendations() {
+    const answers = decodeAnswers(this._options);
 
     try {
       const ranked = recommend(wineData.items, answers, 3);
+      const wines = buildResultView(ranked);
+      this.ranked = ranked;
       this.setData({
         answers,
-        ranked,
-        wines: buildResultView(ranked),
+        wines,
+        budgetLabel: budgetBand(answers.budget).label,
         errorMessage: "",
         isLoading: false
       });
+      track("result_view", {
+        answers,
+        top3: ranked.map(({ item }) => item.id),
+        fromShare: this._options.from === "share",
+        dataVersion: wineData.meta.version
+      });
+      this.refreshReportingState();
     } catch (error) {
       console.error("recommendation failed", error);
+      this.ranked = [];
       this.setData({
         answers,
-        ranked: [],
         wines: [],
         errorMessage: error instanceof RecommendationDataError
           ? "推荐数据异常，请稍后重试"
@@ -48,12 +83,91 @@ Page({
   },
 
   restart() {
+    if (this.data.navigationBusy) return;
     track("restart", { from: "result" });
-    wx.redirectTo({ url: "/pages/quiz/quiz" });
+    navigate(this, "/pages/quiz/quiz?from=restart");
+  },
+
+  adjustPreferences() {
+    if (this.data.navigationBusy) return;
+    track("adjust_preferences", { answers: this.data.answers });
+    navigate(this, `/pages/quiz/quiz?${encodeAnswers(this.data.answers)}&from=adjust`);
+  },
+
+  refreshReportingState() {
+    try {
+      const state = reportingState();
+      this.setData({
+        reportingAvailable: state.configured,
+        reportingEnabled: state.enabled
+      });
+    } catch (error) {
+      console.error("analytics state unavailable", error);
+      this.setData({ reportStatus: "无法读取本机记录，请重试" });
+    }
+  },
+
+  toggleReporting(event) {
+    const enabled = event.detail.value === true;
+    if (this._reportPromptBusy) return;
+    const apply = allow => {
+      try {
+        setReportingConsent(allow);
+        this.setData({
+          reportingEnabled: allow,
+          reportStatus: allow ? "已允许上报本机记录" : "已关闭上报，记录只保留在本机"
+        });
+        if (allow) return this.uploadEvents();
+      } catch (error) {
+        console.error("analytics consent storage failed", error);
+        wx.showToast({ title: "设置未保存，请重试", icon: "none" });
+        this.refreshReportingState();
+      }
+    };
+    if (!enabled) return apply(false);
+    this._reportPromptBusy = true;
+    wx.showModal({
+      title: "允许发送使用记录？",
+      content: "将把本机最近 200 条偏好、推荐酒款、操作时间及历史反馈发送给开发者，用于改进推荐；不包含姓名或微信身份字段。你可随时关闭，已发送的数据不会因此撤回。",
+      confirmText: "允许上报",
+      success: ({ confirm }) => {
+        this._reportPromptBusy = false;
+        if (this._unloaded) return;
+        if (confirm) return apply(true);
+        this.setData({ reportingEnabled: false });
+      },
+      fail: error => {
+        this._reportPromptBusy = false;
+        console.error("analytics consent prompt failed", error);
+        if (!this._unloaded) {
+          this.setData({ reportingEnabled: false });
+          wx.showToast({ title: "确认失败，尚未开启上报", icon: "none" });
+        }
+      }
+    });
+  },
+
+  async uploadEvents() {
+    if (this.data.reportingBusy) return;
+    this.setData({ reportingBusy: true });
+    try {
+      const result = await flushEvents();
+      if (this._unloaded) return;
+      this.setData({
+        reportStatus: result.status === "sent"
+          ? `已上报 ${result.sent} 条记录`
+          : "未开启上报，记录仍在本机"
+      });
+    } catch (error) {
+      console.error("analytics upload failed", error);
+      if (!this._unloaded) this.setData({ reportStatus: "上报未确认，记录仍保留在本机，可重试" });
+    } finally {
+      if (!this._unloaded) this.setData({ reportingBusy: false });
+    }
   },
 
   copyPurchaseKeyword(event) {
-    const item = this.data.ranked
+    const item = this.ranked
       .map(({ item: rankedItem }) => rankedItem)
       .find(({ id }) => id === event.detail.id);
 
@@ -62,18 +176,21 @@ Page({
       return;
     }
 
-    track("buy_click", {
+    const payload = {
       id: item.id,
       name: item.name,
       answers: { ...this.data.answers }
-    });
+    };
+    track("copy_keyword_attempt", payload);
     wx.setClipboardData({
       data: purchaseKeyword(item),
       success: () => {
-        wx.showToast({ title: "已复制，请打开京东搜索", icon: "none" });
+        track("copy_keyword_success", payload);
+        wx.showToast({ title: "已复制，可在平台搜索比价", icon: "none" });
       },
       fail: error => {
         console.error("clipboard failed", error);
+        track("copy_keyword_failed", { id: item.id });
         wx.showToast({ title: "复制失败，请重试", icon: "none" });
       }
     });
@@ -83,15 +200,20 @@ Page({
     if (this.data.posterBusy) {
       return;
     }
+    if (this.data.agePending || !this.ranked || !this.ranked.length) {
+      wx.showToast({ title: "请先生成推荐", icon: "none" });
+      return;
+    }
 
     this.setData({ posterBusy: true });
-    track("share_poster", {
-      top3: this.data.ranked.map(({ item }) => item.id)
-    });
+    const payload = { top3: this.ranked.map(({ item }) => item.id) };
+    track("poster_generation_attempt", payload);
 
     const failPoster = error => {
       console.error("poster generation failed", error);
+      if (this._unloaded) return;
       this.setData({ posterBusy: false });
+      track("poster_generation_failed", payload);
       wx.showToast({ title: "生成海报失败，请重试", icon: "none" });
     };
 
@@ -100,6 +222,7 @@ Page({
         .select("#posterCanvas")
         .fields({ node: true, size: true })
         .exec(results => {
+          if (this._unloaded) return;
           try {
             const result = results && results[0];
             if (!result || !result.node || !result.width || !result.height) {
@@ -119,12 +242,13 @@ Page({
             canvas.width = Math.round(width * scale);
             canvas.height = Math.round(height * scale);
             canvas.getContext("2d").scale(scale, scale);
-            drawPoster(canvas, width, height, buildPosterModel(this.data.ranked));
+            drawPoster(canvas, width, height, buildPosterModel(this.ranked));
 
             wx.canvasToTempFilePath({
               canvas,
               fileType: "png",
               success: ({ tempFilePath }) => {
+                if (this._unloaded) return;
                 try {
                   if (!tempFilePath) {
                     throw new Error("poster path missing");
@@ -133,10 +257,14 @@ Page({
                     posterBusy: false,
                     posterPath: tempFilePath
                   });
+                  track("poster_generated", payload);
                   wx.previewImage({
                     current: tempFilePath,
                     urls: [tempFilePath],
-                    fail: failPoster
+                    fail: error => {
+                      console.error("poster preview failed", error);
+                      if (!this._unloaded) wx.showToast({ title: "预览失败，可尝试保存海报", icon: "none" });
+                    }
                   });
                 } catch (error) {
                   failPoster(error);
@@ -154,18 +282,25 @@ Page({
   },
 
   savePoster() {
+    if (this.data.saveBusy) return;
     if (!this.data.posterPath) {
       wx.showToast({ title: "请先生成海报", icon: "none" });
       return;
     }
 
+    this.setData({ saveBusy: true });
     wx.saveImageToPhotosAlbum({
       filePath: this.data.posterPath,
       success: () => {
+        if (this._unloaded) return;
+        this.setData({ saveBusy: false });
+        track("poster_saved");
         wx.showToast({ title: "已保存到相册", icon: "success" });
       },
       fail: error => {
         console.error("poster save failed", error);
+        if (this._unloaded) return;
+        this.setData({ saveBusy: false });
         const message = String(error && (error.errMsg || error.message || error));
         if (/auth deny|auth denied|authorize:fail/i.test(message)) {
           wx.showModal({
@@ -174,7 +309,12 @@ Page({
             confirmText: "去设置",
             success: ({ confirm }) => {
               if (confirm) {
-                wx.openSetting();
+                wx.openSetting({
+                  fail: error => {
+                    console.error("album settings failed", error);
+                    wx.showToast({ title: "打开设置失败，请重试", icon: "none" });
+                  }
+                });
               }
             }
           });
@@ -187,10 +327,13 @@ Page({
   },
 
   onShareAppMessage() {
+    if (this.data.agePending || !this.ranked || !this.ranked.length) {
+      return { title: "Wineer 白酒推荐", path: "/pages/home/home" };
+    }
     track("share_click", { mode: "mini_program" });
     return {
-      title: shareTitle(this.data.ranked),
-      path: `/pages/result/result?${encodeAnswers(this.data.answers)}`
+      title: shareTitle(this.ranked),
+      path: `/pages/result/result?${encodeAnswers(this.data.answers)}&from=share`
     };
   }
 });

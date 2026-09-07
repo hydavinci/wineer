@@ -4,10 +4,6 @@
   gap: 24rpx;
 }
 
-.quiz-head {
-  padding-bottom: 44rpx;
-}
-
 .quiz-title {
   display: block;
   margin-bottom: 14rpx;
@@ -81,4 +77,39 @@
 
 .quiz-submit {
   margin-top: 8rpx;
+}
+
+.option-card {
+  padding: 32rpx;
+}
+
+.option-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin: 24rpx 0;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  min-height: 88rpx;
+  box-sizing: border-box;
+  padding: 16rpx 20rpx;
+  border: 2rpx solid #574339;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+
+.option-selected,
+.option-focused {
+  border-color: #e0be6a;
+  background: rgba(201, 162, 75, 0.12);
+}
+
+.quiz-focus-hint {
+  display: block;
+  margin-top: 20rpx;
+  color: #e0be6a;
+  font-size: 26rpx;
 }

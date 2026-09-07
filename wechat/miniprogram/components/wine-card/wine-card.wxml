@@ -1,40 +1,37 @@
 <view class="wine-card {{wine.rank === 1 ? 'wine-card-main' : ''}}">
   <view class="wine-card-head">
     <view class="wine-card-copy">
-      <text class="wine-rank">TOP {{wine.rank}}</text>
+      <text class="wine-rank">{{wine.rank === 1 ? '优先考虑这一款' : wine.rankLabel}}</text>
       <text class="wine-name">{{wine.name}}</text>
-      <text class="wine-brand">{{wine.brand}}</text>
-    </view>
-    <view class="wine-score-wrap">
-      <text class="wine-score-label">推荐指数</text>
-      <text class="wine-score">{{wine.matchPercent}}%</text>
+      <text class="wine-brand">{{wine.specText}}</text>
     </view>
   </view>
-
-  <text class="wine-why">{{wine.whyText}}</text>
 
   <view class="wine-tags">
     <text class="wine-tag">{{wine.aroma}}型</text>
     <text class="wine-tag">{{wine.abv}}度</text>
-    <text class="wine-tag">参考价约 ¥{{wine.price}}</text>
-    <text class="wine-tag">{{wine.priceTier}}</text>
-    <text class="wine-tag">{{wine.region}}</text>
+    <text class="wine-tag">参考价约 ¥{{wine.price}} / 瓶</text>
   </view>
+  <text class="wine-why">{{wine.whyText}}</text>
+  <text class="wine-block-text">权衡：{{wine.tradeoffText}}</text>
+  <text class="wine-block-text">选购提醒：{{wine.caution}}</text>
+  <text class="wine-quality-notice">{{wine.qualityNotice}}</text>
 
-  <view class="wine-block">
-    <text class="wine-block-title">💡 推荐理由</text>
-    <text class="wine-block-text">{{wine.highlight}}</text>
+  <view wx:if="{{expanded}}" class="wine-details">
+    <view class="wine-block">
+      <text class="wine-block-title">酒款特点</text>
+      <text class="wine-block-text">{{wine.highlight}}</text>
+      <text class="wine-block-text">口感：{{wine.tasteText}}</text>
+      <text class="wine-block-text">{{wine.brand}} · {{wine.region}} · {{wine.priceTier}}</text>
+    </view>
+    <view class="wine-block wine-block-caution">
+      <text class="wine-block-title">资料依据</text>
+      <text class="wine-block-text" selectable>{{wine.priceNote}}</text>
+      <text class="wine-block-text" selectable>{{wine.sourceText}}</text>
+    </view>
   </view>
-
-  <view class="wine-block">
-    <text class="wine-block-title">👅 口感特点</text>
-    <text class="wine-block-text">{{wine.tasteText}}</text>
+  <view class="wine-actions">
+    <button class="wine-buy" bindtap="copyPurchaseKeyword">复制搜索词</button>
+    <button class="wine-buy wine-detail-toggle" bindtap="toggleDetails">{{expanded ? '收起详情' : '口感与资料'}}</button>
   </view>
-
-  <view class="wine-block wine-block-caution">
-    <text class="wine-block-title">⚠️ 选购提示</text>
-    <text class="wine-block-text">{{wine.caution}}</text>
-  </view>
-
-  <button class="wine-buy" bindtap="copyPurchaseKeyword">复制购买搜索词</button>
 </view>

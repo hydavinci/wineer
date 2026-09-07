@@ -10,7 +10,7 @@ const readJson = relative =>
 
 test("project config points to the native Mini Program root", () => {
   const config = readJson("wechat/project.config.json");
-  assert.equal(config.appid, "touristappid");
+  assert.match(config.appid, /^(?:touristappid|wx[0-9a-f]{16})$/);
   assert.equal(config.miniprogramRoot, "miniprogram/");
   assert.equal(config.projectname, "wineer-wechat");
 });

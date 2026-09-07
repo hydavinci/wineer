@@ -1,14 +1,42 @@
 <view class="page quiz-page">
+  <view wx:if="{{agePending}}" class="card">
+    <text class="quiz-title">请先确认已满 18 岁</text>
+    <button class="button-primary" bindtap="confirmAge">确认后继续</button>
+  </view>
+  <block wx:else>
   <view class="quiz-head card">
-    <text class="quiz-title">按真实需求打分</text>
-    <text class="quiz-description muted">每项 0–10，按“这瓶酒要拿来干嘛、谁来喝、愿意花多少钱”来调</text>
+    <text class="quiz-title">先定预算，再选场景</text>
+    <text class="quiz-description muted">选好每瓶预算和用途即可推荐；口味、品牌和尝新偏好可按需展开微调。</text>
+    <text wx:if="{{focusDimension}}" class="quiz-focus-hint">已保留所有选择，请调整下方标记的选项。</text>
   </view>
 
   <view class="quiz-list">
-    <view class="card slider-card" wx:for="{{dimensions}}" wx:key="key">
+    <view class="card option-card {{focusDimension === 'budget' ? 'option-focused' : ''}}">
+      <text class="slider-title">{{focusDimension === 'budget' ? '请调整：' : ''}}每瓶预算</text>
+      <text class="slider-hint muted">{{dimensions[0].hint}}</text>
+      <radio-group class="option-list" data-key="budget" bindchange="selectOption">
+        <label wx:for="{{budgetOptions}}" wx:key="value" class="option-item {{budgetSelected === item.value ? 'option-selected' : ''}}">
+          <radio value="{{item.value}}" checked="{{budgetSelected === item.value}}" disabled="{{resultBusy}}" color="#c9a24b" />
+          <text>{{item.label}}</text>
+        </label>
+      </radio-group>
+      <text class="slider-hint muted">按静态参考价筛选，实际成交价可能超出预算。</text>
+    </view>
+    <view class="card option-card">
+      <text class="slider-title">这次主要用来做什么？</text>
+      <radio-group class="option-list" data-key="occasion" bindchange="selectOption">
+        <label wx:for="{{occasionOptions}}" wx:key="value" class="option-item {{occasionSelected === item.value ? 'option-selected' : ''}}">
+          <radio value="{{item.value}}" checked="{{occasionSelected === item.value}}" disabled="{{resultBusy}}" color="#c9a24b" />
+          <text>{{item.label}}</text>
+        </label>
+      </radio-group>
+      <text class="slider-hint muted">{{dimensions[1].hint}}</text>
+    </view>
+    <block wx:for="{{dimensions}}" wx:key="key">
+    <view class="card slider-card {{focusDimension === item.key ? 'option-focused' : ''}}" wx:if="{{index >= 2 && advanced}}">
       <view class="slider-top">
         <view class="slider-copy">
-          <text class="slider-title">{{item.title}}</text>
+          <text class="slider-title">{{focusDimension === item.key ? '请调整：' : ''}}{{item.title}}</text>
           <text class="slider-hint muted">{{item.hint}}</text>
         </view>
         <text class="slider-value">{{item.value}}</text>
@@ -19,6 +47,7 @@
         max="10"
         step="1"
         value="{{item.value}}"
+        disabled="{{resultBusy}}"
         activeColor="#e0be6a"
         backgroundColor="rgba(201, 162, 75, 0.16)"
         block-color="#e0be6a"
@@ -32,12 +61,16 @@
         <text>{{item.right}}</text>
       </view>
     </view>
+    </block>
   </view>
+  <button class="button-secondary" bindtap="toggleAdvanced">{{advanced ? '收起口味等偏好' : '展开口味、品牌和尝新偏好'}}</button>
 
   <button
     class="button-primary quiz-submit"
     loading="{{resultBusy}}"
     disabled="{{resultBusy}}"
     bindtap="showResults"
-  >生成 Top 3 推荐</button>
+  >查看推荐（最多 3 款）</button>
+  <button class="button-secondary" disabled="{{resultBusy}}" bindtap="resetAnswers">恢复默认选择</button>
+  </block>
 </view>

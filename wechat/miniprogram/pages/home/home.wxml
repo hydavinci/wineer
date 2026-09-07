@@ -13,6 +13,6 @@
       <text class="muted">过量饮酒有害健康，请理性饮酒。</text>
     </view>
 
-    <button class="button-primary home-start" bindtap="startQuiz">我已满 18 岁，开始</button>
+    <button class="button-primary home-start" loading="{{navigationBusy}}" disabled="{{navigationBusy}}" bindtap="startQuiz">我已满 18 岁，开始</button>
   </view>
 </view>

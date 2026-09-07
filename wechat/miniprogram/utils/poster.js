@@ -1,16 +1,16 @@
 function buildPosterModel(ranked) {
   return {
     title: "Wineer 白酒推荐",
-    subtitle: "按真实需求生成的 Top 3 选择",
-    wines: ranked.slice(0, 3).map(({ item, matchPercent }, index) => ({
+    subtitle: `按当前偏好推荐 ${Math.min(ranked.length, 3)} 款白酒`,
+    wines: ranked.slice(0, 3).map(({ item, rankLabel }, index) => ({
       id: item.id,
       rank: index + 1,
       name: item.name,
-      details: `${item.aroma}型 · ${item.abv}度 · 约 ¥${item.price}`,
-      matchPercent
+      details: `${item.aroma}型 · ${item.abv}度 · 参考价 ¥${item.price}`,
+      rankLabel
     })),
-    sharePrompt: "打开 Wineer 小程序，分享给朋友一起选酒",
-    disclaimer: "价格为市场参考，非实时报价。请理性饮酒。"
+    sharePrompt: "请用小程序卡片分享，朋友可直接打开结果",
+    disclaimer: "规格、价格请核实，非实时报价。请理性饮酒。"
   };
 }
 
@@ -102,8 +102,8 @@ function drawPoster(canvas, width, height, model) {
     context.fillText(wine.details, nameX, cardY + cardHeight * 0.85);
 
     context.fillStyle = "#e0be6a";
-    context.font = `bold ${Math.round(width * 0.045)}px sans-serif`;
-    context.fillText(`${wine.matchPercent}%`, horizontalPadding + cardWidth * 0.76, cardY + cardHeight * 0.52);
+    context.font = `bold ${Math.round(width * 0.033)}px sans-serif`;
+    context.fillText(wine.rankLabel, horizontalPadding + cardWidth * 0.76, cardY + cardHeight * 0.52);
   });
 
   context.fillStyle = "#cbbcaf";

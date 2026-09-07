@@ -50,6 +50,21 @@ test("build leaves runtime outputs untouched when a later staged copy fails", ()
     assert.notEqual(result.status, 0);
     assertRuntimeFilesEqual(scratch, before);
   });
+
+});
+
+test("build rejects invalid provenance dates without replacing runtime outputs", () => {
+  withBuildScratch(scratch => {
+    const before = seedRuntimeSentinels(scratch);
+    const sourcePath = path.join(scratch, "data/baijiu.json");
+    const data = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
+    data.items[0].priceUpdated = "2026-02-30";
+    fs.writeFileSync(sourcePath, JSON.stringify(data), "utf8");
+    const result = runBuild(scratch);
+    assert.notEqual(result.status, 0);
+    assert.match(`${result.stdout}${result.stderr}`, /priceUpdated/);
+    assertRuntimeFilesEqual(scratch, before);
+  });
 });
 
 function withBuildScratch(run) {

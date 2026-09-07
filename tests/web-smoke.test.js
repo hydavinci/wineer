@@ -20,9 +20,11 @@ test("Web bundle preserves the default ranking through the shared core", async (
   context.Wineer.recommend();
 
   assert.equal(context.sharedRecommendCalls, 1);
+  assert.doesNotMatch(context.document.getElementById("resultArea").innerHTML, /推荐指数\s*\d+%/);
+  assert.match(context.document.getElementById("resultArea").innerHTML, /优先推荐/);
   assert.deepEqual(extractRenderedWineIds(context), [
     "kouzijiao",
-    "qinghua20",
+    "fenjiu-laobaifen10",
     "shuanggou-shengfang"
   ]);
 });
@@ -39,7 +41,7 @@ test("Web bundle restores shared answer parameters", async () => {
   assert.deepEqual(extractRenderedWineIds(context), [
     "jiujiang-shuangzheng",
     "yubingshao",
-    "fenjiu-bofen"
+    "fenjiu-huanggaibofen"
   ]);
 });
 
@@ -75,12 +77,12 @@ for (const profile of [
   {
     name: "business gift",
     answers: { budget: 9, occasion: 10, softness: 6, flavorWeight: 7, brandFace: 10, adventure: 2 },
-    ids: ["gujing-gu20", "wuliangye-pujing", "guojiao1573"]
+    ids: ["gujing-gu20", "guojiao1573", "wuliangye-pujing"]
   },
   {
     name: "adventurous",
     answers: { budget: 6, occasion: 3, softness: 9, flavorWeight: 10, brandFace: 1, adventure: 10 },
-    ids: ["hengshui-gufa20", "laobaigan", "dongjiu"]
+    ids: ["hengshui-gufa20", "dongjiu-baicao", "dongjiu"]
   }
 ]) {
   test(`Web bundle preserves the ${profile.name} ranking`, async () => {
@@ -160,7 +162,7 @@ test("Web bundle falls back when the primary data response is not ok", async () 
   ]);
   assert.deepEqual(extractRenderedWineIds(context), [
     "kouzijiao",
-    "qinghua20",
+    "fenjiu-laobaifen10",
     "shuanggou-shengfang"
   ]);
 });
@@ -183,7 +185,7 @@ test("Web bundle falls back when the primary payload is invalid", async () => {
   ]);
   assert.deepEqual(extractRenderedWineIds(context), [
     "kouzijiao",
-    "qinghua20",
+    "fenjiu-laobaifen10",
     "shuanggou-shengfang"
   ]);
 });

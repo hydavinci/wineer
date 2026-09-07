@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { validateItems } = require("../shared/recommender");
 
 const root = path.resolve(__dirname, "..");
 const sourcePath = path.resolve(root, process.argv[2] || "data/baijiu.json");
@@ -76,6 +77,7 @@ function validateData(data) {
     validateStringArray(item, index, "taste");
     validateStringArray(item, index, "scene");
   });
+  validateItems(data.items);
 }
 
 function writeAtomically(targetPath, content) {
@@ -92,11 +94,15 @@ function writeAtomically(targetPath, content) {
 try {
   const data = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
   validateData(data);
-  writeAtomically(
-    outputPath,
-    `"use strict";\n\nmodule.exports = ${JSON.stringify(data, null, 2)};\n`
-  );
-  console.log(`generated ${path.relative(root, outputPath)}`);
+  if (process.argv[3] === "--validate") {
+    console.log(`✅ 校验通过：${data.items.length} 款，字段格式合法，无重复 id`);
+  } else {
+    writeAtomically(
+      outputPath,
+      `"use strict";\n\nmodule.exports = ${JSON.stringify(data, null, 2)};\n`
+    );
+    console.log(`generated ${path.relative(root, outputPath)}`);
+  }
 } catch (error) {
   console.error(`❌ ${error.message}`);
   process.exitCode = 1;

@@ -1,5 +1,6 @@
 const {
-  RecommendationDataError
+  RecommendationDataError,
+  describeItem
 } = require("../shared/recommender");
 
 function uniqueWhy(why) {
@@ -8,28 +9,30 @@ function uniqueWhy(why) {
 
 function toWhyText(why) {
   const reasons = uniqueWhy(why);
-  return reasons.length > 0 ? reasons.slice(0, 4).join(" · ") : "综合条件最优";
+  return reasons.length > 0 ? reasons.slice(0, 4).join(" · ") : "按当前偏好综合排序";
 }
 
 function buildResultView(ranked) {
-  return ranked.map(({ item, why, matchPercent }, index) => {
+  return ranked.map(({ item, why, rankLabel, tradeoffs }, index) => {
     validateResultItem(item, index);
 
     return {
-    id: item.id,
-    rank: index + 1,
-    name: item.name,
-    brand: item.brand,
-    aroma: item.aroma,
-    abv: item.abv,
-    price: item.price,
-    priceTier: item.priceTier,
-    region: item.region,
-    tasteText: item.taste.join("、"),
-    highlight: item.highlight,
-    caution: item.caution,
-    matchPercent,
-    whyText: toWhyText(why)
+      id: item.id,
+      rank: index + 1,
+      name: item.name,
+      brand: item.brand,
+      aroma: item.aroma,
+      abv: item.abv,
+      price: item.price,
+      priceTier: item.priceTier,
+      region: item.region,
+      tasteText: item.taste.join("、"),
+      highlight: item.highlight,
+      caution: item.caution,
+      rankLabel,
+      whyText: toWhyText(why),
+      tradeoffText: tradeoffs.length ? tradeoffs.join(" · ") : "未发现明显偏好冲突，仍需留意口味和选购提示",
+      ...describeItem(item)
     };
   });
 }
@@ -64,7 +67,11 @@ function validateStringArrayField(item, index, field) {
 }
 
 function purchaseKeyword(item) {
-  return `${item.name} 京东搜索`;
+  return [
+    item.name,
+    item.volumeMl ? `${item.volumeMl}mL` : "",
+    item.edition && !item.name.includes(item.edition) ? item.edition : ""
+  ].filter(Boolean).join(" ");
 }
 
 function shareTitle(ranked) {

@@ -1,4 +1,5 @@
 Component({
+  data: { expanded: false },
   properties: {
     wine: {
       type: Object,
@@ -7,6 +8,10 @@ Component({
   },
 
   methods: {
+    toggleDetails() {
+      this.setData({ expanded: !this.data.expanded });
+    },
+
     copyPurchaseKeyword() {
       const wine = this.data.wine || {};
       this.triggerEvent("buy", {

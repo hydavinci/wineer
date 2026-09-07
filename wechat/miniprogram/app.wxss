@@ -36,6 +36,24 @@
   border: 1rpx solid rgba(201, 162, 75, 0.28);
 }
 
+/* Native button state rules must not replace the theme with a white background. */
+.button-primary[disabled],
+.button-primary[loading] {
+  color: #2a1d10 !important;
+  background: linear-gradient(135deg, #e0be6a 0%, #c9a24b 100%) !important;
+}
+
+.button-secondary[disabled],
+.button-secondary[loading] {
+  color: #e0be6a !important;
+  background: rgba(201, 162, 75, 0.1) !important;
+}
+
+.button-primary[disabled],
+.button-secondary[disabled] {
+  opacity: 0.65;
+}
+
 .button-primary::after,
 .button-secondary::after {
   border: none;

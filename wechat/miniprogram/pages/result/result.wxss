@@ -76,6 +76,23 @@
   gap: 24rpx;
 }
 
+.reporting-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  padding: 32rpx;
+  font-size: 25rpx;
+  line-height: 1.7;
+}
+
+.reporting-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
 .poster-canvas {
   position: fixed;
   left: -10000px;

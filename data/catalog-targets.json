@@ -1,0 +1,11 @@
+{
+  "total": 200,
+  "bands": [
+    { "max": 100, "target": 35 },
+    { "max": 200, "target": 40 },
+    { "max": 500, "target": 55 },
+    { "max": 900, "target": 35 },
+    { "max": 1500, "target": 20 },
+    { "max": null, "target": 15 }
+  ]
+}

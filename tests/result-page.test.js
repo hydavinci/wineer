@@ -1,6 +1,10 @@
 const assert = require("node:assert/strict");
 const path = require("node:path");
 const test = require("node:test");
+const { createWx, setPageData } = require("./helpers/miniprogram");
+
+test.beforeEach(() => { global.wx = createWx(); });
+test.afterEach(() => { delete global.wx; });
 
 const root = path.resolve(__dirname, "..");
 const wineData = require("../wechat/miniprogram/data/baijiu");
@@ -52,13 +56,25 @@ function loadComponentDefinition(relativePath) {
   return definition;
 }
 
+test("wine card details can be expanded without changing the selected wine", () => {
+  const definition = loadComponentDefinition("../wechat/miniprogram/components/wine-card/wine-card");
+  const component = {
+    data: { ...structuredClone(definition.data || {}), wine: { id: "example" } },
+    setData: setPageData
+  };
+  assert.equal(component.data.expanded, false);
+  definition.methods.toggleDetails.call(component);
+  assert.equal(component.data.expanded, true);
+  definition.methods.toggleDetails.call(component);
+  assert.equal(component.data.expanded, false);
+  assert.equal(component.data.wine.id, "example");
+});
+
 function createPageContext(definition, initialData = {}) {
   return {
     ...definition,
-    data: { ...initialData },
-    setData(nextData) {
-      this.data = { ...this.data, ...nextData };
-    }
+    data: { ...structuredClone(definition.data), agePending: false, ...initialData },
+    setData: setPageData
   };
 }
 
@@ -124,19 +140,14 @@ function createCanvas() {
 }
 
 function createStoredWx(overrides = {}) {
-  let stored = [];
+  const api = createWx();
   return {
     api: {
-      getStorageSync() {
-        return stored;
-      },
-      setStorageSync(_key, value) {
-        stored = value;
-      },
+      ...api,
       ...overrides
     },
     events() {
-      return stored;
+      return api.storage.get("wineer_events") || [];
     }
   };
 }
@@ -160,10 +171,10 @@ test("result page restores answers and builds ranked result cards", () => {
   assert.equal(page.data.isLoading, false);
   assert.deepEqual(page.data.wines.map(({ id }) => id), [
     "kouzijiao",
-    "qinghua20",
+    "fenjiu-laobaifen10",
     "shuanggou-shengfang"
   ]);
-  assert.equal(page.data.wines[0].matchPercent, page.data.ranked[0].matchPercent);
+  assert.equal(page.data.wines[0].rankLabel, "优先推荐");
 });
 
 test("result page shows an explicit message when recommendation data is invalid", () => {
@@ -182,7 +193,7 @@ test("result page shows an explicit message when recommendation data is invalid"
 
   assert.equal(page.data.isLoading, false);
   assert.equal(page.data.errorMessage, "推荐数据异常，请稍后重试");
-  assert.deepEqual(page.data.ranked, []);
+  assert.deepEqual(page.ranked, []);
   assert.deepEqual(page.data.wines, []);
 });
 
@@ -209,7 +220,7 @@ test("result page classifies malformed result view data as a recommendation data
 
   assert.equal(page.data.isLoading, false);
   assert.equal(page.data.errorMessage, "推荐数据异常，请稍后重试");
-  assert.deepEqual(page.data.ranked, []);
+  assert.deepEqual(page.ranked, []);
   assert.deepEqual(page.data.wines, []);
 });
 
@@ -255,7 +266,7 @@ test("result page shares the top wine and the normalized answer query", () => {
 
     assert.deepEqual(resultPage.onShareAppMessage.call(page), {
       title: `Wineer 推荐：${topWineName}`,
-      path: "/pages/result/result?budget=4&occasion=4&softness=3&flavorWeight=4&brandFace=4&adventure=3"
+      path: "/pages/result/result?budget=4&occasion=4&softness=3&flavorWeight=4&brandFace=4&adventure=3&from=share"
     });
   } finally {
     delete global.wx;
@@ -277,12 +288,12 @@ test("result page redirects to a fresh quiz, completing the bounded restart pair
   global.wx = wxStorage.api;
 
   try {
-    resultPage.restart();
+    resultPage.restart.call(createPageContext(resultPage));
   } finally {
     delete global.wx;
   }
 
-  assert.deepEqual(redirects, [{ url: "/pages/quiz/quiz" }]);
+  assert.deepEqual(redirects.map(({ url }) => url), ["/pages/quiz/quiz?from=restart"]);
   // redirectTo replaces the result layer; paired with quiz -> result redirect,
   // repeated restarts cannot retain stale quiz or result pages.
   assert.equal(wxStorage.events().at(-1).event, "restart");
@@ -315,20 +326,20 @@ test("result page copies the exact purchase keyword and explains the next step",
 
   try {
     resultPage.copyPurchaseKeyword.call(page, {
-      detail: { id: page.data.ranked[0].item.id }
+      detail: { id: page.ranked[0].item.id }
     });
   } finally {
     delete global.wx;
   }
 
-  assert.deepEqual(clipboard, [`${topWineName} 京东搜索`]);
-  assert.deepEqual(toasts, [{ title: "已复制，请打开京东搜索", icon: "none" }]);
+  assert.deepEqual(clipboard, ["口子窖 10年兼香型50度 500mL 十年型（50度）"]);
+  assert.deepEqual(toasts, [{ title: "已复制，可在平台搜索比价", icon: "none" }]);
   assert.deepEqual(wxStorage.events().at(-1).payload, {
     id: "kouzijiao",
     name: topWineName,
     answers: defaultAnswers
   });
-  assert.equal(wxStorage.events().at(-1).event, "buy_click");
+  assert.equal(wxStorage.events().at(-1).event, "copy_keyword_success");
 });
 
 test("result page reports clipboard failures without pretending success", () => {
@@ -344,6 +355,7 @@ test("result page reports clipboard failures without pretending success", () => 
 
   resultPage.onLoad.call(page, {});
   global.wx = {
+    ...createWx(),
     setClipboardData({ fail }) {
       fail(new Error("clipboard unavailable"));
     },
@@ -354,7 +366,7 @@ test("result page reports clipboard failures without pretending success", () => 
 
   try {
     withMutedConsoleError(() => resultPage.copyPurchaseKeyword.call(page, {
-      detail: { id: page.data.ranked[0].item.id }
+      detail: { id: page.ranked[0].item.id }
     }));
   } finally {
     delete global.wx;
@@ -377,6 +389,7 @@ test("result page reports a missing wine instead of copying stale data", () => {
 
   resultPage.onLoad.call(page, {});
   global.wx = {
+    ...createWx(),
     setClipboardData() {
       attemptedCopy = true;
     },
@@ -475,9 +488,9 @@ test("result page generates a DPR-scaled poster, previews it, and records the ev
   assert.equal(previews.length, 1);
   assert.equal(previews[0].current, "poster.png");
   assert.deepEqual(previews[0].urls, ["poster.png"]);
-  assert.equal(wxStorage.events().at(-1).event, "share_poster");
+  assert.equal(wxStorage.events().at(-1).event, "poster_generated");
   assert.deepEqual(wxStorage.events().at(-1).payload, {
-    top3: ["kouzijiao", "qinghua20", "shuanggou-shengfang"]
+    top3: ["kouzijiao", "fenjiu-laobaifen10", "shuanggou-shengfang"]
   });
 });
 
@@ -503,6 +516,7 @@ test("result page resets poster state and explains generation failures", () => {
     posterBusy: false,
     posterPath: ""
   });
+  page.onLoad({});
   const toasts = [];
   const wxStorage = createStoredWx({
     showToast(payload) {
@@ -539,6 +553,7 @@ test("result page reports poster preview failures", () => {
     posterBusy: false,
     posterPath: ""
   });
+  page.onLoad({});
   const canvas = createCanvas();
   const toasts = [];
   let previewOptions;
@@ -577,7 +592,7 @@ test("result page reports poster preview failures", () => {
   }
 
   assert.equal(page.data.posterBusy, false);
-  assert.deepEqual(toasts, [{ title: "生成海报失败，请重试", icon: "none" }]);
+  assert.deepEqual(toasts, [{ title: "预览失败，可尝试保存海报", icon: "none" }]);
 });
 
 test("result page requires a generated poster before saving", () => {
@@ -604,6 +619,7 @@ test("result page reports successful album saves only from the success callback"
   const page = createPageContext(resultPage, { posterPath: "poster.png" });
   const toasts = [];
   global.wx = {
+    ...createWx(),
     saveImageToPhotosAlbum({ filePath, success }) {
       assert.equal(filePath, "poster.png");
       success();

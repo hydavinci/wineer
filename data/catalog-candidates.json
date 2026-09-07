@@ -1,0 +1,1858 @@
+{
+  "reviewedAt": "2026-09-07",
+  "catalogVersion": "0.4.0",
+  "note": "未入推荐库的候选或待核实条目；不要直接当作已确认SKU、价格或产品推荐。",
+  "entries": [
+    {
+      "id": "zhenjiu-dazhen-53",
+      "name": "珍酒 大珍53度",
+      "brand": "珍酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义汇川",
+      "source": "https://www.gzzjc.cn/product/info/dz",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/dz",
+          "summary": "厂家详情明确大珍·珍酒、酱香型白酒、53%vol、500ml，称其为独立战略级单品。"
+        },
+        {
+          "url": "https://www.gzzjc.cn/about",
+          "summary": "厂家介绍明确贵州珍酒酿酒有限公司及遵义汇川产区。"
+        }
+      ],
+      "notes": "未观察到精确单瓶价格；没有用会员方案或组合购买金额代替。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "zhenjiu-zhen10-53",
+      "name": "珍酒 珍十53度",
+      "brand": "珍酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义汇川",
+      "source": "https://www.gzzjc.cn/product/info/z10",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/z10",
+          "summary": "厂家详情明确珍酒·珍十、酱香型、53%vol、500ml。"
+        },
+        {
+          "url": "https://www.gzzjc.cn/about",
+          "summary": "厂家介绍明确贵州珍酒酿酒有限公司与遵义汇川产区。"
+        }
+      ],
+      "notes": "珍十是产品名称，不宣称全部酒体陈年十年；无有效价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "zhenjiu-zhen8-53",
+      "name": "珍酒 珍八53度",
+      "brand": "珍酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义汇川",
+      "source": "https://www.gzzjc.cn/product/info/z8",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/z8",
+          "summary": "厂家详情明确珍酒·珍八、酱香型、53%vol、500ml。"
+        },
+        {
+          "url": "https://www.gzzjc.cn/about",
+          "summary": "厂家介绍明确贵州珍酒酿酒有限公司与遵义汇川产区。"
+        }
+      ],
+      "notes": "不推断包装代次或八年陈酿；无有效价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "zhenjiu-zhen5-53",
+      "name": "珍酒 珍五53度",
+      "brand": "珍酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义汇川",
+      "source": "https://www.gzzjc.cn/product/info/z5",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/z5",
+          "summary": "厂家详情明确珍酒·珍五、酱香型、53%vol、500ml。"
+        },
+        {
+          "url": "https://www.gzzjc.cn/about",
+          "summary": "厂家介绍明确贵州珍酒酿酒有限公司与遵义汇川产区。"
+        }
+      ],
+      "notes": "未凭国民酱香等定位词推断零售价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "zhenjiu-yingshanhong5-53",
+      "name": "珍酒 映山红·5 53度",
+      "brand": "珍酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义汇川",
+      "source": "https://www.gzzjc.cn/product/info/ysh5",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/ysh5",
+          "summary": "厂家映山红经典系列详情明确映山红·5、酱香型、53%vol、500ml。"
+        },
+        {
+          "url": "https://www.gzzjc.cn/about",
+          "summary": "厂家介绍明确贵州珍酒酿酒有限公司与遵义汇川产区。"
+        }
+      ],
+      "notes": "独立于珍五；无有效价格，不将名称中的5解释为酒龄。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "zhenjiu-yingshanhong-diancang-53",
+      "name": "珍酒 映山红·典藏53度",
+      "brand": "珍酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 1500,
+      "edition": "典藏",
+      "region": "贵州遵义汇川",
+      "source": "https://www.gzzjc.cn/product/info/yshdc",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzzjc.cn/product/info/yshdc",
+          "summary": "厂家独立详情明确映山红·典藏、酱香型、53%vol、单容器1.5L。"
+        },
+        {
+          "url": "https://www.gzzjc.cn/about",
+          "summary": "厂家介绍明确贵州珍酒酿酒有限公司与遵义汇川产区。"
+        }
+      ],
+      "notes": "1500ml为单容器容量，不是整箱合计；未按同款不同箱数新增。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-t6-50",
+      "name": "郎牌特曲 T6 50度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "T6",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=80",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=80",
+          "summary": "官网实际调用的产品数据明确T6、浓酱兼香型、包含50%vol、唯一列示容量500ml；产品说明明确郎酒兼香产自泸州产区。"
+        }
+      ],
+      "notes": "采用当前兼香产品，不沿用旧浓香描述；未读取价格接口。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-t8-50",
+      "name": "郎牌特曲 T8 50度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "T8",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=81",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=81",
+          "summary": "厂家数据明确T8、浓酱兼香型、38/42/50%vol、唯一容量500ml；本候选选择50度。"
+        },
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=80",
+          "summary": "同一厂家对郎酒兼香系列的说明明确其泸州产区。"
+        }
+      ],
+      "notes": "无可见精确单瓶报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-t8-42",
+      "name": "郎牌特曲 T8 42度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 42,
+      "volumeMl": 500,
+      "edition": "T8",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=81",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=81",
+          "summary": "厂家数据独立列出42%vol，唯一容量500ml，香型为浓酱兼香。"
+        },
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=80",
+          "summary": "厂家对郎酒兼香系列说明明确泸州产区。"
+        }
+      ],
+      "notes": "与T8 50度为真实ABV差异，不是包装或箱规重复；没有借用50度价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-shunpin-jingai-45",
+      "name": "顺品郎 金盖装45度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 45,
+      "volumeMl": 480,
+      "edition": "金盖装",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=90",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=90",
+          "summary": "厂家独立产品记录明确顺品郎金盖装、45%vol、480ml、浓酱兼香型，说明明确泸州产区。"
+        }
+      ],
+      "notes": "厂家按独立产品列项；如主代理要求额外证明与蓝顺酒体差异，可将本项列为待人工去重，不按仅瓶盖不同强行计数。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-xiaolang-45",
+      "name": "小郎酒45度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 45,
+      "volumeMl": 100,
+      "edition": null,
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=91",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=91",
+          "summary": "厂家当前小郎酒数据唯一列45%vol、100ml、浓酱兼香型。"
+        },
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=80",
+          "summary": "厂家对郎酒兼香系列说明明确泸州产区。"
+        }
+      ],
+      "notes": "适合作为小容量独立表达候选，但没有为低价配额编造单瓶金额。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-longmalang-jinma-50",
+      "name": "龙马郎 金马50度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "金马",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=98",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=98",
+          "summary": "厂家龙马郎金马独立详情列42/50%vol、500mL、浓酱兼香型，并明确泸州产区；本项选50度。"
+        }
+      ],
+      "notes": "未将接口createTime转作版本年份或价格日期。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-longmalang-heima-50",
+      "name": "龙马郎 黑马50度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "黑马",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=99",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=99",
+          "summary": "厂家龙马郎黑马独立产品详情列42/50%vol、500mL、浓酱兼香型，说明明确泸州产区。"
+        }
+      ],
+      "notes": "按厂家独立表达提出候选；未用金马或白马的价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-longmalang-baima-50",
+      "name": "龙马郎 白马50度",
+      "brand": "郎酒",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "白马",
+      "region": "四川泸州",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=100",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=100",
+          "summary": "厂家龙马郎白马独立产品详情列42/50%vol、500mL、浓酱兼香型，并明确泸州产区。"
+        }
+      ],
+      "notes": "按厂家独立表达提出候选，没有叠加不同箱规或42度以增加本组数量。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "langjiu-hongyun-53",
+      "name": "郎酒 红运郎53度",
+      "brand": "郎酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "赤水河左岸（川黔交界）",
+      "source": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=96",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://weiste-api.langjiu.cn/api/goods/goodsDetail?goodsId=96",
+          "summary": "厂家红运郎详情明确53%vol、500mL、酱香型；产区文字为云贵高原与四川盆地接壤的赤水河左岸。"
+        }
+      ],
+      "notes": "未把叁拾年寓意当作全酒体酒龄；地区保留厂家可验证范围，不补未经该详情证实的镇名。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "diaoyutai-yueji-53",
+      "name": "钓鱼台 悦己酒53度",
+      "brand": "钓鱼台",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州仁怀茅台镇",
+      "source": "https://www.diaoyutaijiu.com/productinfo/3220272.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.diaoyutaijiu.com/productinfo/3220272.html",
+          "summary": "厂家参数表为悦己酒、酱香型、53%vol、500mL×4，明确单瓶500mL；建议价4396元对应所列组合规格。"
+        },
+        {
+          "url": "https://www.diaoyutaijiu.com/gywm",
+          "summary": "厂家介绍确认生产企业及仁怀茅台镇所在地。"
+        }
+      ],
+      "notes": "仅提出一种酒的单瓶规格，不增加四瓶装条目；4396元未作为单瓶价，也未除以4冒充单瓶报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jinsha-jingdian12-53",
+      "name": "金沙回沙 金沙经典12 53度",
+      "brand": "金沙",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "金沙经典12",
+      "region": "贵州毕节金沙",
+      "source": "https://www.jinshajiuye.com/jshs_1/21.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/21.html",
+          "summary": "厂家详情明确金沙经典12、酱香型白酒大曲、53%vol、500ml，制造商贵州金沙窖酒酒业有限公司，厂址金沙县大水。"
+        }
+      ],
+      "notes": "不是摘要系列；没有把名称数字直接当作全部酒体酒龄。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jinsha-jingdian9-53",
+      "name": "金沙回沙 金沙经典9 53度",
+      "brand": "金沙",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "金沙经典9",
+      "region": "贵州毕节金沙",
+      "source": "https://www.jinshajiuye.com/jshs_1/18.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/18.html",
+          "summary": "厂家详情明确金沙经典9、酱香型白酒大曲、53%vol、500ml、贵州金沙窖酒酒业有限公司及金沙县大水厂址。"
+        }
+      ],
+      "notes": "厂家区分经典9与经典12表达；无精确价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jinsha-zhenshinianfen6-53",
+      "name": "金沙回沙 真实年份酒6年53度",
+      "brand": "金沙",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "真实年份酒6年",
+      "region": "贵州毕节金沙",
+      "source": "https://www.jinshajiuye.com/jshs_1/12.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/12.html",
+          "summary": "厂家详情明确真实年份酒6年、酱香型、53%vol、500ml及生产企业和金沙厂址；另说明2025年5月后包装焕新。"
+        }
+      ],
+      "notes": "仅新增6年这一产品，不把包装焕新再拆成第二条；不宣称全部酒体恰为六年。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jinsha-zhenshinianfen8-53",
+      "name": "金沙回沙 真实年份酒8年53度",
+      "brand": "金沙",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "真实年份酒8年",
+      "region": "贵州毕节金沙",
+      "source": "https://www.jinshajiuye.com/jshs_1/13.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/13.html",
+          "summary": "厂家详情明确真实年份酒8年、酱香型、53%vol、500ml及贵州金沙窖酒酒业有限公司和金沙厂址。"
+        }
+      ],
+      "notes": "按独立年份表达提出，未按组合装或包装变化扩数。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jinsha-zuanshi3-53",
+      "name": "金沙回沙 钻石三星53度",
+      "brand": "金沙",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "钻石三星",
+      "region": "贵州毕节金沙",
+      "source": "https://www.jinshajiuye.com/jshs_1/2.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/2.html",
+          "summary": "厂家参数两处明确钻石三星、酱香型、53%vol、500ml、贵州金沙窖酒酒业有限公司及金沙县大水厂址。"
+        }
+      ],
+      "notes": "不是现有普通五星或钻石五星；不推断低价档金额。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jinsha-zuanshi7-53",
+      "name": "金沙回沙 钻石七星53度",
+      "brand": "金沙",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "钻石七星",
+      "region": "贵州毕节金沙",
+      "source": "https://www.jinshajiuye.com/jshs_1/1.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.jinshajiuye.com/jshs_1/1.html",
+          "summary": "厂家参数明确钻石七星、酱香型、53%vol、500ml、贵州金沙窖酒酒业有限公司及金沙县大水厂址。"
+        }
+      ],
+      "notes": "独立于现有钻石五星；无精确价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "wuliangchun-mingmen-52",
+      "name": "五粮春 名门52度",
+      "brand": "五粮液",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "名门",
+      "region": "四川宜宾",
+      "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=53",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/53",
+          "summary": "厂家独立产品数据明确五粮春名门、浓香型、52%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "五粮春厂家类别介绍确认宜宾五粮液股份有限公司出品。"
+        }
+      ],
+      "notes": "独立于普通五粮春表达；没有根据次高端定位猜价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "wuliangchun-hemei-52",
+      "name": "五粮春 和美52度",
+      "brand": "五粮液",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "和美",
+      "region": "四川宜宾",
+      "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=143",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/143",
+          "summary": "厂家独立产品数据明确五粮春和美、浓香型、52%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "五粮春类别介绍确认宜宾五粮液股份有限公司出品。"
+        }
+      ],
+      "notes": "未将名门或第二代价格移植至和美。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "wuliangchun-96jingpin-45",
+      "name": "五粮春 96精品45度",
+      "brand": "五粮液",
+      "aroma": "浓香",
+      "abv": 45,
+      "volumeMl": 500,
+      "edition": "96精品",
+      "region": "四川宜宾",
+      "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=2",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/2",
+          "summary": "厂家数据明确五粮春96精品、浓香型、45%vol、500ml，非50度或52度。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "五粮春类别介绍确认宜宾五粮液股份有限公司出品。"
+        }
+      ],
+      "notes": "96属于产品名称，不将其解释为1996年生产的老酒。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "wuliangchunxiang-jinzhuang-50",
+      "name": "五粮醇 醇香系列香金装50度",
+      "brand": "五粮液",
+      "aroma": "浓香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "醇香系列香金装",
+      "region": "四川宜宾",
+      "source": "https://www.wuliangnongxiang.com/product/proPage.html?id=5",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/id/5",
+          "summary": "厂家数据明确五粮醇醇香系列香金装、浓香型、50%vol、500ml。"
+        },
+        {
+          "url": "https://wuliangnongxiang.com/api/v1/publix/product/category_list?start=0&max_size=100",
+          "summary": "五粮醇类别介绍确认宜宾五粮液股份有限公司出品。"
+        }
+      ],
+      "notes": "五粮醇不等于五粮春；本轮仅选醇香系列一个包装，不另加香银、香红装。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "luzhou-jiaoling30-52",
+      "name": "百年泸州老窖 窖龄30年52度",
+      "brand": "泸州老窖",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "窖龄30年",
+      "region": "四川泸州",
+      "source": "https://www.lzlj.com/brand/jiaolingjiu/3780.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/jiaolingjiu/3780.html",
+          "summary": "厂家详情明确窖龄30年，度数包含52%vol，规格500ml。"
+        },
+        {
+          "url": "https://www.lzlj.com/brand/jiaolingjiu/",
+          "summary": "厂家窖龄系列说明明确浓香型泥窖发酵，独立列30、60、90年三款。"
+        },
+        {
+          "url": "https://www.lzlj.com/contact/",
+          "summary": "厂家联系方式确认泸州老窖股份有限公司及四川泸州地址。"
+        }
+      ],
+      "notes": "30年是窖池年龄表达，不是瓶内酒陈年30年。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "luzhou-jiaoling60-52",
+      "name": "百年泸州老窖 窖龄60年52度",
+      "brand": "泸州老窖",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "窖龄60年",
+      "region": "四川泸州",
+      "source": "https://www.lzlj.com/brand/jiaolingjiu/3781.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/jiaolingjiu/3781.html",
+          "summary": "厂家详情明确窖龄60年，度数包含52%vol，规格500ml，正文明确浓香型。"
+        },
+        {
+          "url": "https://www.lzlj.com/contact/",
+          "summary": "厂家联系方式确认泸州老窖股份有限公司及四川泸州地址。"
+        }
+      ],
+      "notes": "60年不是酒液陈年年数；仅选52度一个规格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "luzhou-jiaoling90-52",
+      "name": "百年泸州老窖 窖龄90年52度",
+      "brand": "泸州老窖",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "窖龄90年",
+      "region": "四川泸州",
+      "source": "https://www.lzlj.com/brand/jiaolingjiu/3782.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/jiaolingjiu/3782.html",
+          "summary": "厂家详情明确窖龄90年，度数包含52%vol，规格500ml。"
+        },
+        {
+          "url": "https://www.lzlj.com/brand/jiaolingjiu/",
+          "summary": "厂家将30、60、90年共同列入浓香型窖龄酒系列。"
+        },
+        {
+          "url": "https://www.lzlj.com/contact/",
+          "summary": "厂家确认泸州老窖股份有限公司及四川泸州地址。"
+        }
+      ],
+      "notes": "不宣称酒液陈年90年，不把同款不同度数全部铺开扩数。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "luzhou-1952-52",
+      "name": "泸州老窖1952 52度",
+      "brand": "泸州老窖",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "四川泸州",
+      "source": "https://www.lzlj.com/brand/1952/3772.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.lzlj.com/brand/1952/3772.html",
+          "summary": "厂家独立产品详情明确泸州老窖1952、浓香型、包含52%vol、500ml。"
+        },
+        {
+          "url": "https://www.lzlj.com/contact/",
+          "summary": "厂家确认泸州老窖股份有限公司及四川泸州地址。"
+        }
+      ],
+      "notes": "1952为产品名称及纪念含义，不是生产年份；没有把定位词换算成价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "maotai-zhenpin-53",
+      "name": "贵州茅台酒 珍品53度",
+      "brand": "茅台",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "珍品",
+      "region": "贵州仁怀茅台镇",
+      "source": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117404814102.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.moutai.com.cn/mtgf/2023-10/31/article_2023103117404814102.html",
+          "summary": "厂家详情明确贵州茅台酒珍品、酱香型、53%vol、500ml/瓶。"
+        },
+        {
+          "url": "https://www.moutai.com.cn/mtgf/qygk/lxwm/index.html",
+          "summary": "厂家明确贵州茅台酒股份有限公司及仁怀市茅台镇地址。"
+        }
+      ],
+      "notes": "不同于现有贵州茅台精品及珍品王子；未引用其他茅台版本价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "xijiu-jiangxiang-xiaoxi-53",
+      "name": "习酒 酱香小習酒53度",
+      "brand": "习酒",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 100,
+      "edition": null,
+      "region": "贵州遵义习水",
+      "source": "https://www.gzxijiu.com/product/detail?menuId=VzB2Cj6KjnJ6jUrbtW92W&id=W_1DZfdPVr29j-Jj7_aKB",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.gzxijiu.com/product/detail?menuId=VzB2Cj6KjnJ6jUrbtW92W&id=W_1DZfdPVr29j-Jj7_aKB",
+          "summary": "厂家产品名称明确酱香小習酒，酒精度53%vol，规格100ml×24，单瓶容量100ml。"
+        },
+        {
+          "url": "https://www.gzxijiu.com/",
+          "summary": "厂家公开页面内嵌地址明确贵州省遵义市习水县习酒镇。"
+        }
+      ],
+      "notes": "只新增一种酒的单瓶规格，不将24瓶箱规作为另一SKU；无单瓶报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "fenjiu-qinghua25-42",
+      "name": "汾酒 青花25 42度",
+      "brand": "汾酒",
+      "aroma": "清香",
+      "abv": 42,
+      "volumeMl": 475,
+      "edition": null,
+      "region": "山西汾阳杏花村",
+      "source": "https://www.fenjiu.com.cn/gf/qinghua/2026-05-28/12769.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2026-05-28/12769.html",
+          "summary": "已读取厂家产品HTML：青花汾酒25、42%vol、475mL、清香型，产地山西省汾阳市杏花村。"
+        }
+      ],
+      "notes": "不同于现有青花20及青花30。未找到可匹配此规格的可靠报价，不采用其他度数青花25价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "fenjiu-qinghua26-42",
+      "name": "汾酒 青花26 42度",
+      "brand": "汾酒",
+      "aroma": "清香",
+      "abv": 42,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "山西汾阳杏花村",
+      "source": "https://www.fenjiu.com.cn/gf/qinghua/2026-05-28/12768.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2026-05-28/12768.html",
+          "summary": "已读取厂家青花汾酒26页面：42%vol及53%vol两种度数，500mL、清香型，产地杏花村。"
+        }
+      ],
+      "notes": "42度为厂家明确列出的独立度数版本；未核实复兴版等附加名称，未取得可靠报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "fenjiu-qinghua26-53",
+      "name": "汾酒 青花26 53度",
+      "brand": "汾酒",
+      "aroma": "清香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "山西汾阳杏花村",
+      "source": "https://www.fenjiu.com.cn/gf/qinghua/2026-05-28/12768.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2026-05-28/12768.html",
+          "summary": "厂家具体产品页确认青花26的53%vol、500mL版本，清香型，产地山西汾阳杏花村。"
+        }
+      ],
+      "notes": "与同批42度候选按真实酒精度区分，不按包装区分。未采用回收报价或规格不明的汇总价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "fenjiu-qinghua40-53",
+      "name": "汾酒 青花40 53度",
+      "brand": "汾酒",
+      "aroma": "清香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "山西汾阳杏花村",
+      "source": "https://www.fenjiu.com.cn/gf/qinghua/2023-02-15/1159.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2023-02-15/1159.html",
+          "summary": "已读取厂家页面：产品名称53度青花汾酒40，53%Vol、500mL、清香型，产地杏花村。"
+        }
+      ],
+      "notes": "搜索中不少价格对应55度中国装或历史报告，不迁移至此53度SKU。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "fenjiu-qinghua50-55",
+      "name": "汾酒 青花50 55度",
+      "brand": "汾酒",
+      "aroma": "清香",
+      "abv": 55,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "山西汾阳杏花村",
+      "source": "https://www.fenjiu.com.cn/gf/qinghua/2023-05-18/3876.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.fenjiu.com.cn/gf/qinghua/2023-05-18/3876.html",
+          "summary": "已读取厂家55度青花汾酒50产品页：55%vol、500ml、清香型，产地杏花村。"
+        }
+      ],
+      "notes": "不与65度100mL小酒混淆。找到的明确优惠多为历史预售或汇总材料，未填当前价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "yanghe-shougongban10-52",
+      "name": "洋河 梦之蓝手工班10年52度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "10年",
+      "region": "江苏宿迁",
+      "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/91.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/91.html",
+          "summary": "已读取厂家手工班10年页面：单瓶500ml，度数包括52%vol，箱规500ml乘4。"
+        },
+        {
+          "url": "https://www.chinayanghe.com/news/xwzx/company/555.html",
+          "summary": "已打开厂家手工班鉴评文章，其52度手工班产品讨论明确使用浓香型分类。"
+        },
+        {
+          "url": "https://lt.chinayanghe.com/about",
+          "summary": "已打开厂家简介，说明宿迁产区及洋河、梦之蓝的绵柔白酒体系。"
+        }
+      ],
+      "notes": "不是单纯包装年份；厂家将10年与20年分列。产品页香型栏为空，浓香由同厂家系列说明交叉支持。未把未分10/20年的普通手工班报价套用。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "yanghe-shougongban20-52",
+      "name": "洋河 梦之蓝手工班20年52度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "20年",
+      "region": "江苏宿迁",
+      "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/14.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/14.html",
+          "summary": "已读取厂家手工班20年页面：52%vol、500ml，箱规每箱4瓶。"
+        },
+        {
+          "url": "https://www.chinayanghe.com/news/xwzx/company/555.html",
+          "summary": "厂家手工班鉴评文章提供浓香型归类的交叉依据。"
+        },
+        {
+          "url": "https://lt.chinayanghe.com/about",
+          "summary": "厂家简介确认宿迁产区及梦之蓝系列背景。"
+        }
+      ],
+      "notes": "产品页香型栏为空，浓香由厂家系列说明支持。未把大师版、未分年份手工班或2019老酒价格迁移到此SKU。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "yanghe-m9-52",
+      "name": "洋河 梦之蓝M9 52度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "江苏宿迁",
+      "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/3.html",
+          "summary": "已读取厂家梦之蓝M9页面：单瓶500ml，度数包含52%vol。"
+        },
+        {
+          "url": "https://lt.chinayanghe.com/about",
+          "summary": "已打开厂家简介，确认宿迁产区、洋河浓香体系及梦之蓝绵柔风格。"
+        }
+      ],
+      "notes": "不同于现有M6+和水晶版。厂家产品页香型栏为空，按厂家系列说明归类浓香；搜索摘要曾出现报价，但实际读取店铺未复现，故价格留空。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "yanghe-shuijing-40-8",
+      "name": "洋河 梦之蓝水晶版40.8度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 40.8,
+      "volumeMl": 550,
+      "edition": "水晶版",
+      "region": "江苏宿迁",
+      "source": "https://www.chinayanghe.com/product/yanghe/lsjdxl/12.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/lsjdxl/12.html",
+          "summary": "已读取厂家梦之蓝水晶版参数：550ml，度数包括40.8%vol。"
+        },
+        {
+          "url": "https://product.suning.com/0030000733/12452361950.html",
+          "summary": "已读取苏宁自营SKU：标题和包装清单为40.8度550ML两瓶；香型为浓香，产地江苏宿迁，但单支参数误写500ml。"
+        },
+        {
+          "url": "https://shop.suning.com/30000733/all.html",
+          "summary": "实际打开的店铺列表将此SKU标为798元每两瓶，折算每瓶399元。"
+        }
+      ],
+      "notes": "先前多瓶装折算价格已撤回，本记录仍待单瓶报价。原研究备注：现有水晶版为52度，此为不同ABV。容量以厂家和零售标题、清单一致的550mL为准，记录零售参数冲突；价格是挂牌折算，不保证结算。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "yanghe-youqu-55",
+      "name": "洋河 优曲55度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 55,
+      "volumeMl": 475,
+      "edition": null,
+      "region": "江苏宿迁",
+      "source": "https://product.suning.com/0030000733/12449528687.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000733/12449528687.html",
+          "summary": "已读取苏宁自营具体商品：优曲55度、475ml每瓶、浓香型，产地江苏宿迁，12瓶装。"
+        },
+        {
+          "url": "https://shop.suning.com/30000733/all.html",
+          "summary": "实际打开列表报价223元每12瓶，223除以12约18.58元每瓶。"
+        }
+      ],
+      "notes": "先前多瓶装折算价格已撤回，本记录仍待单瓶报价。原研究备注：仅新增酒款单瓶身份，不把12瓶箱装另算SKU。价格为整箱报价折算，四舍五入到分。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "yanghe-daqu-jingdian-52",
+      "name": "洋河大曲 经典版52度",
+      "brand": "洋河",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "经典版",
+      "region": "江苏宿迁",
+      "source": "https://www.chinayanghe.com/product/yanghe/yhdqjxl/22.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinayanghe.com/product/yanghe/yhdqjxl/22.html",
+          "summary": "已读取厂家洋河大曲经典版页面：500ml，度数包括52%vol。"
+        },
+        {
+          "url": "https://lt.chinayanghe.com/about",
+          "summary": "已打开厂家简介，明确洋河大曲的浓香型背景及江苏宿迁产区。"
+        }
+      ],
+      "notes": "现有目录没有洋河大曲。只选择经典版，不将青瓷、复兴版等包装线全部计入；未采用375mL大曲价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "kouzi-jian9-50",
+      "name": "口子窖 兼9 50度",
+      "brand": "口子窖",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "安徽淮北",
+      "source": "https://www.kouzi.com/index.php?c=show&id=6695",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.kouzi.com/index.php?c=show&id=6695",
+          "summary": "已读取厂家兼9页面：兼香型，41/50%vol，500ml；厂家地址安徽淮北。"
+        }
+      ],
+      "notes": "兼9为厂家独立产品，不与既有十年型混同。未取得匹配报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "kouzi-jian16-50",
+      "name": "口子窖 兼16 50度",
+      "brand": "口子窖",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "安徽淮北",
+      "source": "https://www.kouzi.com/index.php?c=show&id=6696",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.kouzi.com/index.php?c=show&id=6696",
+          "summary": "已读取厂家兼16产品页：兼香型、50%vol选项、500ml，厂家位于安徽淮北。"
+        }
+      ],
+      "notes": "厂家将兼16与兼9、兼20等独立列示。未取得匹配报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "kouzi-jian30-50",
+      "name": "口子窖 兼30 50度",
+      "brand": "口子窖",
+      "aroma": "兼香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "安徽淮北",
+      "source": "https://www.kouzi.com/index.php?c=show&id=6324",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.kouzi.com/index.php?c=show&id=6324",
+          "summary": "已读取厂家兼30页面：兼香型、50度、500ml，页尾厂家地址安徽淮北。"
+        }
+      ],
+      "notes": "不是三十年型的别名或包装推定；未取得可靠报价，不为高价档指定估值。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "kouzi-laokouzi-42",
+      "name": "老口子42度",
+      "brand": "口子窖",
+      "aroma": "兼香",
+      "abv": 42,
+      "volumeMl": 450,
+      "edition": null,
+      "region": "安徽淮北",
+      "source": "https://product.suning.com/0070854614/11945915787.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0070854614/11945915787.html",
+          "summary": "已读取口子窖官方旗舰店老口子商品：42度、450mL每瓶、兼香型，淮北产，包装清单6瓶。"
+        },
+        {
+          "url": "https://shop.suning.com/70854614/all.html",
+          "summary": "实际读取整箱6瓶报价360元，折算单瓶60元。"
+        }
+      ],
+      "notes": "先前多瓶装折算价格已撤回，本记录仍待单瓶报价。原研究备注：价格为360除以6；brand沿用销售归属口子窖，实际产品名称为老口子。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "shede-cangpin10-52",
+      "name": "舍得 藏品舍得10年52度",
+      "brand": "舍得",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_123.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_123.html",
+          "summary": "已读取厂家藏品舍得10年页面：52%vol选项、500ml、浓香型，并说明其单独基酒配置；厂家地址射洪。"
+        }
+      ],
+      "notes": "不是把品味舍得换礼盒计数。历史指导价按装瓶年份变化，目录未限定装瓶年份，价格留空。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "shede-shuijing-52",
+      "name": "舍得 水晶舍得52度",
+      "brand": "舍得",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_6.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_6.html",
+          "summary": "已读取厂家独立水晶舍得产品页：浓香型、500ml、52%vol选项，厂家地址射洪。"
+        }
+      ],
+      "notes": "厂家作为独立表达列示，现有目录仅有品味及智慧舍得。没有采用回收行情作零售价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "shede-shezhidao-didao-50",
+      "name": "舍得 舍之道地道50度",
+      "brand": "舍得",
+      "aroma": "浓香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "地道",
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_7.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_7.html",
+          "summary": "已读取厂家舍之道地道页面：浓香型、500ml，度数包括50%vol，厂家地址射洪。"
+        }
+      ],
+      "notes": "明确地道表达。零售另有天道、特醇等礼盒，未用未注明地道的舍之道报价代替。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "tianzihu-chenxiang-64-5",
+      "name": "天子呼 陈香型64.5度",
+      "brand": "天子呼",
+      "aroma": "其他",
+      "abv": 64.5,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_32.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_32.html",
+          "summary": "已读取舍得酒业天子呼陈香产品页：64.5%vol、500ml，明确陈香型，厂家地址四川射洪。"
+        }
+      ],
+      "notes": "陈香型映射到允许枚举其他，不冒充浓香。2022年6980元指导价限定2020年出品，不能赋给未限定装瓶年份的本候选。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "tianzihu-jiangxiang-53",
+      "name": "天子呼 酱香型53度",
+      "brand": "天子呼",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_33.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_33.html",
+          "summary": "已读取厂家天子呼酱香产品页：酱香型、53%vol、500ml，厂家位于射洪。"
+        }
+      ],
+      "notes": "与64.5度陈香款有明确酒体香型及ABV差异。未采用旧研报终端价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "tunzhihu-jiangxiang-53",
+      "name": "吞之乎 酱香红瓷描金53度",
+      "brand": "吞之乎",
+      "aroma": "酱香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "酱香·红瓷描金",
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_30.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_30.html",
+          "summary": "已读取舍得酒业吞之乎具体产品页：红瓷描金、酱香型、53%vol、500ml，厂家地址射洪。"
+        }
+      ],
+      "notes": "仅新增一个吞之乎表达，不再把换色黑瓷包装作为新增。历史报道存在52/53度混写，不迁移旧价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "taozui-jiaocang3-50",
+      "name": "陶醉 精品窖藏三50度",
+      "brand": "陶醉",
+      "aroma": "浓香",
+      "abv": 50,
+      "volumeMl": 480,
+      "edition": null,
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_26.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_26.html",
+          "summary": "已读取厂家精品窖藏陶醉酒三页面：浓香型、480ml，酒精度包括50%vol，产自舍得酒业生态园。"
+        }
+      ],
+      "notes": "三是产品编号，不擅自改为三年陈酿。厂家独立列示三、六、九，未取得匹配报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "taozui-jiaocang6-50",
+      "name": "陶醉 精品窖藏六50度",
+      "brand": "陶醉",
+      "aroma": "浓香",
+      "abv": 50,
+      "volumeMl": 480,
+      "edition": null,
+      "region": "四川射洪",
+      "source": "https://www.tuopaishede.cn/productInfo_27.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.tuopaishede.cn/productInfo_27.html",
+          "summary": "已读取厂家精品窖藏陶醉酒六页面：浓香型、480ml、50%vol选项，厂家位于射洪。"
+        }
+      ],
+      "notes": "六为厂家产品编号，不推定六年酒龄。不得使用陶醉606或九的价格代替，酒体级别进一步资料尚缺。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-shizuo-vvv-50",
+      "name": "宝丰 国色清香师作VVV 50度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "VVV",
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product1/guoseqingxiang-shizuo/59.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product1/guoseqingxiang-shizuo/59.html",
+          "summary": "已读取厂家师作多产品页面：VVV、VV、V分别列示，均50%vol、500ml、清香型；VVV单独描述大师及选酒工艺，厂家地址宝丰县。"
+        }
+      ],
+      "notes": "依据厂家独立等级列示，不按每箱2瓶计新增。未证实在售库存，未将未分V等级的师作报价套用。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-shizuo-vv-50",
+      "name": "宝丰 国色清香师作VV 50度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "VV",
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product1/guoseqingxiang-shizuo/23.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product1/guoseqingxiang-shizuo/23.html",
+          "summary": "已读取厂家师作VV详情及并列参数区：50%vol、500ml、清香型，厂家地址河南宝丰。"
+        }
+      ],
+      "notes": "按厂家独立VV等级记录，不按4瓶装计新增；第三方整箱及单瓶参考价混乱，留空。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-shizuo-v-50",
+      "name": "宝丰 国色清香师作V 50度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "V",
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product1/guoseqingxiang-shizuo/21.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product1/guoseqingxiang-shizuo/21.html",
+          "summary": "已读取厂家师作V页面及对应参数：50%vol、500ml、清香型，厂址宝丰县。"
+        }
+      ],
+      "notes": "未把普通未标V的师作汇总价格归给V版，亦不将125mL小瓶另计新增。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-dadu-jingdian-52",
+      "name": "宝丰酒 大肚经典52度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 52,
+      "volumeMl": 700,
+      "edition": "大肚经典",
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product3/baofengjiu/54.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product3/baofengjiu/54.html",
+          "summary": "已读取厂家大肚经典页面：39%vol或52%vol，700ml，52度箱规6瓶，厂家地址宝丰县。"
+        },
+        {
+          "url": "https://www.hnbfjy.com/html/product/product4/gaoxianguangping/58.html",
+          "summary": "已读取厂家宝丰酒产品体系的清香工艺及风格说明，作为香型交叉依据。"
+        }
+      ],
+      "notes": "现有宝丰大曲为50度泛化条目，本款52度700mL有明确不同身份；不将39度再列入本批。未取得报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-jinbiao-50",
+      "name": "宝丰 金标50度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": "金标",
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product4/gaoxianguangping/58.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product4/gaoxianguangping/58.html",
+          "summary": "已读取厂家金标与六代大曲分列页面；金标参数包括50%vol、500ml，文字明确清香风格，厂址宝丰县。"
+        }
+      ],
+      "notes": "厂家金标与大曲分列，但现有baofeng-daqu身份宽泛；建议集成时保留此区分依据，若旧条实际为金标则应转为完善旧条而非新增。未取得明确报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-guose25-50",
+      "name": "宝丰 国色清香25 50度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product2/guoseqingxiang/52.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product2/guoseqingxiang/52.html",
+          "summary": "已读取厂家国色清香25页面及对应25产品段：46/50%vol、500ml，清香体系，厂家地址宝丰县。"
+        }
+      ],
+      "notes": "对应产品段通过25原酒描述与相邻35、15区分；不同于现有国色清香陈坛35。报价留空。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "baofeng-guose15-50",
+      "name": "宝丰 国色清香15 50度",
+      "brand": "宝丰",
+      "aroma": "清香",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "河南平顶山宝丰",
+      "source": "https://www.hnbfjy.com/html/product/product2/guoseqingxiang/53.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.hnbfjy.com/html/product/product2/guoseqingxiang/53.html",
+          "summary": "已读取厂家国色清香15页面，对应15产品段为46/50%vol、500ml，清香体系，厂址宝丰县。"
+        }
+      ],
+      "notes": "与国色25及既有35分列；不把范围价或网友陈坛系列概述当作本规格报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "dongjiu-zhencang-54",
+      "name": "董酒 珍藏54度",
+      "brand": "董酒",
+      "aroma": "其他",
+      "abv": 54,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义",
+      "source": "https://www.chinadongjiu.com/products/214.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinadongjiu.com/products/214.html",
+          "summary": "已读取厂家珍藏产品页：500ml，度数41或54度，页尾厂址遵义董公寺。"
+        },
+        {
+          "url": "https://www.chinadongjiu.com/",
+          "summary": "已读取厂家首页，明确董香型白酒代表定位；产品身份另由具体产品页证明。"
+        }
+      ],
+      "notes": "董香型映射为其他。不是现有国密、佰草香或密钥1957的换名推定；未取得匹配价格。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "dongjiu-ruixianghe-50",
+      "name": "董酒 密藏瑞祥和50度",
+      "brand": "董酒",
+      "aroma": "其他",
+      "abv": 50,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "贵州遵义",
+      "source": "https://www.chinadongjiu.com/products/16.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.chinadongjiu.com/products/16.html",
+          "summary": "已读取厂家瑞祥和页面，正文称董酒密藏瑞祥和：500ml，42及50度，厂家地址遵义。"
+        },
+        {
+          "url": "https://www.chinadongjiu.com/",
+          "summary": "厂家公开介绍提供董香型归类依据，映射允许枚举其他。"
+        }
+      ],
+      "notes": "未按颜色或吉祥包装再拆分；产品价格未核实。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "xifeng-zhencang-53",
+      "name": "西凤酒 珍藏版53度",
+      "brand": "西凤",
+      "aroma": "凤香",
+      "abv": 53,
+      "volumeMl": 500,
+      "edition": "珍藏版",
+      "region": "陕西",
+      "source": "https://www.sxxfj.com/content/details29_5833.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details29_5833.html",
+          "summary": "已读取陕西西凤酒厂家珍藏版页面：53度500ml，明确正宗凤香型白酒，说明其独立产品特点。"
+        }
+      ],
+      "notes": "不是把现有52度红西凤换礼盒计数。该具体页没有更细产区字段，region保守记录陕西；未取得报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "xifeng-lanqicai30-52",
+      "name": "西凤酒 蓝七彩30年52度",
+      "brand": "西凤",
+      "aroma": "凤香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "陕西",
+      "source": "https://www.sxxfj.com/content/details31_459.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details31_459.html",
+          "summary": "已读取厂家蓝七彩30年页面：52度500ml，文字说明陈年凤香及对应基酒配置。"
+        }
+      ],
+      "notes": "与金七彩20、红七彩12不只是换色：厂家描述不同基酒配置。30年按正式品名记录，不独立认证酒龄；未取得报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "xifeng-jinqicai20-52",
+      "name": "西凤酒 金七彩20年52度",
+      "brand": "西凤",
+      "aroma": "凤香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "陕西",
+      "source": "https://www.sxxfj.com/content/details31_5920.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details31_5920.html",
+          "summary": "已读取厂家金七彩20年页面：52度500ml，明确经典陈年凤香，并描述20年酒海陈酿基酒配置。"
+        }
+      ],
+      "notes": "酒体等级由厂家具体描述区分，不凭金色包装计新品。没有匹配报价。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "xifeng-hongqicai12-52",
+      "name": "西凤酒 红七彩12年52度",
+      "brand": "西凤",
+      "aroma": "凤香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "陕西",
+      "source": "https://www.sxxfj.com/content/details31_5921.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://www.sxxfj.com/content/details31_5921.html",
+          "summary": "已读取厂家红七彩12年页面：52度500ml，独立描述12年酒海基酒配置。"
+        },
+        {
+          "url": "https://www.sxxfj.com/content/details31_5920.html",
+          "summary": "同厂家七彩系列页面明确陈年凤香，供香型交叉核验。"
+        }
+      ],
+      "notes": "红七彩不是现有红西凤的简称；按独立表达记录。更细产区及可靠报价未取得。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "hongxing-daquniang-52",
+      "name": "红星 二锅头大曲酿52度",
+      "brand": "红星",
+      "aroma": "清香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": null,
+      "region": "北京",
+      "source": "https://product.suning.com/0030000752/12411564038.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030000752/12411564038.html",
+          "summary": "已读取红星苏宁自营具体SKU：52度大曲酿，标题500ml乘6瓶；参数为清香型、52度，北京产。"
+        },
+        {
+          "url": "https://shop.suning.com/30000752/all.html",
+          "summary": "实际读取店铺列表有320元六瓶报价，但商品包装清单只写一瓶，存在数量字段冲突。"
+        }
+      ],
+      "notes": "酒款身份及单瓶容量明确，但为避免整箱数量冲突导致错算，价格留空。不同于蓝瓶绵柔8。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    },
+    {
+      "id": "jiannanchun-zhencangji-52",
+      "name": "剑南春 珍藏级52度",
+      "brand": "剑南春",
+      "aroma": "浓香",
+      "abv": 52,
+      "volumeMl": 500,
+      "edition": "珍藏级",
+      "region": "四川德阳",
+      "source": "https://product.suning.com/0030001198/12419929331.html",
+      "price": null,
+      "priceBasis": null,
+      "priceSource": null,
+      "priceUpdated": null,
+      "evidence": [
+        {
+          "url": "https://product.suning.com/0030001198/12419929331.html",
+          "summary": "已读取剑南春苏宁自营SKU：珍藏级52度、单瓶500ml、浓香型，产地四川德阳；标题及清单均指两瓶商品。"
+        },
+        {
+          "url": "https://shop.suning.com/30001198/all.html",
+          "summary": "实际打开列表，500ml两瓶商品报价1330元，折算每瓶665元。"
+        }
+      ],
+      "notes": "先前多瓶装折算价格已撤回，本记录仍待单瓶报价。原研究备注：不同于现有水晶剑、金剑南K6。包装分类字段写单瓶装，但标题与清单一致为两瓶；按1330除以2记录，并保留此分类字段问题。",
+      "reason": "缺少可采用的精确单瓶参考价格，不进入预算推荐库"
+    }
+  ],
+  "researchNotesLabel": "以下为原始批次备注，可能包含后续撤回的候选价格；最终采用情况以主酒库、证据台账和上方候选字段为准。",
+  "researchNotes": [
+    {
+      "subject": "价格分档与配额",
+      "reason": "50个候选中13项有本日实际观察到的厂家MSRP，37项无精确单瓶报价。13项价格分档为[0,2,4,3,4,0]；不能把37项未知价格强制分配到目标档位。未取得retail或listing性质的可采纳价格。"
+    },
+    {
+      "subject": "MSRP日期含义",
+      "reason": "priceUpdated=2026-09-07只表示本日观察到该网页报价，不表示厂家当天发布、当天生效或当天有实际成交。所有已记录金额都明确标作msrp。"
+    },
+    {
+      "subject": "既有泛称身份，不计新增",
+      "reason": "国窖经典装52度、2025窖藏1988、金质习酒第四代、国台龍15、经典五粮液10、摘要珍品不同代次、茅台生肖具体年份，以及国宾酒Ⅰ/Ⅱ/Ⅲ均可能落入既有泛称条目，本轮没有作为新增覆盖。"
+    },
+    {
+      "subject": "顺品郎与颜色命名产品的人工去重",
+      "reason": "蓝顺与金盖装为厂家不同产品ID，但本轮未取得量化酒体差异资料。为严格执行非化妆版本原则，主代理可以暂缓金盖装，得到49项较保守候选。龙马郎金马、黑马、白马是厂家分别命名的产品表达，不是同一产品的箱规变体；如仍要求酒体差异的进一步证明，可同样进入人工复核，不应仅因ID不同就强行计数。"
+    },
+    {
+      "subject": "其他习酒候选",
+      "reason": "已打开窖藏15、窖藏30、金钻、经典习酒、银质第三代及银质43度的精确厂家页，确认名称、ABV和单瓶容量；但可读取的产品文字没有明确香型，详情主要为图片，本轮不凭品牌印象直接加入。这些可作为后续图片标签核验候选。",
+      "evidence": [
+        {
+          "url": "https://www.gzxijiu.com/product/mainProduct-junpin?menuId=Wds3VhamjqkrJ4TCRFJY5",
+          "summary": "实际读取内嵌产品表，包含窖藏15与窖藏30的53%vol、500ml×5。"
+        },
+        {
+          "url": "https://www.gzxijiu.com/product/mainProduct-jinzuan?menuId=VzB2Cj6KjnJ6jUrbtW92W",
+          "summary": "实际读取金钻系列产品表，包含金钻、经典、银质53度及43度等规格。"
+        }
+      ]
+    },
+    {
+      "subject": "组合价拒绝",
+      "reason": "钓鱼台悦己酒4396元对应页面500ml×4规格，未记为单瓶价也未拆算；分类页0.00全部视为占位值。未使用隐藏38元模板、不同ABV价格或其他版本价格。"
+    },
+    {
+      "subject": "受阻厂商及本轮范围",
+      "reason": "赖茅产品目录本轮返回403后未反复重试；武陵和云门沿用上一轮已知连接或证书阻塞，本轮没有继续追逐。未扩展到其他研究者拥有的品牌。"
+    },
+    {
+      "topic": "counts",
+      "detail": "50个候选ID均唯一，与读取的0.3.2版100条目录没有ID碰撞；ID检查不等于消除所有历史误录身份风险。12条有零售报价，38条price为null。"
+    },
+    {
+      "topic": "price_bins",
+      "detail": "按已核实报价，六档计数为[4,5,1,2,0,0]。未达到期望高价档贡献；厂家高阶产品规格已提供，但不以猜价、回收价或历史指导价补足档位。"
+    },
+    {
+      "topic": "price_method",
+      "detail": "所有非空价格来自实际读取的公开店铺列表，并另开对应SKU核验；priceUpdated是2026-09-07观察日期，不表示商品页发布日或成交日。未使用重复38元模板、占位0、搜索摘要独有价格及MSRP。"
+    },
+    {
+      "topic": "existing_generic_overlap",
+      "detail": "未把天之蓝52度、水井坊臻酿八号52度、井台52度的容量变体列为新增；未把小池窖41度作为新增来掩盖既有40.8度身份冲突。"
+    },
+    {
+      "topic": "baofeng_overlap",
+      "detail": "金标由厂家与六代大曲分列，但旧baofeng-daqu为泛化名称；若旧记录实际意指金标，应完善旧记录而不是新增。六代大曲未加入候选。"
+    },
+    {
+      "topic": "hongxing_overlap",
+      "detail": "现有红星蓝瓶绵柔8年56度身份存疑。为避免借修正度数制造新增，未加入53度蓝瓶绵柔8或56度特制白标；蓝盒12、蓝盒18、高照、大曲酿按独立表达提供，仍应防旧条历史误录。"
+    },
+    {
+      "topic": "cosmetic_exclusions",
+      "detail": "未将玻汾献礼版、48度乳玻、沱牌生肖瓶、品味舍得纪念包装、米兰小酒、礼盒与整箱变体计入新增。西凤七彩各档有厂家不同基酒配置说明，而非仅依颜色拆分。"
+    },
+    {
+      "topic": "expression_strength",
+      "detail": "宝丰师作V/VV/VVV和陶醉三/六按厂家独立产品列示；其中陶醉页面对不同级别的酒体差异说明较少。若集成政策要求证明酒体配方实质差异，而非独立商品等级，应将陶醉三/六暂列待审。"
+    },
+    {
+      "topic": "source_field_conflicts",
+      "detail": "洋河水晶版40.8度零售参数误写500mL，但厂家、商品标题及清单为550mL；红星大曲酿标题六瓶而清单一瓶，撤回价格；珍藏剑包装分类与两瓶标题不一致，已逐条注明。"
+    },
+    {
+      "topic": "aroma_and_region_precision",
+      "detail": "董香与陈香映射为其他。部分洋河产品页香型栏为空，使用厂家系列说明交叉归类浓香；西凤具体页未给更细产地，region只填陕西。未制造逐SKU检验或产地证明。"
+    },
+    {
+      "topic": "scope_and_access",
+      "detail": "未调用代理、未安装依赖、未变更设置或提交代码。只读取公开厂家网页和有限的正常零售列表及明确SKU。牛栏山、白云边等路径读取不稳定或未取得足够完整证据，没有为覆盖品牌强行添加产品。"
+    },
+    {
+      "subject": "未新增笼统巴拿马与同款容量版本",
+      "reason": "未将1915巴拿马泛称与巴拿马10、金巴拿马混用；未把同度数青花20的375mL和500mL同时作为新增酒款。"
+    }
+  ]
+}

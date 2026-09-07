@@ -1,8 +1,17 @@
 const { track } = require("../../utils/analytics");
+const { confirmAdult } = require("../../utils/age");
+const { navigate } = require("../../utils/navigation");
 
 Page({
+  data: { navigationBusy: false },
+
+  onShow() {
+    this.setData({ navigationBusy: false });
+  },
+
   startQuiz() {
+    if (this.data.navigationBusy || !confirmAdult()) return;
     track("start_quiz", { fromShare: false });
-    wx.navigateTo({ url: "/pages/quiz/quiz" });
+    navigate(this, "/pages/quiz/quiz?from=home", "navigateTo");
   }
 });

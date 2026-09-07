@@ -112,6 +112,7 @@
   font-size: 26rpx;
   line-height: 1.8;
   color: #f2e9df;
+  overflow-wrap: anywhere;
 }
 
 .wine-block-caution .wine-block-text {
@@ -132,4 +133,36 @@
 
 .wine-buy::after {
   border: none;
+}
+
+.wine-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.wine-quality-notice {
+  display: block;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  background: rgba(201, 162, 75, 0.08);
+  color: #d7c4b8;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+
+.wine-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.wine-actions .wine-buy {
+  flex: 1;
+  min-width: 220rpx;
+  margin: 0;
+}
+
+.wine-detail-toggle {
+  background: transparent;
 }

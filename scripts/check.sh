@@ -25,6 +25,8 @@ node --check web/shared/recommender.js
 node --check wechat/miniprogram/shared/recommender.js
 node --check wechat/miniprogram/data/baijiu.js
 node --check wechat/miniprogram/app.js
+node --check wechat/miniprogram/config.js
+node --check wechat/miniprogram/utils/age.js
 node --check wechat/miniprogram/utils/navigation.js
 node --check wechat/miniprogram/utils/result.js
 node --check wechat/miniprogram/utils/analytics.js
